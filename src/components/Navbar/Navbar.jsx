@@ -1,9 +1,69 @@
-import React from 'react'
+/** @format */
+
+import React from "react";
+import logo from "../../assets/img/logo-NawarApp.png";
+import login from "../../assets/icon/fi_log-in.svg";
+import list from "../../assets/icon/fi_list.svg";
+import user from "../../assets/icon/fi_user.svg";
+import bell from "../../assets/icon/fi_bell.svg";
+import search from "../../assets/icon/fi_search.svg";
+import "./Navbar.css";
 
 function Navbar() {
+  const token = false;
   return (
-    <div>Navbar</div>
-  )
+    <>
+      <nav className='navbar navbar-expand-lg navbar-light'>
+        <div className='container'>
+          <button
+            className='navbar-toggler mb-3'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#navbarTogglerDemo03'
+            aria-controls='navbarTogglerDemo03'
+            aria-expanded='false'
+            aria-label='Toggle navigation'>
+            <span className='navbar-toggler-icon'></span>
+          </button>
+          <a className='navbar-brand' href='#'>
+            <img src={logo} alt='' className='logo-nawar me-2' />
+            <span>NawarApp</span>
+          </a>
+          <div className='collapse navbar-collapse' id='navbarTogglerDemo03'>
+            <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+              <div class='input-icons'>
+                <input
+                  className='form-control input-field me-2'
+                  type='search'
+                  placeholder='Cari disini ...'
+                  aria-label='Search'></input>
+              </div>
+              {/* <img className='search' src={search} alt='' /> */}
+            </ul>
+            <form className='d-flex'>
+              {token === true ? (
+                <ul>
+                  <li>
+                    <img src={list} alt='' />
+                  </li>
+                  <li className='ms-4'>
+                    <img src={bell} alt='' />
+                  </li>
+                  <li className='ms-4'>
+                    <img src={user} alt='' />
+                  </li>
+                </ul>
+              ) : (
+                <button className='btn btn-masuk' type='submit'>
+                  <img src={login} alt='' /> Masuk
+                </button>
+              )}
+            </form>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;
