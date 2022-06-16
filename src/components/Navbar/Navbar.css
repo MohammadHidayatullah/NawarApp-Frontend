@@ -46,6 +46,9 @@ li {
   width: 100%;
   padding: 10px;
 }
+.info-penawar{
+  margin: 0;
+}
 
 @media (max-width: 480px) {
   .navbar-brand span {
@@ -61,4 +64,32 @@ li {
 
 .input-icons {
   width: 100%;
+}
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon {
+  left: 0px;
+}
+.right-addon .glyphicon {
+  right: 10px;
+  margin: auto;
+}
+
+/* add padding  */
+.left-addon input {
+  padding-left: 30px;
+}
+.right-addon input {
+  padding-right: 30px;
 }

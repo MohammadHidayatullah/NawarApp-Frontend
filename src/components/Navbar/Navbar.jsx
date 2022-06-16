@@ -26,19 +26,23 @@ function Navbar() {
             <span className='navbar-toggler-icon'></span>
           </button>
           <a className='navbar-brand' href='#'>
-            <img src={logo} alt='' className='logo-nawar me-2' />
+            <img src={logo} alt='logo-nawarApp' className='logo-nawar me-2' />
             <span>NawarApp</span>
           </a>
           <div className='collapse navbar-collapse' id='navbarTogglerDemo03'>
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
-              <div class='input-icons'>
+              <div className='inner-addon right-addon'>
+                <img
+                  className='glyphicon glyphicon-search'
+                  src={search}
+                  alt=''
+                />
                 <input
-                  className='form-control input-field me-2'
-                  type='search'
+                  type='text'
+                  className='form-control me-2'
                   placeholder='Cari disini ...'
-                  aria-label='Search'></input>
+                />
               </div>
-              {/* <img className='search' src={search} alt='' /> */}
             </ul>
             <form className='d-flex'>
               {token === true ? (
