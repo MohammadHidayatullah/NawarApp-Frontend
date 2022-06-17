@@ -1,18 +1,10 @@
-/** @format */
-
 import React from "react";
-import CompCarousel from "../../components/Carousel/CompCarousel";
-import Navbar from "../../components/Navbar/Navbar";
-import NavbarInfo from "../../components/NavbarInfo/NavbarInfo";
+import Navbar from '../../components/Navbar/Navbar';
 
 function Home() {
-  return (
-    <>
-      <Navbar />
-      <NavbarInfo />
-      home
-    </>
-  );
+  return <div>
+  <Navbar/>
+  Home</div>;
 }
 
 export default Home;
