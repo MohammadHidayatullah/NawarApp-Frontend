@@ -13,53 +13,54 @@ function Navbar() {
   const token = false;
   return (
     <>
-      <nav className='navbar navbar-expand-lg navbar-light'>
-        <div className='container'>
+      <nav className="navbar navbar-expand-lg navbar-light">
+        <div className="container">
           <button
-            className='navbar-toggler mb-3'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#navbarTogglerDemo03'
-            aria-controls='navbarTogglerDemo03'
-            aria-expanded='false'
-            aria-label='Toggle navigation'>
-            <span className='navbar-toggler-icon'></span>
+            className="navbar-toggler mb-3"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <a className='navbar-brand' href='#'>
-            <img src={logo} alt='logo-nawarApp' className='logo-nawar me-2' />
+          <a className="navbar-brand" href="#">
+            <img src={logo} alt="logo-nawarApp" className="logo-nawar me-2" />
             <span>NawarApp</span>
           </a>
-          <div className='collapse navbar-collapse' id='navbarTogglerDemo03'>
-            <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
-              <div className='inner-addon right-addon'>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <div className="inner-addon right-addon">
                 <img
-                  className='glyphicon glyphicon-search'
+                  className="glyphicon glyphicon-search"
                   src={search}
-                  alt=''
+                  alt=""
                 />
                 <input
-                  type='text'
-                  className='form-control me-2'
-                  placeholder='Cari disini ...'
+                  type="text"
+                  className="form-control search-input me-2"
+                  placeholder="Cari disini ..."
                 />
               </div>
             </ul>
-            <form className='d-flex'>
+            <form className="d-flex">
               {token === true ? (
                 <ul>
                   <li>
-                    <img src={list} alt='' />
+                    <img src={list} alt="" />
                   </li>
-                  <li className='ms-4'>
-                    <img src={bell} alt='' />
+                  <li className="ms-4">
+                    <img src={bell} alt="" />
                   </li>
-                  <li className='ms-4'>
-                    <img src={user} alt='' />
+                  <li className="ms-4">
+                    <img src={user} alt="" />
                   </li>
                 </ul>
               ) : (
-                <button className='btn btn-masuk' type='submit'>
-                  <img src={login} alt='' /> Masuk
+                <button className="btn btn-masuk" type="submit">
+                  <img src={login} alt="" /> Masuk
                 </button>
               )}
             </form>
