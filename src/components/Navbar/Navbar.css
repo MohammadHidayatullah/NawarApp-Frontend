@@ -21,7 +21,7 @@ nav {
   color: #fff !important;
 }
 
-.form-control {
+.search-input {
   width: 444px !important;
   border-radius: 16px !important;
   background-color: #eeeeee !important;
@@ -46,7 +46,7 @@ li {
   width: 100%;
   padding: 10px;
 }
-.info-penawar{
+.info-penawar {
   margin: 0;
 }
 

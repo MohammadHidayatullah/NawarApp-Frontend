@@ -12,8 +12,6 @@ import "./OwlSlider.css";
 function OwlSlider() {
   const item = {
     items: [
-      // <img src={banner} style={{ wi: "auto" }} />,
-      // <img src={banner} style={{ wi: "auto" }} />,
       <div className='content'>
         <img src={banner1} />
       </div>,

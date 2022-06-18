@@ -1,0 +1,33 @@
+.bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+  background: #fff;
+  color: #000;
+  border-color: #999;
+}
+
+input,
+select,
+button,
+textarea {
+  border-radius: 16px !important;
+}
+
+.arrow-left {
+  position: absolute;
+  /* // top: 2.5rem; */
+  left: 25%;
+  background-color: #ffff;
+  border: none;
+}
+
+.container-card {
+  max-width: 40%;
+}
+
+@media only screen and (max-width: 680px) {
+  .container-card {
+    max-width: 80%;
+  }
+  .arrow-left {
+    left: 5%;
+  }
+}
