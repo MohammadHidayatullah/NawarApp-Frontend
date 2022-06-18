@@ -1,10 +1,14 @@
 import React from "react";
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from "../../components/Navbar/Navbar";
+import OwlSlider from "../../components/OwlSlider/OwlSlider";
 
 function Home() {
-  return <div>
-  <Navbar/>
-  Home</div>;
+  return (
+    <>
+      <Navbar />
+      <OwlSlider/>
+    </>
+  );
 }
 
 export default Home;

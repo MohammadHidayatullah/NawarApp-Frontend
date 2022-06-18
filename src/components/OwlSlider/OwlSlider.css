@@ -1,0 +1,11 @@
+/** @format */
+
+.owl-item > div {
+  cursor: pointer;
+  opacity: 0.5;
+  margin: 2% 8%;
+}
+.owl-item.center > div {
+  opacity: 1;
+  margin: 0;
+}
