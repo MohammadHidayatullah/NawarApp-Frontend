@@ -1,0 +1,70 @@
+.image-uploader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #ced4da;
+  color: #ced4da;
+  border-radius: 12px;
+  width: 9rem;
+  height: 9rem;
+  cursor: pointer;
+  font-size: large;
+  stroke-dasharray: 15%2c 10;
+  margin: 0rem 0.5rem 0rem 0rem;
+}
+
+.input-image {
+  display: none;
+}
+
+#img {
+  padding: 0;
+  margin: 0;
+  max-width: 9rem;
+  max-height: 9rem;
+}
+
+.images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 1 4 7  10 */
+
+.image {
+  margin: 1rem 0.5rem;
+  padding: 0.5rem;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  max-width: 20rem;
+  max-height: 20rem;
+}
+
+.image button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  border: none;
+  color: lightcoral;
+  background-color: white;
+  margin: auto;
+}
+
+/* .image button:hover {
+  background-color: red;
+  color: white;
+} */
+
+.image p {
+  padding: 0 0.5rem;
+  margin: 0;
+}
+
+.error {
+  color: red;
+}

@@ -2,10 +2,11 @@ import React from "react";
 import { useDropzone } from "react-dropzone";
 import "./InfoProduk.css";
 import { AiOutlineCamera } from "react-icons/ai";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaPlus, FaTimes } from "react-icons/fa";
 import Navbar from "../../components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import ImageUploadPreviewComponent from "../../components/ImageUpload/ImageUploadPreviewComponent";
+import { useState } from "react";
 
 function InfoProduk() {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
@@ -20,6 +21,16 @@ function InfoProduk() {
 
   const navHome = () => {
     navigate("/");
+  };
+  const [selectedImages, setSelectedImages] = useState([]);
+  const onSelectFile = (event) => {
+    const selectedFiles = event.target.files;
+    const selectedFilesArray = Array.from(selectedFiles);
+    const imagesArray = selectedFilesArray.map((file) => {
+      return URL.createObjectURL(file);
+    });
+
+    setSelectedImages((previousImages) => previousImages.concat(imagesArray));
   };
 
   return (
@@ -81,13 +92,61 @@ function InfoProduk() {
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Foto Produk</label>
+                  <div className="images">
+                    <label className="image-uploader">
+                      <FaPlus />
+                      <br />
+                      <input
+                        className="input-image"
+                        type="file"
+                        name="images"
+                        onChange={onSelectFile}
+                        multiple
+                        accept="image/png, image/jpeg, image/webp"
+                      />
+                    </label>
+                    {selectedImages.length <= 10 ? (
+                      ""
+                    ) : (
+                      <p className="pt-3">
+                        Anda hanya boleh upload 10 gambar! Hapus{" "}
+                        <b className="error">
+                          {selectedImages.length - 10} gambar
+                        </b>
+                      </p>
+                    )}
+                    {selectedImages &&
+                      selectedImages.map((image, index) => {
+                        return (
+                          <div key={image} className="image">
+                            <img
+                              id="img"
+                              src={image}
+                              height="200"
+                              alt="upload"
+                            />
+                            <button
+                              onClick={() =>
+                                setSelectedImages(
+                                  selectedImages.filter((e) => e !== image)
+                                )
+                              }
+                            >
+                              <FaTimes /> Delete
+                            </button>
+                            {/* <p className="pt-1">{index + 1}</p> */}
+                          </div>
+                        );
+                      })}
+                    {/* <div className="images"></div> */}
+                  </div>
                   {/* <ImageUploadPreviewComponent /> */}
                 </div>
                 <div className="row">
                   <div className="col-lg-6">
                     <button
                       type="submit"
-                      className="btn btn-outline w-100"
+                      className="btn btn-outline w-100 mb-3"
                       style={{ borderColor: "#181818", color: "#181818" }}
                     >
                       Preview
@@ -96,7 +155,7 @@ function InfoProduk() {
                   <div className="col-lg-6">
                     <button
                       type="submit"
-                      className="btn w-100"
+                      className="btn w-100 mb-3"
                       style={{ backgroundColor: "#181818", color: "#FFFF" }}
                     >
                       Terbitkan
