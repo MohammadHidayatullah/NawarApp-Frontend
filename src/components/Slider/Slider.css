@@ -1,0 +1,19 @@
+/** @format */
+
+.swiper-slide > div {
+  cursor: pointer;
+}
+.swiper-slide img {
+  width: 100%;
+}
+.swiper-slide .swiper-slide-active {
+  opacity: 1;
+  margin: 0;
+  transform: scale(1.5);
+}
+.swiper-slide.swiper-slide-prev {
+  opacity: 0.2;
+}
+.swiper-slide.swiper-slide-next {
+  opacity: 0.2;
+}
