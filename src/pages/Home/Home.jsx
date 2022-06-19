@@ -1,12 +1,14 @@
+/** @format */
+
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import OwlSlider from "../../components/OwlSlider/OwlSlider";
+import Slider from "../../components/Slider/Slider";
 
 function Home() {
   return (
     <>
       <Navbar />
-      <OwlSlider/>
+      <Slider />
     </>
   );
 }
