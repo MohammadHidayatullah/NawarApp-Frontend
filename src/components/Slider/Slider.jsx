@@ -19,7 +19,17 @@ function Slider() {
         loop={true}
         spaceBetween={16}
         centeredSlides={true}
-        slidesPerView={2}
+        breakpoints={{
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 1,
+
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 2,
+          }
+        }}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}>
         <SwiperSlide>
