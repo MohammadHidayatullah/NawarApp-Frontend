@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import "./InfoProduk.css";
 import { AiOutlineCamera } from "react-icons/ai";
-import { FaArrowLeft, FaPlus, FaTimes } from "react-icons/fa";
+import { FiArrowLeft, FiPlus, FiX } from "react-icons/fi";
 import Navbar from "../../components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import ImageUploadPreviewComponent from "../../components/ImageUpload/ImageUploadPreviewComponent";
 import { useState } from "react";
+import gambar from "../../img/wallpaperflare.com_wallpaper(17).jpg";
 
 function InfoProduk() {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
@@ -33,18 +34,39 @@ function InfoProduk() {
     setSelectedImages((previousImages) => previousImages.concat(imagesArray));
   };
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const detectSize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", detectSize);
+
+    return () => {
+      window.removeEventListener("resize", detectSize);
+    };
+  }, [width]);
+
   return (
     <>
-      <Navbar />
+      {width >= 576 && <Navbar />}
       <div style={{ padding: "3%" }}>
         <div className="container" style={{ maxWidth: "568px" }}>
-          <button
-            className="arrow-left"
-            onClick={navHome}
-            // style={{ color: "#181818" }}
-          >
-            <FaArrowLeft size={22} />
+          <button className="d-none d-sm-block arrow-left" onClick={navHome}>
+            <FiArrowLeft size={22} />
           </button>
+          {width <= 576 && (
+            <div className="d-flex justify-content-between">
+              <button className=" arrow-left" onClick={navHome}>
+                <FiArrowLeft size={22} />
+              </button>
+              <p className="mb-4" style={{ marginLeft: "-28.84px" }}>
+                <b>Lengkapi Detail Produk</b>
+              </p>
+              <p></p>
+            </div>
+          )}
           <div className="row">
             <div className="col-lg-12">
               <form>
@@ -92,49 +114,48 @@ function InfoProduk() {
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Foto Produk</label>
+                  {selectedImages.length <= 10 ? (
+                    ""
+                  ) : (
+                    <p className="pt-3">
+                      Anda hanya boleh upload 10 gambar! Hapus{" "}
+                      <b className="error">
+                        {selectedImages.length - 10} gambar
+                      </b>
+                    </p>
+                  )}
                   <div className="images">
-                    <label className="image-uploader">
-                      <FaPlus />
-                      <br />
-                      <input
-                        className="input-image"
-                        type="file"
-                        name="images"
-                        onChange={onSelectFile}
-                        multiple
-                        accept="image/png, image/jpeg, image/webp"
-                      />
-                    </label>
-                    {selectedImages.length <= 10 ? (
-                      ""
-                    ) : (
-                      <p className="pt-3">
-                        Anda hanya boleh upload 10 gambar! Hapus{" "}
-                        <b className="error">
-                          {selectedImages.length - 10} gambar
-                        </b>
-                      </p>
-                    )}
+                    <div className="grid">
+                      <label className="image-uploader">
+                        <FiPlus />
+                        {/* <br /> */}
+                        <input
+                          className="input-image"
+                          type="file"
+                          name="images"
+                          onChange={onSelectFile}
+                          multiple
+                          accept="image/png, image/jpeg, image/webp"
+                        />
+                      </label>
+                    </div>
                     {selectedImages &&
                       selectedImages.map((image, index) => {
                         return (
-                          <div key={image} className="image">
-                            <img
-                              id="img"
-                              src={image}
-                              height="200"
-                              alt="upload"
-                            />
-                            <button
-                              onClick={() =>
-                                setSelectedImages(
-                                  selectedImages.filter((e) => e !== image)
-                                )
-                              }
-                            >
-                              <FaTimes /> Delete
-                            </button>
-                            {/* <p className="pt-1">{index + 1}</p> */}
+                          <div key={image} className="grid">
+                            <div className="image">
+                              <img id="img" src={image} alt="upload" />
+                              <button
+                                onClick={() =>
+                                  setSelectedImages(
+                                    selectedImages.filter((e) => e !== image)
+                                  )
+                                }
+                              >
+                                <FiX /> Delete
+                              </button>
+                              {/* <p className="pt-1">{index + 1}</p> */}
+                            </div>
                           </div>
                         );
                       })}

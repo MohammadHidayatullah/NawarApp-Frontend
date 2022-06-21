@@ -4,6 +4,10 @@
   border-color: #999;
 }
 
+.isi {
+  display: none;
+}
+
 input,
 select,
 button,
@@ -23,11 +27,49 @@ textarea {
   max-width: 40%;
 }
 
-@media only screen and (max-width: 680px) {
+.image-editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  /* border: 1px solid #ced4da; */
+  color: #ced4da;
+  border-radius: 12px;
+  width: 96px;
+  height: 96px;
+  cursor: pointer;
+  font-size: large;
+  /* stroke-dasharray: 15%2c 10; */
+  /* margin: 0rem 0.5rem 0rem 0rem; */
+}
+
+.selected-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ced4da;
+  border-radius: 12px;
+  width: 96px;
+  height: 96px;
+  cursor: pointer;
+  margin: 0rem 0.5rem 0rem 0rem;
+  border: 1px solid #ced4da;
+}
+
+.inputFoto {
+  border-style: none !important;
+}
+
+@media only screen and (max-width: 1280px) {
   .container-card {
     max-width: 80%;
   }
   .arrow-left {
-    left: 5%;
+    position: relative;
+    left: 0%;
+    display: block;
+    margin-bottom: 5%;
   }
 }

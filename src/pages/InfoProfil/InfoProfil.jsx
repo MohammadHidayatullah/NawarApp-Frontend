@@ -1,19 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./InfoProfil.css";
 import { AiOutlineCamera } from "react-icons/ai";
-import { FaArrowLeft } from "react-icons/fa";
+import { FiArrowLeft, FiPlus } from "react-icons/fi";
 import Navbar from "../../components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function InfoProfil(props) {
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+  const uploadedImage = React.useRef(null);
+  const imageUploader = React.useRef(null);
+  const [file, setFile] = useState(null);
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
+  const handleImageUpload = (e) => {
+    const [file] = e.target.files;
+    setFile(e.target.file);
+    if (file) {
+      const reader = new FileReader();
+      const { current } = uploadedImage;
+      current.file = file;
+      reader.onload = (e) => {
+        current.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const detectSize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", detectSize);
+
+    return () => {
+      window.removeEventListener("resize", detectSize);
+    };
+  }, [width]);
 
   const navigate = useNavigate();
 
@@ -23,44 +48,67 @@ function InfoProfil(props) {
 
   return (
     <>
-      <Navbar />
+      {width >= 576 && <Navbar />}
+      {/* <Navbar /> */}
       <div style={{ padding: "3%" }}>
         <div className="container" style={{ maxWidth: "568px" }}>
-          <button
-            className="arrow-left"
-            onClick={navHome}
-            // style={{ color: "#181818" }}
-          >
-            <FaArrowLeft size={22} />
+          <button className="d-none d-sm-block arrow-left" onClick={navHome}>
+            <FiArrowLeft size={22} />
           </button>
-          <div className="row">
-            <div className="col-lg-12">
-              <section className="container d-flex justify-content-center">
-                <div
-                  {...getRootProps({
-                    className: "dropzone d-flex justify-content-center",
-                  })}
-                  style={{ width: "20%" }}
-                >
-                  <label
-                    className="d-flex justify-content-center align-items-center"
-                    style={{
-                      backgroundColor: "#fafafa",
-                      cursor: "pointer",
-                      padding: 15,
-                      borderRadius: 12,
-                      width: "96px",
-                      height: "96px",
-                    }}
-                  >
-                    <AiOutlineCamera size={22} />
-                    <input {...getInputProps()} />
-                    {/* <aside>
-                    <ul>{files}</ul>
-                  </aside> */}
-                  </label>
-                </div>
-              </section>
+          {width <= 576 && (
+            <div className="d-flex justify-content-between">
+              <button className=" arrow-left" onClick={navHome}>
+                <FiArrowLeft size={22} />
+              </button>
+              <p className="mb-4" style={{ marginLeft: "-28.84px" }}>
+                <b>Lengkapi Info Akun</b>
+              </p>
+              <p></p>
+            </div>
+          )}
+          <div className="row ">
+            <div className="col-lg-12 d-flex justify-content-center">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                ref={imageUploader}
+                style={{
+                  display: "none",
+                }}
+              />
+              <div
+                style={{
+                  position: "relative",
+                }}
+                onClick={() => imageUploader.current.click()}
+              >
+                <img
+                  ref={uploadedImage}
+                  style={{
+                    width: "96px",
+                    height: "96px",
+                    backgroundColor: "#fafafa",
+                    borderRadius: "12px",
+                    zIndex: 10,
+                    cursor: "pointer",
+                  }}
+                  src="http://www-cdr.stanford.edu/~petrie/blank.gif"
+                  alt=""
+                />
+                <AiOutlineCamera
+                  className={file !== null && "isi"}
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    fontSize: "22px",
+                    color: "#ced4da",
+                    zIndex: 9,
+                  }}
+                />
+              </div>
             </div>
           </div>
           <div className="row">
