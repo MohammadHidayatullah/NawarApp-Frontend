@@ -7,7 +7,6 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import ImageUploadPreviewComponent from "../../components/ImageUpload/ImageUploadPreviewComponent";
 import { useState } from "react";
-import gambar from "../../img/wallpaperflare.com_wallpaper(17).jpg";
 
 function InfoProduk() {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
