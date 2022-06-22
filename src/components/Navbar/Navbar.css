@@ -27,6 +27,11 @@ nav {
   background-color: #eeeeee !important;
   color: #8a8a8a !important;
 }
+
+.search-input::placeholder{
+  font-size: 14px;
+}
+
 ul {
   margin: 0 !important;
 }

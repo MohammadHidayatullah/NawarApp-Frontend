@@ -13,7 +13,7 @@ function Navbar() {
   const token = false;
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light">
+      <nav className="navbar navbar-expand-lg navbar-light py-3">
         <div className="container">
           <button
             className="navbar-toggler mb-3"
@@ -32,7 +32,7 @@ function Navbar() {
           </a>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <div className="inner-addon right-addon">
+              <div className="inner-addon right-addon d-flex align-items-center">
                 <img
                   className="glyphicon glyphicon-search"
                   src={search}
