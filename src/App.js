@@ -5,6 +5,8 @@ import Home from "./pages/Home/Home";
 import InfoProfil from "./pages/InfoProfil/InfoProfil";
 import InfoProduk from "./pages/InfoProduk/InfoProduk";
 import DaftarJual from "./pages/DaftarJual/DaftarJual";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
