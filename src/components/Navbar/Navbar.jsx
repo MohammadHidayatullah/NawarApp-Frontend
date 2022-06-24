@@ -8,6 +8,8 @@ import user from "../../assets/icon/fi_user.svg";
 import bell from "../../assets/icon/fi_bell.svg";
 import search from "../../assets/icon/fi_search.svg";
 import "./Navbar.css";
+import ModalSeller from "../ModalSeller/ModalSeller";
+import ModalSellerStatus from "../ModalSellerStatus/ModalSellerStatus";
 
 function Navbar() {
   const token = false;
@@ -59,12 +61,13 @@ function Navbar() {
                   </li>
                 </ul>
               ) : (
-                <button className="btn btn-masuk" type="submit">
+                <button className="btn btn-masuk" type="button" data-bs-toggle="modal" data-bs-target="#modalSeller">
                   <img src={login} alt="" /> Masuk
                 </button>
               )}
             </form>
           </div>
+          <ModalSeller />
         </div>
       </nav>
     </>
