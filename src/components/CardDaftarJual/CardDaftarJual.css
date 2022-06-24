@@ -1,0 +1,12 @@
+/** @format */
+
+.card-tambah-produk .text-center {
+  margin: 0 auto;
+}
+
+.card-tambah-produk .content {
+  flex-direction: column;
+  margin: 74px 0 74px 0;
+  cursor: pointer;
+  font-size: 12px;
+}
