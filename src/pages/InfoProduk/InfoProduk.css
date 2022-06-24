@@ -1,0 +1,92 @@
+.image-uploader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #ced4da;
+  color: #ced4da;
+  border-radius: 12px;
+  width: 100%;
+  min-width: 9rem;
+  height: 100%;
+  min-height: 9rem;
+  cursor: pointer;
+  font-size: large;
+  /* padding: 0rem 0.5rem 0rem 0rem; */
+  flex-basis: 33.33%;
+}
+
+.input-image {
+  display: none;
+}
+
+#img {
+  padding: 0;
+  margin: 0;
+  width: 9rem;
+  height: 9rem;
+}
+
+.images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: space-between;
+  align-items: center;
+  flex-basis: 100%; */
+}
+
+/* 1 4 7  10 */
+
+.grid {
+  padding: 1rem;
+  max-height: 20rem;
+  flex-basis: 33.33%;
+}
+
+.image {
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 20px 10px;
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.image button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  border: none;
+  color: lightcoral;
+  background-color: white;
+  border-bottom-right-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  /* display: none; */
+  /* margin: auto; */
+}
+
+/* .image button:hover {
+  background-color: red;
+  color: white;
+} */
+
+/* .image p {
+  padding: 0 0.5rem;
+  margin: 0;
+} */
+
+.error {
+  color: red;
+}
+
+@media only screen and (max-width: 604px) {
+  .image-uploader {
+    flex-basis: 50%;
+  }
+  .grid {
+    flex-basis: 50%;
+  }
+}

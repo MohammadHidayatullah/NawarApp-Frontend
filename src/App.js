@@ -1,15 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
+import logo from "./logo.svg";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import InfoProfil from "./pages/InfoProfil/InfoProfil";
+import InfoProduk from "./pages/InfoProduk/InfoProduk";
+import DaftarJual from "./pages/DaftarJual/DaftarJual";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />}></Route>
+      <Route path="/info-profil" element={<InfoProfil />}></Route>
+      <Route path="/info-produk" element={<InfoProduk />}></Route>
+      <Route path="/daftar-jual" element={<DaftarJual />}></Route>
+    </Routes>
   );
 }
 

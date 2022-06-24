@@ -1,0 +1,30 @@
+/** @format */
+
+#footer {
+  margin-top: 80px;
+}
+.sos-link {
+  list-style: none;
+  display: inline-flexbox;
+  padding-right: 16px;
+}
+
+.sos-link img {
+  fill: #fafafa !important;
+  color: #fafafa !important;
+  background-color: #fafafa !important;
+}
+
+.nav-link-bottom {
+  display: block;
+  font-weight: 400px;
+  font-style: normal;
+  margin-bottom: 16px !important;
+  color: #000000 !important;
+  text-decoration: none;
+}
+
+.logo-footer img {
+  height: 50px;
+  margin-bottom: 16px;
+}
