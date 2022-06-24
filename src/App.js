@@ -7,6 +7,7 @@ import InfoProduk from "./pages/InfoProduk/InfoProduk";
 import DaftarJual from "./pages/DaftarJual/DaftarJual";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ModalSeller from "./components/ModalSeller/ModalSeller";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/info-profil" element={<InfoProfil />}></Route>
       <Route path="/info-produk" element={<InfoProduk />}></Route>
       <Route path="/daftar-jual" element={<DaftarJual />}></Route>
+      <Route path="/modal-seller" element={<ModalSeller />}></Route>
     </Routes>
   );
 }

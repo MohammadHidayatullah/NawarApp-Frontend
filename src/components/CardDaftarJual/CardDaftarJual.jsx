@@ -1,13 +1,13 @@
 /** @format */
 
 import React from "react";
-import produk from "../../assets/img/produk.jpg";
 import NumberFormat from "react-number-format";
-import "./CardProduk.css";
+import produk from "../../assets/img/produk.jpg";
+import "./CardDaftarJual.css";
 
-function CardProduk() {
+function CardDaftarJual() {
   return (
-    <section className="card-produk col-lg-2 col-md-3 col-sm-4 mt-2">
+    <section className="card-daftar-jual col-lg-4 col-md-6 col-sm-6 mt-2">
       <div className='card'>
         <img src={produk} className='card-img-top' alt='...' />
         <div className='card-body'>
@@ -16,7 +16,7 @@ function CardProduk() {
           <p className='card-price'>
             <NumberFormat
               value={2456981}
-              displayType={'text'}
+              displayType={"text"}
               thousandSeparator={"."}
               decimalSeparator={","}
               prefix={"Rp "}
@@ -28,4 +28,4 @@ function CardProduk() {
   );
 }
 
-export default CardProduk;
+export default CardDaftarJual;
