@@ -1,0 +1,14 @@
+/** @format */
+
+#modalSellerStatus .form-check label > span {
+  display: block;
+  margin: 5px 0;
+  color: #8a8a8a;
+}
+
+#modalSellerStatus .form-check-input:hover {
+  background-color: #ccc;
+}
+#modalSellerStatus .form-check-input:checked {
+  background-color: #181818;
+}
