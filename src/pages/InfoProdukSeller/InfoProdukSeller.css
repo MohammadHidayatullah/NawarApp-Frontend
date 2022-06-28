@@ -1,0 +1,55 @@
+.carousel .carousel-item {
+    height: 400px;
+  }
+  
+  .carousel .carousel-item img{
+    object : fit-cover;
+    /* height : 400px ;
+    width : auto ;
+    top : -10 ;  */
+    position: absolute;
+    width: 600px;
+    height: 436px;
+    left: auto;
+    top: auto;
+    border-radius: 5%;
+  }
+
+  #desc-seller{
+    margin-top : 30px;
+    border-radius: 20px; 
+  }
+
+#desc-seller .card-body {
+  margin:20px;
+}
+
+.card-body .judul {
+  margin-bottom:25px;
+}
+
+/* .btn button {
+  background-color: #181818 ;
+  te
+  border:none;
+  hover: #fafafa;
+  background-hover: #fafafa; 
+}
+
+.card-body-2 {
+  font-family: "Poppins";
+  margin-bottom: 20px;
+} */
+
+/* .profil {
+  margin-bottom:20px;
+} */
+
+@media only screen and (max-width: 567px) {
+  #desc-seller {
+    margin-top: 16px !important;
+  }
+  #produk-card-seller {
+    margin-top: -16px !important;
+  }
+}
