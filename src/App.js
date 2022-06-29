@@ -1,3 +1,5 @@
+/** @format */
+
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -14,14 +16,14 @@ import InfoPenawaran from "./pages/InfoPenawaran/InfoPenawaran";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/info-profil" element={<InfoProfil />}></Route>
-      <Route path="/info-produk" element={<InfoProduk />}></Route>
-      <Route path="/daftar-jual" element={<DaftarJual />}></Route>
-      <Route path="/modal-seller" element={<ModalSeller />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/register" element={<Register/>}></Route>
-      <Route path="/info-penawaran" element={<InfoPenawaran/>}></Route>
+      <Route path='/' element={<Home />}></Route>
+      <Route path='/info-profil' element={<InfoProfil />}></Route>
+      <Route path='/info-produk' element={<InfoProduk />}></Route>
+      <Route path='/daftar-jual' element={<DaftarJual />}></Route>
+      <Route path='/modal-seller' element={<ModalSeller />}></Route>
+      <Route path='/login' element={<Login />}></Route>
+      <Route path='/register' element={<Register />}></Route>
+      <Route path='/info-penawaran' element={<InfoPenawaran />}></Route>
     </Routes>
   );
 }
