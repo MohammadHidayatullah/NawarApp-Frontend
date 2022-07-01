@@ -65,35 +65,6 @@
   padding: 12px 24px;
 }
 
-thead {
-  background: #cfd4ed;
-}
-
-.drop .form-select {
-  width: 62px;
-  height: 36px;
-  font-size: 12px;
-}
-
-.jtp .form-select {
-  width: 76px;
-  height: 36px;
-  font-size: 12px;
-}
-
-.paging nav {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.page-item.active .page-link {
-  background: #cfd4ed;
-  color: #181818;
-}
-
-.form-select {
-  display: inline;
-}
 
 .btn-back {
   display: inline;
@@ -134,14 +105,6 @@ thead {
   pointer-events: none;
 }
 
-/* .input-field {
-  width: 100%;
-  padding: 12px 24px;
-  /* text-align: center; */
-/* border-radius: 16px;
-
-} */
-
 .akun {
   font-family: "Poppins";
   font-style: normal;
@@ -164,13 +127,3 @@ thead {
   position: relative;
 }
 
-/* style glyph */
-/* .inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-} */
-
-/* align glyph */
-/* .left-addon .glyphicon  { left:  0px;} */
-/* .right-addon .glyphicon { right: 100px;} */
