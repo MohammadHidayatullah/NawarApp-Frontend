@@ -7,7 +7,58 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getProfile,
+  createProfile,
+  editProfile,
+  deleteProfile,
+} from "../../redux/action/profileAction";
+
 function InfoProfil(props) {
+  const [avatar, setAvatar] = useState();
+  const [name, setName] = useState();
+  const [province, setProvince] = useState();
+  const [city, setCity] = useState();
+  const [address, setAddress] = useState();
+  const [phone, setPhone] = useState();
+  const [id, setId] = useState();
+
+  const dispatch = useDispatch();
+
+  const { isLoading: loadingProfile, data: profileData } = useSelector(
+    (state) => state.profile
+  );
+
+  useEffect(() => {
+    dispatch(getProfile());
+  }, []);
+
+  const resetForm = () => {
+    setAvatar("");
+    setName("");
+    setProvince("");
+    setCity("");
+    setAddress("");
+    setPhone("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      avatar,
+      name,
+      province,
+      city,
+      address,
+      phone,
+    };
+    dispatch(editProfile(data));
+    resetForm();
+  };
+
+  // Upload image function
+
   const uploadedImage = React.useRef(null);
   const imageUploader = React.useRef(null);
   const [file, setFile] = useState(null);
@@ -26,6 +77,8 @@ function InfoProfil(props) {
     }
   };
 
+  // Fungsi untuk menangani ukuran responsive mobile
+
   const [width, setWidth] = useState(window.innerWidth);
 
   const detectSize = () => {
@@ -39,6 +92,8 @@ function InfoProfil(props) {
       window.removeEventListener("resize", detectSize);
     };
   }, [width]);
+
+  // Fungsi navigasi
 
   const navigate = useNavigate();
 
@@ -73,6 +128,7 @@ function InfoProfil(props) {
                 accept="image/*"
                 onChange={handleImageUpload}
                 ref={imageUploader}
+                value={avatar}
                 style={{
                   display: "none",
                 }}
@@ -119,9 +175,10 @@ function InfoProfil(props) {
                   <input
                     type="text"
                     className="form-control"
-                    id="exampleInputEmail1"
+                    id="exampleInputNamaProfile"
                     aria-describedby="emailHelp"
                     placeholder="Nama"
+                    value={name}
                   />
                 </div>
                 <div className="mb-3">
@@ -130,6 +187,7 @@ function InfoProfil(props) {
                     className="form-select"
                     aria-label=".form-select-sm multiple select example"
                     style={{ height: "28,5pt" }}
+                    value={province}
                   >
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
@@ -143,6 +201,7 @@ function InfoProfil(props) {
                     className="form-select"
                     aria-label=".form-select-sm multiple select example"
                     style={{ height: "28,5pt" }}
+                    value={city}
                   >
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
@@ -157,6 +216,7 @@ function InfoProfil(props) {
                     id="exampleFormControlTextarea1"
                     rows="3"
                     placeholder="Contoh: Jalan Ikan Hiu 33"
+                    value={address}
                   ></textarea>
                 </div>
                 <div className="mb-3">
@@ -167,6 +227,7 @@ function InfoProfil(props) {
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="contoh: +628123456789"
+                    value={phone}
                   />
                 </div>
 
@@ -174,6 +235,7 @@ function InfoProfil(props) {
                   type="submit"
                   className="btn w-100"
                   style={{ backgroundColor: "#181818", color: "#FFFF" }}
+                  onClick={handleSubmit}
                 >
                   Submit
                 </button>
