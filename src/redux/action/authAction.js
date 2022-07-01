@@ -16,7 +16,8 @@ export const authLogin = (email, password, navigate) => async (dispatch) => {
           type: `LOGIN`,
           payload: res.data,
         });
-        Cookies.set("token", res.data.access_token, { expires: inOneHours });
+        Cookies.set("token", res.data.token, { expires: inOneHours });
+        console.log(res);
         navigate("/");
       });
   } catch (err) {
