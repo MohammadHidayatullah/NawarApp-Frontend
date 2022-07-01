@@ -125,7 +125,7 @@ export default function Registers() {
                                 </button>
                                 <div className="akun">
                                     <p style={{ textAlign: 'center' }} >
-                                        Sudah Punya Akun? <a href="login">Masuk Disini</a>
+                                        Sudah Punya Akun? <a href="login">Masuk di sini</a>
                                     </p>
                                 </div>
                               

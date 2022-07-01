@@ -7,7 +7,7 @@
     padding: 0;
 }
 
-.register-row .row>* {
+.register-row .row>*{
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
@@ -24,8 +24,6 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 36px;
-    /* identical to box height, or 150% */
-
     color: #000000;
     margin-top: 24px;
 }
@@ -64,54 +62,6 @@
 }
 
 
-thead {
-    background: #cfd4ed;
-}
-
-.drop .form-select {
-    width: 62px;
-    height: 36px;
-    font-size: 12px;
-}
-
-.jtp .form-select {
-    width: 76px;
-    height: 36px;
-    font-size: 12px;
-}
-
-.paging nav {
-    display: flex;
-    justify-content: flex-end;
-}
-
-a.page-link {
-    height: 38px;
-    width: 38px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #8a8a8a;
-}
-
-.page-item.active .page-link {
-    background: #cfd4ed;
-    color: #181818;
-   
-}
-
-/* .form-select {
-    display: inline;
-} */
-
-/* .btn {
-    display: inline;
-    background: #181818;
-    color: #fff;
-    width: 43px;
-    height: 36px;
-} */
-
 .btn-back {
     display: inline;
     background-color: #fff !important;
@@ -145,17 +95,6 @@ a.page-link {
   position: relative;
 }
 
-/* style glyph */
-/* .input-group .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-} */
-
-/* align glyph */
-/* .left-addon .glyphicon  { left:  0px;}
-.right-addon .glyphicon { right: 50px;} */
-
 .icon {
   padding: 10px;
   min-width: 50px;
@@ -166,16 +105,6 @@ a.page-link {
   pointer-events: none;
 
 }
-
-/* .input-field {
-  width: 100%;
-  padding: 12px 24px;
-  /* text-align: center; */
-  /* border-radius: 16px;
-
-} */
-
-
 
 .akun {
     font-family: 'Poppins';
@@ -199,13 +128,3 @@ a.page-link {
   position: relative;
 }
 
-/* style glyph */
-/* .inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-} */
-
-/* align glyph */
-/* .left-addon .glyphicon  { left:  0px;} */
-/* .right-addon .glyphicon { right: 100px;} */

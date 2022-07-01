@@ -111,7 +111,7 @@ return (
                                 </button>
                                 <div className="akun">
                                     <p style={{ textAlign: 'center' }} >
-                                        Sudah Punya Akun? <a href="register">Daftar Disini</a>
+                                        Belum Punya Akun? <a href="register">Daftar di sini</a>
                                     </p>
                                 </div>
                                 {/* <button className="btn btn-back"
