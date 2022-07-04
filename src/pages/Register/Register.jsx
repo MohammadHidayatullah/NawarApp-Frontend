@@ -1,15 +1,20 @@
-// import React, { useEffect, useState } from "react";
-// import "./Register.css";
+import React, { useEffect, useState } from "react";
+import "./Register.css";
 import Nawar2 from "../../assets/img/Heading (1).png";
 import Eye2 from "../../assets/icon/fi_eye.png";
+import { useDispatch, useSelector } from 'react-redux';
+import { handleRegister } from "../../redux/action/registerAction";
 // import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 
 export default function Registers() {
-    // const [dataLogin, setDataLogin] = useState({
-    //     email: "",
-    //     password: "",
-    // });
+    const [dataRegister, setDataRegister] = useState({
+        name: "",
+        email: "",
+        password: "",
+    });
+
+    const dispatch = useDispatch();
 
     // const navigate = useNavigate();
 
@@ -55,13 +60,15 @@ export default function Registers() {
                         <div className="col-sm-6 col-xs-12 left-side">
                             <img
                                 src={Nawar2}
-                                className="w-100 vh-100"
+                                className="w-100"
                                 style={{ objectFit: "cover" }}
                                 alt=""
                             />
                         </div>
-                        <div className="col-sm-6 col-xs-12">
-                            <div className="form-head">
+                        <div className="col-sm-6 col-xs-12 d-flex align-items-center ">
+                            <div className="form-register">
+
+                            <div className="form-head d-flex justify-content-start">
                                 <h1>Daftar</h1>
                             </div>
 
@@ -69,17 +76,17 @@ export default function Registers() {
                                 <div className="mb-3">
                                     <label className="form-label">Nama</label>
                                     <input
-                                        type="email"
+                                        type="text"
                                         className="form-control"
-                                        id="inputEmail"
+                                        id="inputNama"
                                         placeholder="Nama Lengkap"
-                                        // value={dataLogin.email}
-                                        // onChange={(e) =>
-                                        //     setDataLogin({
-                                        //         ...dataLogin,
-                                        //         email: e.target.value,
-                                        //     })
-                                        // }
+                                        value={dataRegister.name}
+                                        onChange={(e) =>
+                                            setDataRegister({
+                                                ...dataRegister,
+                                                name: e.target.value,
+                                            })
+                                        }
                                     />
                                 </div>
                                 <div className="mb-3">
@@ -89,13 +96,13 @@ export default function Registers() {
                                         className="form-control"
                                         id="inputEmail"
                                         placeholder="Contoh: johndee@gmail.com"
-                                        // value={dataLogin.email}
-                                        // onChange={(e) =>
-                                        //     setDataLogin({
-                                        //         ...dataLogin,
-                                        //         email: e.target.value,
-                                        //     })
-                                        // }
+                                        value={dataRegister.email}
+                                        onChange={(e) =>
+                                            setDataRegister({
+                                                ...dataRegister,
+                                                email: e.target.value,
+                                            })
+                                        }
                                     />
                                 </div>
                                 <div className="input-icons mb-3">
@@ -107,21 +114,21 @@ export default function Registers() {
                                             className="form-control"
                                             id="inputPassword" 
                                             placeholder="Masukkan Password" 
-                                            // value={dataLogin.password}
-                                            // onChange={(e) =>
-                                            //     setDataLogin({
-                                            //         ...dataLogin,
-                                            //         password: e.target.value,
-                                            //     })
-                                            // }
+                                            value={dataRegister.password}
+                                            onChange={(e) =>
+                                                setDataRegister({
+                                                    ...dataRegister,
+                                                    password: e.target.value,
+                                                })
+                                            }
                                         />                                     
                                     </div>
                                 </div>
                                 <button
                                     className="btn-masuk"
-                                    // onClick={() => handleSubmit()}
+                                    onClick={() => dispatch(handleRegister(dataRegister))}
                                 >
-                                    Masuk
+                                    Register
                                 </button>
                                 <div className="akun">
                                     <p style={{ textAlign: 'center' }} >
@@ -135,6 +142,7 @@ export default function Registers() {
                                      Sudah Punya Akun? Masuk Disini
                                 </button> */}
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
