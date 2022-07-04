@@ -8,23 +8,27 @@ import { useState } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [input, setInput] = useState([]);
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
   const dispatch = useDispatch();
   const { isLoading, dataAuth, error } = useSelector((state) => state.auth);
 
-  const handleChange = (event) => {
-    dispatch({
-      type: `ERROR`,
-      error: null,
-    });
-    let value = event.target.value;
-    let name = event.target.value;
+  // const handleChange = (event) => {
+  //   dispatch({
+  //     type: `ERROR`,
+  //     error: null,
+  //   });
+  //   let value = event.target.value;
+  //   let name = event.target.value;
 
-    setInput({ ...input, [name]: value });
-  };
+  //   setInput({ ...input, [name]: value });
+  // };
 
   const handleSubmit = () => {
     dispatch(authLogin(input.email, input.password, navigate));
+    // console.log(input);
   };
 
   return (
@@ -75,7 +79,12 @@ export default function Login() {
                     id="inputEmail"
                     placeholder="Contoh: johndee@gmail.com"
                     value={input.email}
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      setInput({
+                        ...input,
+                        email: e.target.value,
+                      })
+                    }
                     required
                   />
                 </div>
@@ -92,7 +101,12 @@ export default function Login() {
                       id="inputPassword"
                       placeholder="Masukkan Password"
                       value={input.password}
-                      onChange={handleChange}
+                      onChange={(e) =>
+                        setInput({
+                          ...input,
+                          password: e.target.value,
+                        })
+                      }
                       required
                     />
                   </div>

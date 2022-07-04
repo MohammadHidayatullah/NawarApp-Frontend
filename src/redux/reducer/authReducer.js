@@ -22,12 +22,6 @@ const authReducer = (state = initialState, action) => {
         input: input,
         dataAuth: payload,
       };
-    // case `${REGISTER}`:
-    //     return{
-    //         ...state,
-    //         isLoading: false,
-    //         dataAuth: payload,
-    //     };
     case `ERROR`:
       return {
         ...state,
