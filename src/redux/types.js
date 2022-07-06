@@ -12,3 +12,8 @@ export const CREATE_PRODUCT = "CREATE_PRODUCT";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
+
+export const GET_ALL_PROVINCE = "GET_ALL_PROVINCE";
+// export const GET_PROVINCE = "GET_PROVINCE_ID";
+
+export const GET_ALL_CITY = "GET_ALL_CITY";

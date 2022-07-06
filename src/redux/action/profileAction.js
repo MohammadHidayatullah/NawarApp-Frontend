@@ -20,9 +20,10 @@ export const getProfile = () => {
       },
     })
       .then((response) => {
+        // console.log(response.data.data, "<= Ini ACTION Profile Data");
         dispatch({
           type: `${GET_PROFILE}_FULFILLED`,
-          payload: response.data,
+          payload: response.data.data,
         });
       })
       .catch((error) => {
