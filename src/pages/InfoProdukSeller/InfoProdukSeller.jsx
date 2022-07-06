@@ -6,13 +6,28 @@ import Arrow from "../../assets/icon/panah.png";
 import Panah from "../../assets/icon/panah-before.png";
 import NumberFormat from "react-number-format";
 import User from "../../assets/icon/infouser.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductDetail } from '../../redux/action/productDetailSellerAction';
 
 function InfoProdukSeller() {
+  const { productId } = useParams();
+
+  const dispatch = useDispatch();
+
+
+  const { isLoading: loadingData, data: productData} = useSelector(
+    (state) => state.productDetailSeller
+  );
+
+  useEffect(() => {
+    dispatch(getProductDetail(productId));
+  }, []);
   return (
     <>
     <Navbar/>
+    {loadingData ? 'Loading' : (
     <div className="container mt-5 d-flex justify-content-center" style={{ maxWidth: "968px" }}>
         <div className="content">
             <div className="row mb-1 ">
@@ -43,8 +58,11 @@ function InfoProdukSeller() {
         <div className="col-lg-4">
             <div className="card" id='produk-card' style={{ padding:"16px 24px", boxShadow:"0px 0px 10px rgba(0, 0, 0, 0.15)", borderRadius: "16px"}}>
                 <div className="card-body-2">
-                    <p className='card-title'>Sepatu Nike</p>
-                    <p className='card-text'>Aksesoris</p>
+                    <p className='card-title'>{`${ productData.name }`}
+                    </p>
+                    <p className='card-text'>
+                        {/* {productDetailSellerData.productCategories[0].category.name} */}
+                        </p>
                     <p className='card-price'>
                     <NumberFormat
                         value={750000}
@@ -96,6 +114,7 @@ function InfoProdukSeller() {
             </div>
         </div>
     </div>
+    )}
     </>
   )
 }
