@@ -18,6 +18,7 @@ import {
 function InfoProfil(props) {
   const [avatar, setAvatar] = useState();
   const [name, setName] = useState();
+  // console.log(name, "<= Ini adalah name");
   const [province, setProvince] = useState();
   const [city, setCity] = useState();
   const [address, setAddress] = useState();
@@ -43,20 +44,6 @@ function InfoProfil(props) {
     setPhone("");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      avatar,
-      name,
-      province,
-      city,
-      address,
-      phone,
-    };
-    dispatch(editProfile(data));
-    resetForm();
-  };
-
   // Upload image function
 
   const uploadedImage = React.useRef(null);
@@ -65,7 +52,7 @@ function InfoProfil(props) {
 
   const handleImageUpload = (e) => {
     const [file] = e.target.files;
-    setFile(e.target.file);
+    setFile(e.target.files[0]);
     if (file) {
       const reader = new FileReader();
       const { current } = uploadedImage;
@@ -75,6 +62,29 @@ function InfoProfil(props) {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      avatar: file,
+      name,
+      province,
+      city,
+      address,
+      phone,
+    };
+    // console.log(data, "<= Ini data dari JSX");
+    let formData = new FormData();
+
+    // Loop through the object
+    for (let [key, val] of Object.entries(data)) {
+      // append each item to the formData (converted to JSON strings)
+      formData.append(key, val);
+    }
+    console.log(formData);
+    dispatch(editProfile(formData));
+    resetForm();
   };
 
   // Fungsi untuk menangani ukuran responsive mobile
@@ -179,6 +189,7 @@ function InfoProfil(props) {
                     aria-describedby="emailHelp"
                     placeholder="Nama"
                     value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
@@ -188,6 +199,7 @@ function InfoProfil(props) {
                     aria-label=".form-select-sm multiple select example"
                     style={{ height: "28,5pt" }}
                     value={province}
+                    onChange={(e) => setProvince(e.target.value)}
                   >
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
@@ -202,6 +214,7 @@ function InfoProfil(props) {
                     aria-label=".form-select-sm multiple select example"
                     style={{ height: "28,5pt" }}
                     value={city}
+                    onChange={(e) => setCity(e.target.value)}
                   >
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
@@ -217,6 +230,7 @@ function InfoProfil(props) {
                     rows="3"
                     placeholder="Contoh: Jalan Ikan Hiu 33"
                     value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                   ></textarea>
                 </div>
                 <div className="mb-3">
@@ -228,6 +242,7 @@ function InfoProfil(props) {
                     aria-describedby="emailHelp"
                     placeholder="contoh: +628123456789"
                     value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
 

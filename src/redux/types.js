@@ -10,4 +10,5 @@ export const CREATE_PRODUCT = "CREATE_PRODUCT";
 // export const EDIT_PROFILE = "EDIT_PROFILE";
 // export const DELETE_PROFILE = "DELETE_PROFILE";
 
-export const LOGIN = "LOGIN";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";

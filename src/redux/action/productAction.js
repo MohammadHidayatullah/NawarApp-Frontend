@@ -5,6 +5,7 @@ import {
   EDIT_PRODUCT,
   DELETE_PRODUCT,
 } from "../types";
+let token = localStorage.getItem("token");
 
 export const getProduct = () => {
   return (dispatch) => {
@@ -13,6 +14,9 @@ export const getProduct = () => {
     axios({
       method: "GET",
       url: "https://nawar-api.herokuapp.com/api/v1/products/1",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((response) => {
         dispatch({
@@ -37,6 +41,9 @@ export const createProduct = (data) => {
       method: "POST",
       url: "https://nawar-api.herokuapp.com/api/v1/products/create",
       data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then(() => {
         dispatch({

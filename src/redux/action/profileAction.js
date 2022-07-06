@@ -6,6 +6,8 @@ import {
   DELETE_PROFILE,
 } from "../types";
 
+let token = localStorage.getItem("token");
+
 export const getProfile = () => {
   return (dispatch) => {
     dispatch({ type: `${GET_PROFILE}_LOADING` });
@@ -13,6 +15,9 @@ export const getProfile = () => {
     axios({
       method: "GET",
       url: "https://nawar-api.herokuapp.com/api/v1/users/profile",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((response) => {
         dispatch({
@@ -54,14 +59,17 @@ export const getProfile = () => {
 //   };
 // };
 
-export const editProfile = (id, data) => {
+export const editProfile = (data) => {
   return (dispatch) => {
     dispatch({ type: `${EDIT_PROFILE}_LOADING` });
-
+    // console.log(data, "<= Data edit profile");
     axios({
       method: "PUT",
       url: `https://nawar-api.herokuapp.com/api/v1/users/profile`,
       data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then(() => {
         dispatch({

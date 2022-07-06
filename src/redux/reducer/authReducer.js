@@ -1,4 +1,4 @@
-import { LOGIN } from "../types";
+import { LOGIN_SUCCESS, LOGIN_FAIL } from "../types";
 
 const initialState = {
   dataAuth: [],
@@ -15,14 +15,14 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: true,
       };
-    case `${LOGIN}`:
+    case `${LOGIN_SUCCESS}`:
       return {
         ...state,
         isLoading: false,
         input: input,
         dataAuth: payload,
       };
-    case `ERROR`:
+    case `${LOGIN_FAIL}`:
       return {
         ...state,
         isLoading: false,
