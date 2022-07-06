@@ -1,5 +1,8 @@
+/** @format */
+
 import {
   GET_PRODUCT,
+  GET_PRODUCT_BY_CATEGORY,
   CREATE_PRODUCT,
   EDIT_PRODUCT,
   DELETE_PRODUCT,
@@ -25,6 +28,23 @@ const productReducer = (state = initialState, action) => {
         isLoading: false,
       };
     case `${GET_PRODUCT}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
+
+    case `${GET_PRODUCT_BY_CATEGORY}_LOADING`:
+      return {
+        ...state,
+      };
+    case `${GET_PRODUCT_BY_CATEGORY}_FULFILLED`:
+      return {
+        ...state,
+        data: payload,
+        isLoading: false,
+      };
+    case `${GET_PRODUCT_BY_CATEGORY}_ERROR`:
       return {
         ...state,
         isLoading: false,

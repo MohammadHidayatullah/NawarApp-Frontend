@@ -1,27 +1,29 @@
+/** @format */
+
 import axios from "axios";
 import {
   GET_PRODUCT,
+  GET_PRODUCT_BY_CATEGORY,
   CREATE_PRODUCT,
   EDIT_PRODUCT,
   DELETE_PRODUCT,
 } from "../types";
+
 let token = localStorage.getItem("token");
 
+// get all product from database
 export const getProduct = () => {
   return (dispatch) => {
     dispatch({ type: `${GET_PRODUCT}_LOADING` });
 
     axios({
       method: "GET",
-      url: "https://nawar-api.herokuapp.com/api/v1/products/1",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      url: "https://nawar-api.herokuapp.com/api/v1/products",
     })
       .then((response) => {
         dispatch({
           type: `${GET_PRODUCT}_FULFILLED`,
-          payload: response.data,
+          payload: response.data.data.data,
         });
       })
       .catch((error) => {
@@ -33,6 +35,32 @@ export const getProduct = () => {
   };
 };
 
+// get product filter by category from database
+export const getProductByCategory = (data) => {
+  return (dispatch) => {
+    dispatch({ type: `${GET_PRODUCT_BY_CATEGORY}_LOADING` });
+    const baseUrl = "https://nawar-api.herokuapp.com/api/v1/products/filter/";
+    let url = baseUrl + data;
+    axios({
+      method: "GET",
+      url: url,
+    })
+      .then((response) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_CATEGORY}_FULFILLED`,
+          payload: response.data.data.data,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_CATEGORY}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+};
+
+// create product to database
 export const createProduct = (data) => {
   return (dispatch) => {
     dispatch({ type: `${CREATE_PRODUCT}_LOADING` });
