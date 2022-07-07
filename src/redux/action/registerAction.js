@@ -1,7 +1,9 @@
 import { REGISTER } from "../types";
 import axios from "axios";
+// import { Navigate } from "react-router-dom";
 
 export const handleRegister = (data) => {
+  // const navigate = useNavigate()
     return (dispatch) => {
       dispatch({ type: `${REGISTER}_LOADING` });
   
@@ -14,8 +16,9 @@ export const handleRegister = (data) => {
           dispatch({
             type: `${REGISTER}_FULFILLED`,
             // payload: response.data,
+            
           });
-          
+          // Navigate("/login")
         })
         .catch((error) => {
           dispatch({

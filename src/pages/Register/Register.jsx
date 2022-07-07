@@ -4,6 +4,7 @@ import Nawar2 from "../../assets/img/Heading (1).png";
 import Eye2 from "../../assets/icon/fi_eye.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { handleRegister } from "../../redux/action/registerAction";
+import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 
@@ -17,6 +18,11 @@ export default function Registers() {
     const dispatch = useDispatch();
 
     // const navigate = useNavigate();
+
+    // const login = () => {
+    //     navigate("/login") 
+    // }
+
 
     // useEffect(() => {
     //     if (localStorage.getItem("access_token")) {
@@ -124,12 +130,15 @@ export default function Registers() {
                                         />                                     
                                     </div>
                                 </div>
+                                <Link to="/login">
                                 <button
                                     className="btn-masuk"
                                     onClick={() => dispatch(handleRegister(dataRegister))}
                                 >
                                     Register
                                 </button>
+                                </Link>
+                                
                                 <div className="akun">
                                     <p style={{ textAlign: 'center' }} >
                                         Sudah Punya Akun? <a href="login">Masuk di sini</a>
