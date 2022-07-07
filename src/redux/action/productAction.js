@@ -23,8 +23,9 @@ export const getProduct = () => {
       .then((response) => {
         dispatch({
           type: `${GET_PRODUCT}_FULFILLED`,
-          payload: response.data.data.data,
+          payload: response.data.list.data,
         });
+        console.log(response.data.list.data);
       })
       .catch((error) => {
         dispatch({
@@ -48,7 +49,7 @@ export const getProductByCategory = (data) => {
       .then((response) => {
         dispatch({
           type: `${GET_PRODUCT_BY_CATEGORY}_FULFILLED`,
-          payload: response.data.data.data,
+          payload: response.data.list.data,
         });
       })
       .catch((error) => {

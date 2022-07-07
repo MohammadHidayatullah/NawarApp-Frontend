@@ -6,7 +6,7 @@ import notFound from "../../assets/img/not-found.svg";
 import "./CardProduk.css";
 
 function CardProduk({ data, loading }) {
-  // console.log("data", data);
+  console.log("data", data);
   return (
     <>
       {loading
