@@ -1,6 +1,7 @@
 /** @format */
 
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   GET_PRODUCT,
   GET_PRODUCT_BY_CATEGORY,
@@ -10,6 +11,7 @@ import {
 } from "../types";
 
 let token = localStorage.getItem("token");
+// const navigate = useNavigate;
 
 // get all product from database
 export const getProduct = () => {
@@ -77,9 +79,9 @@ export const createProduct = (data) => {
       .then(() => {
         dispatch({
           type: `${CREATE_PRODUCT}_FULFILLED`,
-          // payload: response.data,
+          // // payload: response.data,
         });
-        dispatch(getProduct());
+        // dispatch(navigate("/daftar-jual"));
       })
       .catch((error) => {
         dispatch({

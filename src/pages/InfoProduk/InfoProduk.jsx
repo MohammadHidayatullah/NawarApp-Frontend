@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import "./InfoProduk.css";
-import { AiOutlineCamera } from "react-icons/ai";
 import { FiArrowLeft, FiPlus, FiX } from "react-icons/fi";
 import Navbar from "../../components/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -10,64 +9,22 @@ import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getProduct,
+  // getProduct,
   createProduct,
-  editProduct,
-  deleteProduct,
+  // editProduct,
+  // deleteProduct,
 } from "../../redux/action/productAction";
 
 function InfoProduk() {
-  // Fungsi untuk handle react redux
-  const [images, setImages] = useState([]);
-  const [name, setName] = useState();
-  const [price, setPrice] = useState();
-  const [description, setDescription] = useState();
-  const [category, setCategory] = useState();
-  const [id, setId] = useState();
-
-  const dispatch = useDispatch();
-
-  const { isLoading: loadingProduct, data: productData } = useSelector(
-    (state) => state.product
-  );
-
-  useEffect(() => {
-    dispatch(getProduct());
-  }, []);
-
-  const resetForm = () => {
-    setImages("");
-    setName("");
-    setPrice("");
-    setDescription("");
-    setCategory("");
-    setId("");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      images,
-      name,
-      price,
-      description,
-      category,
-    };
-    dispatch(createProduct(data));
-    resetForm();
-  };
-
   // Fungsi untuk handle fungsi input image
 
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+  // Image yang di submit
+  const [images, setImages] = useState([]);
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
-
+  // Image yang ditampilkan
   const [selectedImages, setSelectedImages] = useState([]);
+
+  // Value Image
   const onSelectFile = (event) => {
     const selectedFiles = event.target.files;
     const selectedFilesArray = Array.from(selectedFiles);
@@ -76,6 +33,55 @@ function InfoProduk() {
     });
 
     setSelectedImages((previousImages) => previousImages.concat(imagesArray));
+    setImages((previousImages) => [...previousImages, event.target.files[0]]);
+  };
+
+  console.log(images);
+
+  // Fungsi untuk handle react redux
+  const [name, setName] = useState();
+  const [price, setPrice] = useState();
+  const [description, setDescription] = useState();
+  const [category, setCategory] = useState();
+  // const [id, setId] = useState();
+
+  const dispatch = useDispatch();
+
+  const { isLoading: loadingProduct, data: productData } = useSelector(
+    (state) => state.product
+  );
+
+  // useEffect(() => {
+  //   dispatch(getProduct());
+  // }, []);
+
+  const resetForm = () => {
+    setSelectedImages("");
+    setImages("");
+    setName("");
+    setPrice("");
+    setDescription("");
+    setCategory("");
+    // setId("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let formData = new FormData();
+
+    // Loop untuk append gambar (Karena gambar bukan array)
+    images.forEach((result) => {
+      formData.append("images", result);
+    });
+    // Append data form
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("description", description);
+    formData.append("category", category);
+
+    dispatch(createProduct(formData));
+    resetForm();
   };
 
   // Fungsi untuk handle responsive mobile
@@ -103,7 +109,6 @@ function InfoProduk() {
   };
 
   // Fungsi redux
-
   return (
     <>
       {width >= 576 && <Navbar />}
@@ -198,25 +203,27 @@ function InfoProduk() {
                           type="file"
                           name="images"
                           onChange={onSelectFile}
-                          multiple
                           accept="image/png, image/jpeg, image/webp"
-                          value={images}
-                          // onChange={(e) => setImages(e.target.value)}
                         />
                       </label>
                     </div>
                     {selectedImages &&
                       selectedImages.map((image, index) => {
                         return (
-                          <div key={image} className="grid">
+                          <div key={index} className="grid">
                             <div className="image">
                               <img id="img" src={image} alt="upload" />
                               <button
-                                onClick={() =>
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  console.log(index, "ini index");
                                   setSelectedImages(
                                     selectedImages.filter((e) => e !== image)
-                                  )
-                                }
+                                  );
+                                  setImages(
+                                    images.filter((value, f) => f !== index)
+                                  );
+                                }}
                               >
                                 <FiX /> Delete
                               </button>
