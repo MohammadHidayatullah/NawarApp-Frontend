@@ -12,7 +12,7 @@
   margin-right: 16px;
 }
 
-.btn-category-filter:active {
+.btn-category-filter:focus {
   background-color: #181818;
   color: #fafafa;
 }
