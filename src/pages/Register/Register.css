@@ -1,3 +1,4 @@
+
 /**
  * /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,900&display=swap');
  *
@@ -10,16 +11,16 @@
   padding: 0;
 }
 
-.register-row .left-side {
+.register-row .row > * {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* .form-head {
+.form-head {
   margin-top: 120px;
   padding-left: 115px !important;
   padding-right: 115px !important;
-} */
+}
 
 .form-head h1 {
   font-family: "Poppins";
@@ -33,11 +34,11 @@
   margin-top: 24px;
 }
 
-/* .form-content {
+.form-content {
   padding-left: 115px !important;
   padding-right: 115px !important;
   background-color: #ffffff;
-} */
+}
 
 .form-content button {
   width: 100%;

@@ -120,7 +120,7 @@ export default function Login() {
                 </button>
                 <div className="akun">
                   <p style={{ textAlign: "center" }}>
-                    Sudah Punya Akun? <a href="register">Daftar Disini</a>
+                    Sudah Punya Akun? <a href="registern">Daftar Disini</a>
                   </p>
                 </div>
                 {/* <button className="btn btn-back"
