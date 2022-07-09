@@ -6,11 +6,11 @@ import productReducer from "./productReducer";
 import authReducer from "./authReducer";
 import provinceReducer from "./provinceReducer";
 import cityReducer from "./cityReducer";
-import registerReducer from "./registerReducer";
+import registernReducer from "./registerReducer";
 
 export default combineReducers({
   auth: authReducer,
-  register: registerReducer,
+  registern: registernReducer,
   profile: profileReducer,
   product: productReducer,
   province: provinceReducer,

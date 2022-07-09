@@ -1,34 +1,33 @@
-import { REGISTER } from '../types';
+import { REGISTER_SUCCESS, REGISTER_FAIL } from "../types";
 
 const initialState = {
-  data: [],
-  isLoading: true,
-  isSuccess: false,
+  dataAuth: [],
+  input: [],
+  isLoading: false,
   error: null,
 };
 
-const registerReducer = (state = initialState, action) => {
-  const { type, payload, error } = action;
+const registernReducer = (state = initialState, action) => {
+  const { type, payload, error, input } = action;
   switch (type) {
-    case `${REGISTER}_LOADING`:
+    case `LOADING`:
       return {
         ...state,
+        isLoading: true,
       };
-    case `${REGISTER}_FULFILLED`:
+    case `${REGISTER_SUCCESS}`:
       return {
         ...state,
-        data: payload,
         isLoading: false,
-        isSuccess: true,
+        input: input,
+        dataAuth: payload,
       };
-    case `${REGISTER}_ERROR`:
+    case `${REGISTER_FAIL}`:
       return {
         ...state,
         isLoading: false,
         error: error,
       };
-
-    
     default:
       return {
         ...state,
@@ -36,4 +35,4 @@ const registerReducer = (state = initialState, action) => {
   }
 };
 
-export default registerReducer;
+export default registernReducer;

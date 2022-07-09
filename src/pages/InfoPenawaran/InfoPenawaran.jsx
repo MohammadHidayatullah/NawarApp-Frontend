@@ -105,8 +105,8 @@ function InfoPenawaran() {
 
                             <div className="card-body col-10">
                               <div className="row">
-                                <p className="card-text col-10"><small class="text-muted">Penawaran Produk</small></p>
-                                <p className="card-text col-2"><small class="text-muted">24 Juni,07.30</small></p>
+                                <p className="card-text col-9"><small class="text-muted">Penawaran Produk</small></p>
+                                <p className="card-text col-3"><small class="text-muted">24 Juni,07.30</small></p>
                               </div>
                               
                               <div className="row">
