@@ -35,6 +35,7 @@ function Home() {
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
+  console.log("productData", productData, "data");
   return (
     <>
       <Navbar />

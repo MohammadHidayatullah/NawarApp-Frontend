@@ -1,0 +1,8 @@
+/** @format */
+
+.sidebar-button li > :hover {
+  color: tomato;
+}
+.sidebar-button li > :focus {
+  color: tomato;
+}

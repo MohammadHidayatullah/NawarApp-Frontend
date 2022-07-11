@@ -7,6 +7,9 @@ import {
   CREATE_PRODUCT,
   EDIT_PRODUCT,
   DELETE_PRODUCT,
+  GET_PRODUCT_BY_USER,
+  GET_PRODUCT_BY_USER_SOLD,
+  GET_PRODUCT_BY_USER_WISHLIST,
 } from "../types";
 
 let token = localStorage.getItem("token");
@@ -60,6 +63,87 @@ export const getProductByCategory = (data) => {
       });
   };
 };
+
+// get product by user wishlist
+export const getProductByUserWishlist = (data) => {
+  return (dispatch) => {
+    dispatch({ type: `${GET_PRODUCT_BY_USER_WISHLIST}_LOADING` });
+     axios({
+      method: "GET",
+      url: "https://nawar-api.herokuapp.com/api/v1/wishlist",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
+          payload: response.data.list.data,
+        });
+        console.log(response.data.list.data);
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER_WISHLIST}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+}
+
+// get product filter by user from database
+export const getProductByUser = () => {
+  return (dispatch) => {
+    dispatch({ type: `${GET_PRODUCT_BY_USER_SOLD}_LOADING` });
+     axios({
+      method: "GET",
+      url: "https://nawar-api.herokuapp.com/api/v1/products/user",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER_SOLD}_FULFILLED`,
+          payload: response.data.list.data,
+        });
+        console.log(response.data.list.data);
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER_SOLD}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+}
+
+// get product filter by user filter by sold from database
+export const getProductByUserSold = () => {
+  return (dispatch) => {
+    dispatch({ type: `${GET_PRODUCT_BY_USER}_LOADING` });
+      axios({
+      method: "GET",
+      url: "https://nawar-api.herokuapp.com/api/v1/products/user",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER}_FULFILLED`,
+          payload: response.data.list.data.filter((item) => item.sold === true),
+        });
+        console.log(response.data.list.data.filter((item) => item.sold === true));
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+}
 
 // create product to database
 export const createProduct = (data) => {

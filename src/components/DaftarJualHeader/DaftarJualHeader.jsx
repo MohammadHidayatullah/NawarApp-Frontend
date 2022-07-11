@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import { Link } from "react-router-dom";
 import tes from "../../img/profile.jpg";
 
 function DaftarJualHeader() {
@@ -37,7 +38,9 @@ function DaftarJualHeader() {
                 </div>
               </div>
               <div className='d-flex align-items-center'>
-                <button className='edit'>Edit</button>
+                <Link to='info-profil'>
+                  <button className='edit'>Edit</button>
+                </Link>
               </div>
             </div>
           </div>

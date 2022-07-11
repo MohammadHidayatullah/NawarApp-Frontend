@@ -71,28 +71,34 @@ function CategoryFilter({ handleData }) {
         </Slider>
       ) : (
         <div className='category-filter d-flex'>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData("all")}>
-            <BsSearch className='basearch-icon me-2'/> Semua
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData("all")}>
+            <BsSearch className='basearch-icon me-2' /> Semua
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(1)}>
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(1)}>
             <BsSearch className='basearch-icon me-2' /> Sneaker
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(2)}>
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(2)}>
             <BsSearch className='basearch-icon me-2' /> Flat-Shoes
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(3)}>
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(3)}>
             <BsSearch className='basearch-icon me-2' /> Flip-Flops
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(4)}>
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(4)}>
             <BsSearch className='basearch-icon me-2' /> Boots
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(5)}>
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(5)}>
             <BsSearch className='basearch-icon me-2' /> High-Heel
           </button>
         </div>
