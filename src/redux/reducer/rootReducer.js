@@ -6,6 +6,7 @@ import productReducer from "./productReducer";
 import authReducer from "./authReducer";
 import provinceReducer from "./provinceReducer";
 import cityReducer from "./cityReducer";
+import categoryReducer from "./categoryReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   product: productReducer,
   province: provinceReducer,
   city: cityReducer,
+  category: categoryReducer,
 });
