@@ -1,33 +1,27 @@
 import React, { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import "./InfoProduk.css";
+import "./InfoProdukEdit.css";
 import { FiArrowLeft, FiPlus, FiX } from "react-icons/fi";
 import Navbar from "../../components/Navbar/Navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ImageUploadPreviewComponent from "../../components/ImageUpload/ImageUploadPreviewComponent";
 import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
-  // getProduct,
-  createProduct,
+  getProduct,
   draftProduct,
-  // editProduct,
-  // deleteProduct,
+  editProduct,
+  getProductDetail,
 } from "../../redux/action/productAction";
 import { getCategories } from "../../redux/action/categoryAction";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
-function InfoProduk() {
-  const animatedComponents = makeAnimated();
-
+function InfoProdukEdit() {
+  const { id } = useParams();
   // Fungsi get categories
-
-  const {
-    // isLoading: loadingProvince,
-    data: categoryData,
-  } = useSelector((state) => state.category);
+  const { data: categoryData } = useSelector((state) => state.category);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -58,6 +52,8 @@ function InfoProduk() {
   };
 
   // console.log(images);
+
+  // Fungsi untuk get Data Produk
 
   // Fungsi untuk handle react redux
   const [name, setName] = useState();
@@ -127,6 +123,19 @@ function InfoProduk() {
     setCategory(Array.from(value.selectedOptions, (option) => option.value));
   };
 
+  //   Fungsi untuk ambil data old value
+  useEffect(() => {
+    if (productData.length === 0) {
+      dispatch(getProductDetail());
+      return;
+    }
+    setName(productData.name);
+    setPrice(productData.price);
+    setDescription(productData.description);
+    // setCategory(productData.category);
+    setImages(productData.images);
+  }, [productData]);
+
   // Fungsi untuk handle responsive mobile
 
   const [width, setWidth] = useState(window.innerWidth);
@@ -166,7 +175,7 @@ function InfoProduk() {
                 <FiArrowLeft size={22} />
               </button>
               <p className="mb-4" style={{ marginLeft: "-28.84px" }}>
-                <b>Lengkapi Detail Produk</b>
+                <b>Edit Detail Produk</b>
               </p>
               <p></p>
             </div>
@@ -206,36 +215,10 @@ function InfoProduk() {
                     // components={animatedComponents}
                     // defaultValue={[colourOptions[4], colourOptions[5]]}
                     isMulti
-                    value={category}
+                    value={options.find((obj) => obj.value === category)}
                     options={options}
                     onChange={handleChange}
                   />
-                  {/* <select
-                    className="form-select"
-                    aria-label=".form-select-sm multiple select example"
-                    style={{ height: "28,5pt" }}
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                  >
-                    <option selected>Pilih Kategori</option>
-                    {categoryData.length === 0 ? (
-                      <option value="0">Data Kosong</option>
-                    ) : (
-                      categoryData?.map((kategori) => {
-                        return (
-                          <option
-                            key={kategori.id}
-                            value={parseInt(kategori.id)}
-                          >
-                            {kategori.name}
-                          </option>
-                        );
-                      })
-                    )} */}
-                  {/* <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option> */}
-                  {/* </select> */}
                 </div>
                 <div className="mb-3">
                   <label className="form-label">Ukuran Sepatu</label>
@@ -347,4 +330,4 @@ function InfoProduk() {
   );
 }
 
-export default InfoProduk;
+export default InfoProdukEdit;

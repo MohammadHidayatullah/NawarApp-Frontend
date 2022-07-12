@@ -88,7 +88,7 @@ function Navbar() {
                           </a>
                         </li> */}
                         <li>
-                          <a className='dropdown-item' href='/kelola'>
+                          <a className='dropdown-item' href='/dashboard'>
                             Dashboard
                           </a>
                         </li>

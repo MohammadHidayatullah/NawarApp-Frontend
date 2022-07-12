@@ -1,31 +1,36 @@
-import { REGISTER } from "../types";
 import axios from "axios";
-// import { Navigate } from "react-router-dom";
+import { REGISTER_SUCCESS, REGISTER_FAIL } from "../types";
 
-export const handleRegister = (data) => {
-  // const navigate = useNavigate()
-    return (dispatch) => {
-      dispatch({ type: `${REGISTER}_LOADING` });
-  
-      axios({
-        method: 'POST',
-        url: 'https://nawar-api.herokuapp.com/api/v1/users/register',
-        data,
-      })
-        .then(() => {
-          dispatch({
-            type: `${REGISTER}_FULFILLED`,
-            // payload: response.data,
-            
-          });
-          // Navigate("/login")
-        })
-        .catch((error) => {
-          dispatch({
-            type: `${REGISTER}_ERROR`,
-            error: error.message,
-          });
-        });
-    };
+export const register = (nama, email, password, navigate) => async (dispatch) => {
+  try {
+    let res = await axios({
+      method: "POST",
+      url: "https://nawar-api.herokuapp.com/api/v1/users/register",
+      data: { name: nama, email: email, password: password },
+    });
+
+    if (res.status === 200) {
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: {
+          data: res.data.data,
+          errorMessage: false,
+        },
+      });
+      localStorage.setItem("token", res.data.data.token);
+      navigate("/");
+    }
+  } catch (err) {
+    dispatch({
+      type: REGISTER_FAIL,
+      payload: {
+        data: false,
+        errorMessage: err,
+      },
+    });
+  }
 };
 
+// export const logout = () => (dispatch) => {
+//   Cookies.remove("token");
+// };
