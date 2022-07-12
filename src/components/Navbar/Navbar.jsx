@@ -82,19 +82,21 @@ function Navbar() {
                         </li>
                       </button>
                       <ul class='dropdown-menu'>
-                        <li>
+                        {/* <li>
                           <a className='dropdown-item' href='/info-profil'>
                             Info Profile
                           </a>
-                        </li>
+                        </li> */}
                         <li>
-                          <a className='dropdown-item' href='/daftar-jual'>
-                            Daftar Jual
+                          <a className='dropdown-item' href='/kelola'>
+                            Dashboard
                           </a>
                         </li>
+                        <br />
                         <li>
                           <span
                             className='dropdown-item'
+                            style={{ color: "red" }}
                             onClick={handleLogout}>
                             Logout
                           </span>

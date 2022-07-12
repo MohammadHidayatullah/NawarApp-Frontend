@@ -21,9 +21,9 @@ function App() {
     <Provider store={store}>
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/info-profil' element={<InfoProfil />}></Route>
+        <Route path='/kelola/profil' element={<InfoProfil />}></Route>
         <Route path='/info-produk' element={<InfoProduk />}></Route>
-        <Route path='/daftar-jual' element={<DaftarJual />}></Route>
+        <Route path='/kelola' element={<DaftarJual />}></Route>
         <Route path='/info-produk-page' element={<InfoProdukPage />}></Route>
         <Route
           path='/info-produk-seller'

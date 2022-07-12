@@ -13,7 +13,13 @@ function CardProduk({ data, loading }) {
         ? "Loading"
         : data?.map((item) => (
             <div className='card-produk col-lg-2 col-md-3 col-sm-4 mt-3'>
-              <div className='card' style={{ padding: "8px", width: "100%" }}>
+              <div
+                className='card'
+                style={{
+                  padding: "8px",
+                  width: "100%",
+                  boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.35)",
+                }}>
                 {item.productImages.length > 0 ? (
                   <div
                     className='img-product'
