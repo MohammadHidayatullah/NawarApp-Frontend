@@ -11,7 +11,7 @@ export const getAllProvince = () => {
       url: "https://nawar-api.herokuapp.com/api/v1/users/provinces",
     })
       .then((response) => {
-        console.log(response.data.data, "CEK RESPONSE PROVINSI ACTION COKKK");
+        // console.log(response.data.data, "CEK RESPONSE PROVINSI ACTION COKKK");
         dispatch({
           type: `${GET_ALL_PROVINCE}_FULFILLED`,
           payload: response.data.data,

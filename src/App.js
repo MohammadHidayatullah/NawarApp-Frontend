@@ -14,7 +14,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import InfoPenawaran from "./pages/InfoPenawaran/InfoPenawaran";
 import { Provider } from "react-redux";
-import store from './redux/store';
+import store from "./redux/store";
+import InfoProdukEdit from "./pages/InfoProdukEdit/InfoProdukEdit";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
           path='/info-produk-seller'
           element={<InfoProdukSeller />}></Route>
         <Route path='/info-penawaran' element={<InfoPenawaran />}></Route>
+        <Route
+          path='/info-produk/edit/:id'
+          element={<InfoProdukEdit />}></Route>
       </Routes>
     </Provider>
   );
