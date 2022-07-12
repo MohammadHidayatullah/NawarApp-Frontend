@@ -28,7 +28,7 @@ nav {
   color: #8a8a8a !important;
 }
 
-.search-input::placeholder{
+.search-input::placeholder {
   font-size: 14px;
 }
 
@@ -53,6 +53,10 @@ li {
 }
 .info-penawar {
   margin: 0;
+}
+
+.menu-navbar .dropdown-toggle::after {
+  content: none;
 }
 
 @media (max-width: 480px) {
