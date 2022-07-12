@@ -1,3 +1,8 @@
+// =================== REGISTER ====================
+
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+
 // =================== PROFILE ====================
 
 export const GET_PROFILE = "GET_PROFILE_ID";

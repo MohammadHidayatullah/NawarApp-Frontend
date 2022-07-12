@@ -5,12 +5,19 @@ import logo from "../../assets/img/logo-NawarApp.png";
 import login from "../../assets/icon/fi_log-in.svg";
 import list from "../../assets/icon/fi_list.svg";
 import user from "../../assets/icon/fi_user.svg";
+import { FiBell, FiUser } from "react-icons/fi";
 import bell from "../../assets/icon/fi_bell.svg";
 import search from "../../assets/icon/fi_search.svg";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
-  const token = false;
+  const access_token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-light py-3'>
@@ -25,7 +32,7 @@ function Navbar() {
             aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'></span>
           </button>
-          <a className='navbar-brand' href='#'>
+          <a className='navbar-brand' href='/'>
             <img src={logo} alt='logo-nawarApp' className='logo-nawar me-2' />
             <span>NawarApp</span>
           </a>
@@ -44,23 +51,64 @@ function Navbar() {
                 />
               </div>
             </ul>
-            <form className='d-flex'>
-              {token === true ? (
-                <ul>
-                  <li>
-                    <img src={list} alt='' />
-                  </li>
-                  <li className='ms-4'>
+            <form className='menu-navbar'>
+              {access_token !== null ? (
+                <ul className='d-flex align-items-center'>
+                  <li className='mt-1'>
+                    {/* <FiBell
+                      style={{
+                        size: "24px",
+                      }}
+                    /> */}
                     <img src={bell} alt='' />
                   </li>
-                  <li className='ms-4'>
-                    <img src={user} alt='' />
+                  <li>
+                    <div class='btn-group'>
+                      <button
+                        class='btn btn-lg dropdown-toggle'
+                        type='button'
+                        data-bs-toggle='dropdown'
+                        aria-expanded='false'
+                        style={{
+                          decoration: "none",
+                        }}>
+                        <li>
+                          {/* <FiUser
+                          style={{
+                            size: "24px",
+                          }}
+                        /> */}
+                          <img src={user} alt='' />
+                        </li>
+                      </button>
+                      <ul class='dropdown-menu'>
+                        <li>
+                          <a className='dropdown-item' href='/info-profil'>
+                            Info Profile
+                          </a>
+                        </li>
+                        <li>
+                          <a className='dropdown-item' href='/daftar-jual'>
+                            Daftar Jual
+                          </a>
+                        </li>
+                        <li>
+                          <span
+                            className='dropdown-item'
+                            onClick={handleLogout}>
+                            Logout
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
                   </li>
                 </ul>
               ) : (
-                <button className='btn btn-masuk' type='button'>
-                  <img src={login} alt='' /> Masuk
-                </button>
+                <Link to='/login'>
+                  <button className='btn btn-masuk' type='button'>
+                    <img src={login} alt='' /> Masuk
+                  </button>
+                </Link>
               )}
             </form>
           </div>
