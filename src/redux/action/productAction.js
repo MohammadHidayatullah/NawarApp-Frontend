@@ -1,7 +1,15 @@
 /** @format */
 
 import axios from "axios";
-import { GET_PRODUCT, GET_PRODUCT_BY_CATEGORY } from "../types";
+import {
+  GET_PRODUCT,
+  GET_PRODUCT_BY_CATEGORY,
+  CREATE_PRODUCT,
+  EDIT_PRODUCT,
+  DELETE_PRODUCT,
+} from "../types";
+
+let token = localStorage.getItem("token");
 
 // get all product from database
 export const getProduct = () => {
@@ -15,8 +23,9 @@ export const getProduct = () => {
       .then((response) => {
         dispatch({
           type: `${GET_PRODUCT}_FULFILLED`,
-          payload: response.data.data.data,
+          payload: response.data.list.data,
         });
+        console.log(response.data.list.data);
       })
       .catch((error) => {
         dispatch({
@@ -40,7 +49,7 @@ export const getProductByCategory = (data) => {
       .then((response) => {
         dispatch({
           type: `${GET_PRODUCT_BY_CATEGORY}_FULFILLED`,
-          payload: response.data.data.data,
+          payload: response.data.list.data,
         });
       })
       .catch((error) => {
@@ -51,3 +60,81 @@ export const getProductByCategory = (data) => {
       });
   };
 };
+
+// create product to database
+export const createProduct = (data) => {
+  return (dispatch) => {
+    dispatch({ type: `${CREATE_PRODUCT}_LOADING` });
+
+    axios({
+      method: "POST",
+      url: "https://nawar-api.herokuapp.com/api/v1/products/create",
+      data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(() => {
+        dispatch({
+          type: `${CREATE_PRODUCT}_FULFILLED`,
+          // payload: response.data,
+        });
+        dispatch(getProduct());
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${CREATE_PRODUCT}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+};
+
+// export const editProduct = (id, data) => {
+//   return (dispatch) => {
+//     dispatch({ type: `${EDIT_PRODUCT}_LOADING` });
+
+//     axios({
+//       method: "PUT",
+//       url: `http://localhost:3000/article/${id}`,
+//       data,
+//     })
+//       .then(() => {
+//         dispatch({
+//           type: `${EDIT_PRODUCT}_FULFILLED`,
+//           // payload: response.data,
+//         });
+//         dispatch(getProduct());
+//       })
+//       .catch((error) => {
+//         dispatch({
+//           type: `${EDIT_PRODUCT}_ERROR`,
+//           error: error.message,
+//         });
+//       });
+//   };
+// };
+
+// export const deleteProduct = (id) => {
+//   return (dispatch) => {
+//     dispatch({ type: `${DELETE_PRODUCT}_LOADING` });
+
+//     axios({
+//       method: "DELETE",
+//       url: `http://localhost:3000/article/${id}`,
+//     })
+//       .then(() => {
+//         dispatch({
+//           type: `${DELETE_PRODUCT}_FULFILLED`,
+//           // payload: response.data,
+//         });
+//         dispatch(getProduct());
+//       })
+//       .catch((error) => {
+//         dispatch({
+//           type: `${DELETE_PRODUCT}_ERROR`,
+//           error: error.message,
+//         });
+//       });
+//   };
+// };

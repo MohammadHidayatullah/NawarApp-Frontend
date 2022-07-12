@@ -6,13 +6,28 @@ import Arrow from "../../assets/icon/panah.png";
 import Panah from "../../assets/icon/panah-before.png";
 import NumberFormat from "react-number-format";
 import User from "../../assets/icon/infouser.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductDetail } from '../../redux/action/productDetailSellerAction';
 
 function InfoProdukPage() {
+    const { productId } = useParams();
+
+    const dispatch = useDispatch();
+
+
+    const { isLoading: loadingData, data: productData} = useSelector(
+    (state) => state.productDetailSeller
+  );
+
+  useEffect(() => {
+    dispatch(getProductDetail(productId));
+  }, []);
   return (
     <>
     <Navbar/>
+    {loadingData ? 'Loading' : (
     <div className="container mt-5 d-flex justify-content-center" style={{ maxWidth: "968px" }}>
         <div className="content">
             <div className="row mb-1 ">
@@ -95,6 +110,7 @@ function InfoProdukPage() {
             </div>
         </div>
     </div>
+    )}
     </>
   )
 }

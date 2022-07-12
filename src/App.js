@@ -24,10 +24,13 @@ function App() {
         <Route path='/info-profil' element={<InfoProfil />}></Route>
         <Route path='/info-produk' element={<InfoProduk />}></Route>
         <Route path='/daftar-jual' element={<DaftarJual />}></Route>
-        <Route path='/info-produk-page' element={<InfoProdukPage />}></Route>
+        {/* <Route path='/info-produk-page' element={<InfoProdukPage />}></Route> */}
         <Route
           path='/info-produk-seller/:productId'
           element={<InfoProdukSeller />}></Route>
+          <Route
+          path='/info-produk-page/:productId'
+          element={<InfoProdukPage />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/info-penawaran' element={<InfoPenawaran />}></Route>
