@@ -106,11 +106,15 @@ function InfoProduk() {
     formData.append("name", name);
     formData.append("price", price);
     formData.append("description", description);
-    formData.append("category", category);
+    for (let i = 0; i < category.length; i++) {
+      formData.append("category", category[i]);
+      // console.log(category[i]);
+    }
     formData.append("size", size);
 
-    console.log(data);
-    // dispatch(createProduct(formData));
+    // console.log(data);
+    dispatch(createProduct(formData));
+
     // resetForm();
   };
 
@@ -127,7 +131,10 @@ function InfoProduk() {
     formData.append("name", name);
     formData.append("price", price);
     formData.append("description", description);
-    formData.append("category", category);
+    for (let i = 0; i < category.length; i++) {
+      formData.append("category", category[i]);
+    }
+    // formData.append("category", category);
     formData.append("size", size);
 
     dispatch(draftProduct(formData));
