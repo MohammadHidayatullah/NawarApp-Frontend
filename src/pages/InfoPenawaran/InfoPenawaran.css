@@ -145,11 +145,11 @@
 
   /* Neutral/01 */
 
-  background: #FFFFFF;
+  background: #f2f4f5;
   /* Primary/Purple/04 */
 
-  border: 1px solid #181818;
-  color: #181818;
+  border: 1px solid #f2f4f5;
+  color: #000000;
   border-radius: 16px;
 
   /* Inside auto layout */

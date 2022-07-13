@@ -3,18 +3,18 @@ import produk from "../../assets/img/produk.jpg";
 import NumberFormat from "react-number-format";
 import { FiX } from "react-icons/fi";
 
-function ModalBuyer() {
+function AlertInfoPenawaran() {
   return (
     <>
       <button
         type="button"
         class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#modalBuyer"
+        data-bs-toggle="alert "
+        data-bs-target="#alertpenawaran"
       >
         Open modal
       </button>
-      <div className="modal" id="modalBuyer">
+      <div className="modal" id="alertpenawaran">
         <div
           className="modal-dialog modal-dialog-centered"
           style={{ width: "360px", margin: "0 auto" }}
@@ -99,4 +99,4 @@ function ModalBuyer() {
   );
 }
 
-export default ModalBuyer;
+export default AlertInfoPenawaran;

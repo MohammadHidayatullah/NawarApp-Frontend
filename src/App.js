@@ -10,11 +10,15 @@ import InfoProduk from "./pages/InfoProduk/InfoProduk";
 import DaftarJual from "./pages/DaftarJual/DaftarJual";
 import InfoProdukPage from "./pages/InfoProdukPage/InfoProdukPage";
 import InfoProdukSeller from "./pages/InfoProdukSeller/InfoProdukSeller";
+import InfoPenawaran from "./pages/InfoPenawaran/InfoPenawaran";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import InfoPenawaran from "./pages/InfoPenawaran/InfoPenawaran";
+import ModalBuyer from "./components/ModalBuyer/ModalBuyer";
 import { Provider } from "react-redux";
 import store from './redux/store';
+import AlertInfoPenawaran from "./components/AlertInfoPenawaran/AlertInfoPenawaran";
+import ModalSeller from "./components/ModalSeller/ModalSeller";
+import ModalSellerStatus from "./components/ModalSellerStatus/ModalSellerStatus";
 
 function App() {
   return (
@@ -31,6 +35,10 @@ function App() {
           path='/info-produk-seller'
           element={<InfoProdukSeller />}></Route>
         <Route path='/info-penawaran' element={<InfoPenawaran />}></Route>
+        <Route path='/modal-buyer' element={<ModalBuyer />}></Route>
+        <Route path='/modal-seller' element={<ModalSeller />}></Route>
+        <Route path='/modal-seller-status' element={<ModalSellerStatus />}></Route>
+        <Route path='/alert' element={<AlertInfoPenawaran />}></Route>
       </Routes>
     </Provider>
   );

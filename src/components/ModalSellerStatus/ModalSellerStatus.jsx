@@ -7,6 +7,14 @@ import { FiX } from "react-icons/fi";
 function ModalSellerStatus() {
   return (
     <>
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#modalSellerStatus"
+      >
+        Open modal
+      </button>
       <div className='modal' id='modalSellerStatus'>
         <div
           className='modal-dialog modal-dialog-centered'

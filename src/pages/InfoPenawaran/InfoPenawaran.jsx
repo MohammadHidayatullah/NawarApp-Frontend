@@ -4,11 +4,14 @@ import "./InfoPenawaran.css";
 // import { AiOutlineCamera } from "react-icons/ai";
 import { FaArrowLeft, FaPlus, FaTimes } from "react-icons/fa";
 import Navbar2 from "../../components/NavbarInfo/NavbarInfo";
+import ModalSeller from "../../components/ModalSeller/ModalSeller";
+import ModalSellerStatus from "../../components/ModalSellerStatus/ModalSellerStatus";
 import { useNavigate } from "react-router-dom";
 // import ImageUploadPreviewComponent from "../../components/ImageUpload/ImageUploadPreviewComponent";
 // import { useState } from "react";
 import Foto from "../../assets/img/img_photo(2).jpg";
 import WA from "../../assets/icon/fi_whatsapp.svg";
+import { useState } from "react";
 
 function InfoPenawaran() {
   // const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
@@ -18,6 +21,10 @@ function InfoPenawaran() {
   //     {file.path} - {file.size} bytes
   //   </li>
   // ));
+  const [step, setStep] = useState({
+    status: "keranjang"
+  })
+
   const token = false;
 
   const navigate = useNavigate();
@@ -116,7 +123,7 @@ function InfoPenawaran() {
                                     <h6> Ditawar Rp.1.200.000</h6>                    
                                 </h6>
                               </div>
-                              
+                             
                             </div>
                         </div>
                     </div>
@@ -152,12 +159,52 @@ function InfoPenawaran() {
 
                 {/* awal button */}
 
+                 {step.status === "keranjang" && <>
+                    <div className="row">
+                      <div className="col-lg-9 d-flex justify-content-end">
+                        <button 
+                          type="submit"
+                          className="btn btn-outline mx-4" id="tolak"
+                          onClick={()=> setStep({
+                            status: ""
+                          })}
+                          
+                        >
+                          Tolak
+                        </button>
+                      </div>
+                      <div className="col-lg-3 d-flex justify-content-end">
+                        <button
+                          type="submit"
+                          className="btn mb-4" id="hubungi"
+                          onClick={()=> setStep({
+                            status: "proses"
+                          })}
+                        >
+                          Terima
+                          
+                        </button>
+                      </div>
+                      
+                    </div>
+                  </>
+
+                 }
+
+                {/* akhir button */}
+
+
+                {/* awal button */}
+
+                {step.status === "proses" && <>
                 <div className="row">
                   <div className="col-lg-9 d-flex justify-content-end">
                     <button
                       type="submit"
                       className="btn btn-outline mx-4" id="tolak"
-                      
+                      onClick={()=> setStep({
+                        status: "keranjang"
+                      })}
                     >
                       Status
                     </button>
@@ -166,7 +213,9 @@ function InfoPenawaran() {
                     <button
                       type="submit"
                       className="btn mb-4" id="hubungi"
-                      
+                      onClick={()=> setStep({
+                        status: "appove"
+                      })}
                     >
                       Hubungi di
                       <i className=""><img src={WA} alt="" className="wa" /></i>
@@ -174,7 +223,21 @@ function InfoPenawaran() {
                   </div>
                   
                 </div>
+                </>
+
+                }
+
                 {/* akhir button */}
+
+                {/* awal Alert */}
+                {step.status === "approve" && 
+                (<p>
+                tidak ada barang
+                </p>)
+
+                }
+
+                {/* akhir alert */}
 
               </form>
               {/* <form className="d-flex">
