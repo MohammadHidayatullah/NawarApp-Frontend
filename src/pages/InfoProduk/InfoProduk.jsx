@@ -17,17 +17,10 @@ import {
 } from "../../redux/action/productAction";
 import { getCategories } from "../../redux/action/categoryAction";
 import Select from "react-select";
-import makeAnimated from "react-select/animated";
 
 function InfoProduk() {
-  const animatedComponents = makeAnimated();
-
   // Fungsi get categories
-
-  const {
-    // isLoading: loadingProvince,
-    data: categoryData,
-  } = useSelector((state) => state.category);
+  const { data: categoryData } = useSelector((state) => state.category);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -38,7 +31,6 @@ function InfoProduk() {
   });
 
   // Fungsi untuk handle fungsi input image
-
   // Image yang di submit
   const [images, setImages] = useState([]);
 
@@ -56,8 +48,6 @@ function InfoProduk() {
     setSelectedImages((previousImages) => previousImages.concat(imagesArray));
     setImages((previousImages) => [...previousImages, event.target.files[0]]);
   };
-
-  // console.log(images);
 
   // Fungsi untuk handle react redux
   const [name, setName] = useState();
@@ -108,14 +98,12 @@ function InfoProduk() {
     formData.append("description", description);
     for (let i = 0; i < category.length; i++) {
       formData.append("category", category[i]);
-      // console.log(category[i]);
     }
     formData.append("size", size);
 
     // console.log(data);
     dispatch(createProduct(formData));
-
-    // resetForm();
+    resetForm();
   };
 
   const handleDraft = (e) => {
@@ -142,7 +130,6 @@ function InfoProduk() {
   };
 
   // Fungsi untuk handle responsive mobile
-
   const [width, setWidth] = useState(window.innerWidth);
 
   const detectSize = () => {
@@ -158,7 +145,6 @@ function InfoProduk() {
   }, [width]);
 
   // Fungsi untuk handle navigasi
-
   const navigate = useNavigate();
 
   const navHome = () => {
@@ -284,13 +270,13 @@ function InfoProduk() {
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Foto Produk</label>
-                    {selectedImages.length <= 10 ? (
+                    {selectedImages.length <= 4 ? (
                       ""
                     ) : (
                       <p className="pt-3">
-                        Anda hanya boleh upload 10 gambar! Hapus{" "}
+                        Anda hanya boleh upload 4 gambar! Hapus{" "}
                         <b className="error">
-                          {selectedImages.length - 10} gambar
+                          {selectedImages.length - 4} gambar
                         </b>
                       </p>
                     )}
@@ -345,7 +331,7 @@ function InfoProduk() {
                         style={{ borderColor: "#181818", color: "#181818" }}
                         onClick={handleDraft}
                       >
-                        Preview
+                        Tambahkan ke Draft
                       </button>
                     </div>
                     <div className="col-lg-6">

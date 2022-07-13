@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 import {
   GET_PROFILE,
   CREATE_PROFILE,

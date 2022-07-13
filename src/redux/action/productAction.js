@@ -9,6 +9,7 @@ import {
   DRAFT_PRODUCT,
   EDIT_PRODUCT,
   DELETE_PRODUCT,
+  GET_PRODUCT_ID,
 } from "../types";
 
 let token = localStorage.getItem("token");
@@ -130,6 +131,9 @@ export const editProduct = (id, data) => {
       method: "PUT",
       url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
       data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then(() => {
         dispatch({
@@ -149,7 +153,7 @@ export const editProduct = (id, data) => {
 
 export const getProductDetail = (id) => {
   return (dispatch) => {
-    dispatch({ type: `${GET_PRODUCT}_LOADING` });
+    dispatch({ type: `${GET_PRODUCT_ID}_LOADING` });
 
     axios({
       method: "GET",
@@ -157,14 +161,14 @@ export const getProductDetail = (id) => {
     })
       .then((response) => {
         dispatch({
-          type: `${GET_PRODUCT}_FULFILLED`,
+          type: `${GET_PRODUCT_ID}_FULFILLED`,
           payload: response.data.data.data,
         });
-        console.log(response.data.data.data);
+        // console.log(response.data.data.data);
       })
       .catch((error) => {
         dispatch({
-          type: `${GET_PRODUCT}_ERROR`,
+          type: `${GET_PRODUCT_ID}_ERROR`,
           error: error.message,
         });
       });

@@ -140,6 +140,12 @@ function InfoProfil(props) {
     navigate("/");
   };
 
+  const success = (response) => {
+    if (response.status === 201) {
+      navigate("/daftar-jual");
+    }
+  };
+
   // console.log(province, "<= Ini Data City");
   // console.log(city, "<= Ini Data City");
   // console.log(provinceData, "DATA PROVINCE PROFILL COOKKK");
