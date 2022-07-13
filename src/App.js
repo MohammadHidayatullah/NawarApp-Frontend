@@ -29,7 +29,7 @@ function App() {
           path='/info-produk-seller/:productId'
           element={<InfoProdukSeller />}></Route>
           <Route
-          path='/info-produk-page/:productId'
+          path='/info-produk-page/:id'
           element={<InfoProdukPage />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>

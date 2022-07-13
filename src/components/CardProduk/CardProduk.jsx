@@ -4,8 +4,12 @@ import React from "react";
 import NumberFormat from "react-number-format";
 import notFound from "../../assets/img/not-found.svg";
 import "./CardProduk.css";
+import { useDispatch} from 'react-redux';
+import { getProductDetail } from "../../redux/action/productDetailSellerAction";
+import { Link } from "react-router-dom";
 
 function CardProduk({ data, loading }) {
+  const dispatch = useDispatch();
   console.log("data", data);
   return (
     <>
@@ -13,7 +17,9 @@ function CardProduk({ data, loading }) {
         ? "Loading"
         : data?.map((item) => (
             <div className='card-produk col-lg-2 col-md-3 col-sm-4 mt-3'>
-              <div className='card' style={{ padding: "8px", width: "100%" }}>
+              <Link to={`/info-produk-page/${item.id}`}>
+              <div className='card' style={{ padding: "8px", width: "100%" }}
+                onClick={() => dispatch(getProductDetail(item.id))}>
                 {item.productImages.length > 0 ? (
                   <div
                     className='img-product'
@@ -76,6 +82,7 @@ function CardProduk({ data, loading }) {
                   </p>
                 </div>
               </div>
+              </Link>
             </div>
           ))}
     </>

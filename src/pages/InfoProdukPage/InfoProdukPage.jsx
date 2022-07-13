@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../redux/action/productDetailSellerAction';
 
 function InfoProdukPage() {
-    const { productId } = useParams();
+    const { id } = useParams();
 
     const dispatch = useDispatch();
 
@@ -22,12 +22,16 @@ function InfoProdukPage() {
   );
 
   useEffect(() => {
-    dispatch(getProductDetail(productId));
-  }, []);
+    dispatch(getProductDetail(id));
+  }, [dispatch]);
+
+//   console.log("data",productData)
   return (
     <>
     <Navbar/>
-    {loadingData ? 'Loading' : (
+    {loadingData
+        ? "Loading"
+        : productData?.map((item) => (
     <div className="container mt-5 d-flex justify-content-center" style={{ maxWidth: "968px" }}>
         <div className="content">
             <div className="row mb-1 ">
@@ -58,11 +62,17 @@ function InfoProdukPage() {
         <div className="col-lg-4">
             <div className="card" id='produk-card' style={{ padding:"16px 24px", boxShadow:"0px 0px 10px rgba(0, 0, 0, 0.15)", borderRadius: "16px"}}>
                 <div className="card-body-2">
-                    <p className='card-title'>Sepatu Nike</p>
-                    <p className='card-text'>Aksesoris</p>
+                    <p className='card-title'>{item.name}</p>
+                    <p className='card-text'>{item.productCategories.map(
+                      (a, index) =>
+                        `${a.category.name}` +
+                        (index !== item.productCategories.length - 1
+                          ? ", "
+                          : "")
+                    )}</p>
                     <p className='card-price'>
                     <NumberFormat
-                        value={750000}
+                        value={item.price}
                         displayType={'text'}
                         thousandSeparator={"."}
                         decimalSeparator={","}
@@ -102,15 +112,14 @@ function InfoProdukPage() {
         <div className="card" style={{boxShadow:"0px 0px 4px rgba(0, 0, 0, 0.15)"}} id='desc'>
                 <div className="card-body">
                     <h5 className="judul"><b>Deskripsi</b></h5>
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+                    <h5>{item.description}</h5>
                 </div>
             </div>
         </div>
             </div>
         </div>
     </div>
-    )}
+    ))}
     </>
   )
 }

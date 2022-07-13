@@ -1,13 +1,13 @@
 import { GET_PRODUCTDDETAILBUYER } from "../types";
 import axios from "axios";
 
-export const getProductDetail = (productId) => {
+export const getProductDetail = (id) => {
     return (dispatch) => {
       dispatch({ type: `${GET_PRODUCTDDETAILBUYER}_LOADING` });
   
       axios({
         method: 'GET',
-        url: `https://nawar-api.herokuapp.com/api/v1/products/${productId}`,
+        url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
         // data,
       })
         .then((response) => {

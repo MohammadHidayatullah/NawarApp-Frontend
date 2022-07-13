@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../redux/action/productDetailSellerAction';
 
 function InfoProdukSeller() {
-  const { productId } = useParams();
+  const { id } = useParams();
 
   const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ function InfoProdukSeller() {
   );
 
   useEffect(() => {
-    dispatch(getProductDetail(productId));
+    dispatch(getProductDetail(id));
   }, []);
   return (
     <>
@@ -75,7 +75,7 @@ function InfoProdukSeller() {
                 </div>
                 <div className='p-0 m-0'>
                 <button class=" w-100 mb-3" style={{ backgroundColor: "#181818", color: "#FFFF" , borderRadius: "16px" , padding : "10px 20px" , fontSize:"14px" }} type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Terbitkan</button>
-                    <button class=" w-100" style={{ backgroundColor: "#FFFF", color: "#181818" , borderRadius: "16px" , padding : "10px 20px" , fontSize:"14px" }} type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>
+                    <button class=" w-100" style={{ backgroundColor: "#f2f4f5", color: "#181818" , borderRadius: "16px" , padding : "10px 20px" , fontSize:"14px" }} type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>
                 </div>
             </div>
             <div className="card mt-3" style={{ borderRadius: "16px" }}>
