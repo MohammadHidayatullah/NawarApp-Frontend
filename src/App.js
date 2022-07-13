@@ -15,10 +15,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ModalBuyer from "./components/ModalBuyer/ModalBuyer";
 import { Provider } from "react-redux";
-import store from './redux/store';
 import AlertInfoPenawaran from "./components/AlertInfoPenawaran/AlertInfoPenawaran";
 import ModalSeller from "./components/ModalSeller/ModalSeller";
 import ModalSellerStatus from "./components/ModalSellerStatus/ModalSellerStatus";
+import store from "./redux/store";
+import InfoProdukEdit from "./pages/InfoProdukEdit/InfoProdukEdit";
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
         <Route path='/modal-seller' element={<ModalSeller />}></Route>
         <Route path='/modal-seller-status' element={<ModalSellerStatus />}></Route>
         <Route path='/alert' element={<AlertInfoPenawaran />}></Route>
+        <Route
+          path='/info-produk/edit/:id'
+          element={<InfoProdukEdit />}></Route>
       </Routes>
     </Provider>
   );

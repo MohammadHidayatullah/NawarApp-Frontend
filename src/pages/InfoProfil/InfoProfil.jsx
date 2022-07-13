@@ -19,10 +19,9 @@ import { getAllCity } from "../../redux/action/cityAction";
 function InfoProfil(props) {
   const dispatch = useDispatch();
 
-  const {
-    isLoading: loadingProfile,
-    // data: profileData
-  } = useSelector((state) => state.profile);
+  const { isLoading: loadingProfile, data: profileData } = useSelector(
+    (state) => state.profile
+  );
 
   const {
     // isLoading: loadingProvince,
@@ -36,16 +35,26 @@ function InfoProfil(props) {
 
   const [avatar, setAvatar] = useState();
   const [name, setName] = useState();
-  // console.log(name, "<= Ini adalah name");
   const [province, setProvince] = useState();
   const [city, setCity] = useState();
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
+  // console.log(name, "<= Ini adalah name");
   // const [id, setId] = useState();
 
   useEffect(() => {
-    dispatch(getProfile());
-  }, []);
+    if (profileData.length === 0) {
+      dispatch(getProfile());
+      return;
+    }
+    setName(profileData.name);
+    setAddress(profileData.address);
+    setPhone(profileData.phone);
+  }, [profileData]);
+
+  // useEffect(() => {
+  //   dispatch(getProfile());
+  // }, []);
 
   useEffect(() => {
     dispatch(getAllProvince());
@@ -134,15 +143,16 @@ function InfoProfil(props) {
   // console.log(province, "<= Ini Data City");
   // console.log(city, "<= Ini Data City");
   // console.log(provinceData, "DATA PROVINCE PROFILL COOKKK");
-  // console.log(profileData, "<= Ini profile data");
+  console.log(profileData, "<= Ini profile data");
+  // console.log(cityData, "<= Ini data city");
   // console.log(name);
   // console.log(profileData.name);
   return (
     <>
       {width >= 576 && <Navbar />}
       {/* <Navbar /> */}
-      {loadingProfile ? (
-        "Loading"
+      {profileData.length === 0 ? (
+        <p className="mt-3 ms-3 fw-bold">Loading...</p>
       ) : (
         <div style={{ padding: "3%" }}>
           <div className="container" style={{ maxWidth: "568px" }}>
@@ -188,23 +198,29 @@ function InfoProfil(props) {
                       zIndex: 10,
                       cursor: "pointer",
                     }}
-                    src="http://www-cdr.stanford.edu/~petrie/blank.gif"
+                    src={
+                      profileData.avatar === null
+                        ? "http://www-cdr.stanford.edu/~petrie/blank.gif"
+                        : profileData.avatar
+                    }
                     // src={profileData.avatar}
 
                     alt=""
                   />
-                  <AiOutlineCamera
-                    className={file !== null && "isi"}
-                    style={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      fontSize: "22px",
-                      color: "#ced4da",
-                      zIndex: 9,
-                    }}
-                  />
+                  {profileData.avatar === null && (
+                    <AiOutlineCamera
+                      className={file !== null && "isi"}
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        fontSize: "22px",
+                        color: "#ced4da",
+                        zIndex: 9,
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -220,7 +236,7 @@ function InfoProfil(props) {
                       aria-describedby="emailHelp"
                       placeholder="Nama"
                       // defaultValue={profileData.name}
-                      value={name}
+                      value={name || ""}
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
@@ -235,13 +251,12 @@ function InfoProfil(props) {
                       onChange={(e) => setProvince(e.target.value)}
                     >
                       <option>Open this select menu</option>
-                      {provinceData === null ? (
+                      {provinceData.length === 0 ? (
                         <option value="1">Data Kosong</option>
                       ) : (
                         provinceData?.map((provinsi) => {
                           return (
                             <option
-                              selected
                               key={provinsi.id}
                               value={parseInt(provinsi.id)}
                             >
@@ -262,7 +277,7 @@ function InfoProfil(props) {
                       onChange={(e) => setCity(e.target.value)}
                     >
                       <option>Open this select menu</option>
-                      {cityData === null ? (
+                      {cityData.length === 0 ? (
                         <option value="1">Data Kosong</option>
                       ) : (
                         cityData.map((res) => {
@@ -280,7 +295,7 @@ function InfoProfil(props) {
                       id="exampleFormControlTextarea1"
                       rows="3"
                       placeholder="Contoh: Jalan Ikan Hiu 33"
-                      value={address}
+                      value={address || ""}
                       onChange={(e) => setAddress(e.target.value)}
                     ></textarea>
                   </div>
@@ -292,7 +307,7 @@ function InfoProfil(props) {
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="contoh: +628123456789"
-                      value={phone}
+                      value={phone || ""}
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>

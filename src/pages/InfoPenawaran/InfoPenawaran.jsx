@@ -175,8 +175,11 @@ function InfoPenawaran() {
                       </div>
                       <div className="col-lg-3 d-flex justify-content-end">
                         <button
-                          type="submit"
+                          type="button"
                           className="btn mb-4" id="hubungi"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalSeller"
+
                           onClick={()=> setStep({
                             status: "proses"
                           })}
@@ -200,11 +203,13 @@ function InfoPenawaran() {
                 <div className="row">
                   <div className="col-lg-9 d-flex justify-content-end">
                     <button
-                      type="submit"
+                      type="button"
                       className="btn btn-outline mx-4" id="tolak"
-                      onClick={()=> setStep({
-                        status: "keranjang"
-                      })}
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalSellerStatus"
+                      // onClick={()=> setStep({
+                      //   status: "approve"
+                      // })}
                     >
                       Status
                     </button>
@@ -239,7 +244,13 @@ function InfoPenawaran() {
 
                 {/* akhir alert */}
 
+                
+
               </form>
+
+              <ModalSeller/>
+              <ModalSellerStatus/>
+
               {/* <form className="d-flex">
               {token === true ? (
                 
