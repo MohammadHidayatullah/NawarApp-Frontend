@@ -52,9 +52,7 @@ function InfoProfil(props) {
     setPhone(profileData.phone);
   }, [profileData]);
 
-  // useEffect(() => {
-  //   dispatch(getProfile());
-  // }, []);
+  console.log(profileData.avatar, "INI AVATAR");
 
   useEffect(() => {
     dispatch(getAllProvince());
@@ -111,9 +109,9 @@ function InfoProfil(props) {
       // append each item to the formData (converted to JSON strings)
       formData.append(key, val);
     }
-    console.log(data);
-    dispatch(editProfile(formData));
-    resetForm();
+    console.log(data, "INI SUBMITTED");
+    // dispatch(editProfile(formData, navigate));
+    // resetForm();
   };
 
   // Fungsi untuk menangani ukuran responsive mobile
@@ -138,12 +136,6 @@ function InfoProfil(props) {
 
   const navHome = () => {
     navigate("/");
-  };
-
-  const success = (response) => {
-    if (response.status === 201) {
-      navigate("/daftar-jual");
-    }
   };
 
   // console.log(province, "<= Ini Data City");
@@ -183,7 +175,7 @@ function InfoProfil(props) {
                   accept="image/*"
                   onChange={handleImageUpload}
                   ref={imageUploader}
-                  value={avatar}
+                  value={avatar || ""}
                   style={{
                     display: "none",
                   }}

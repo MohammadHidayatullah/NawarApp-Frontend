@@ -102,7 +102,7 @@ function InfoProduk() {
     formData.append("size", size);
 
     // console.log(data);
-    dispatch(createProduct(formData));
+    dispatch(createProduct(formData, navigate));
     resetForm();
   };
 
@@ -125,7 +125,7 @@ function InfoProduk() {
     // formData.append("category", category);
     formData.append("size", size);
 
-    dispatch(draftProduct(formData));
+    dispatch(draftProduct(formData, navigate));
     resetForm();
   };
 

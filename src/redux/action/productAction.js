@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Redirect } from "react-router";
 import {
   GET_PRODUCT,
   GET_PRODUCT_BY_CATEGORY,
@@ -66,7 +67,7 @@ export const getProductByCategory = (data) => {
 };
 
 // create product to database
-export const createProduct = (data) => {
+export const createProduct = (data, navigate) => {
   return (dispatch) => {
     dispatch({ type: `${CREATE_PRODUCT}_LOADING` });
 
@@ -78,12 +79,15 @@ export const createProduct = (data) => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(() => {
+      .then((res) => {
         dispatch({
           type: `${CREATE_PRODUCT}_FULFILLED`,
           // // payload: response.data,
         });
         // dispatch(navigate("/daftar-jual"));
+        if (res.status === 200) {
+          navigate("/daftar-jual");
+        }
       })
       .catch((error) => {
         dispatch({
@@ -95,7 +99,7 @@ export const createProduct = (data) => {
 };
 
 // DRAFT product
-export const draftProduct = (data) => {
+export const draftProduct = (data, navigate) => {
   return (dispatch) => {
     dispatch({ type: `${DRAFT_PRODUCT}_LOADING` });
 
@@ -107,12 +111,15 @@ export const draftProduct = (data) => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(() => {
+      .then((res) => {
         dispatch({
           type: `${DRAFT_PRODUCT}_FULFILLED`,
           // // payload: response.data,
         });
         // dispatch(navigate("/daftar-jual"));
+        if (res.status === 200) {
+          navigate("/daftar-jual");
+        }
       })
       .catch((error) => {
         dispatch({
@@ -123,24 +130,28 @@ export const draftProduct = (data) => {
   };
 };
 
-export const editProduct = (id, data) => {
+export const editProduct = (id, datas, navigate) => {
   return (dispatch) => {
     dispatch({ type: `${EDIT_PRODUCT}_LOADING` });
 
     axios({
       method: "PUT",
       url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
-      data,
+      data: datas,
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     })
-      .then(() => {
+      .then((res) => {
         dispatch({
           type: `${EDIT_PRODUCT}_FULFILLED`,
           // payload: response.data,
         });
-        dispatch(getProduct());
+        // dispatch(getProduct());
+        if (res.status === 200) {
+          navigate("/daftar-jual");
+        }
       })
       .catch((error) => {
         dispatch({
