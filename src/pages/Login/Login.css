@@ -1,145 +1,89 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,900&display=swap'); */
-
+/**
+ * /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,900&display=swap');
+ *
+ * @format
+ */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.login-row .row>* {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+.login-row .row > * {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .form-head {
-    margin-top: 120px;
-    padding-left: 115px !important;
-    padding-right: 115px !important;
+  margin-top: 120px;
+  padding-left: 115px !important;
+  padding-right: 115px !important;
 }
 
 .form-head h1 {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 36px;
-    /* identical to box height, or 150% */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height, or 150% */
 
-    color: #000000;
-    margin-top: 24px;
+  color: #000000;
+  margin-top: 24px;
 }
 
 .form-content {
-    padding-left: 115px !important;
-    padding-right: 115px !important;
-    background-color: #FFFFFF;
-    
+  padding-left: 115px !important;
+  padding-right: 115px !important;
+  background-color: #ffffff;
 }
 
 .form-content button {
-    width: 100%;
-    background: #181818;
-    border-radius: 16px;
-    margin-top: 16px;
-    padding: 12px 24px;
+  width: 100%;
+  background: #181818;
+  border-radius: 16px;
+  margin-top: 16px;
+  padding: 12px 24px;
 }
 
 .form-content label {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height, or 143% */
-    color: #222222;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+  color: #222222;
 }
 
 .form-content input {
-    background: #ffffff;
-    border: 1px solid #D0D0D0 ;
-    box-sizing: border-box;
-    border-radius: 16px;
-    padding: 12px 24px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 12px 24px;
 }
 
-/* Kelompok 3 */
-
-body {
-    font-family: 'Poppins';
-    font-size: 14px;
-    font-weight: lighter;
-}
-
-thead {
-    background: #cfd4ed;
-}
-
-.drop .form-select {
-    width: 62px;
-    height: 36px;
-    font-size: 12px;
-}
-
-.jtp .form-select {
-    width: 76px;
-    height: 36px;
-    font-size: 12px;
-}
-
-.paging nav {
-    display: flex;
-    justify-content: flex-end;
-}
-
-a.page-link {
-    height: 38px;
-    width: 38px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #8a8a8a;
-}
-
-.page-item.active .page-link {
-    background: #cfd4ed;
-    color: #181818;
-   
-}
-
-.form-select {
-    display: inline;
-}
-
-/* .btn {
-    display: inline;
-    background: #181818;
-    color: #fff;
-    width: 43px;
-    height: 36px;
-} */
 
 .btn-back {
-    display: inline;
-    background-color: #fff !important;
-    color: #000 !important;
-    margin-top: -5px !important;
+  display: inline;
+  background-color: #fff !important;
+  color: #000 !important;
+  margin-top: -5px !important;
 }
 
 .btn-masuk {
   color: #ffffff;
-
 }
 
 .btn-masuk:hover {
-    background-color: #d1d0d0 !important;
-    color: #000;
-    border: 1px solid #000 ;
-    box-sizing: border-box;
-    border-radius: 16px;
+  background-color: #d1d0d0 !important;
+  color: #000;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  border-radius: 16px;
 }
-
-
 
 /* END Kelompok 3 */
 
@@ -147,21 +91,9 @@ a.page-link {
   width: 100%;
   margin-bottom: 10px;
 }
-/* enable absolute positioning */
 .input-group {
   position: relative;
 }
-
-/* style glyph */
-/* .input-group .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-} */
-
-/* align glyph */
-/* .left-addon .glyphicon  { left:  0px;} */
-/* .right-addon .glyphicon { right: 0px;} */
 
 .icon {
   padding: 10px;
@@ -171,34 +103,23 @@ a.page-link {
   right: 0px;
   padding: 10px;
   pointer-events: none;
-
 }
 
-/* .input-field {
-  width: 100%;
-  padding: 12px 24px;
-  /* text-align: center; */
-  /* border-radius: 16px;
-
-} */
-
-
-
 .akun {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    /* identical to box height, or 150% */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 150% */
 
-    color: #000000;
-    margin-top: 24px; 
+  color: #000000;
+  margin-top: 24px;
 }
 
 .akun a {
-    color: #737373 !important;
-    text-decoration: none;
+  color: #737373 !important;
+  text-decoration: none;
 }
 
 /* enable absolute positioning */
@@ -206,13 +127,3 @@ a.page-link {
   position: relative;
 }
 
-/* style glyph */
-/* .inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-} */
-
-/* align glyph */
-/* .left-addon .glyphicon  { left:  0px;} */
-/* .right-addon .glyphicon { right: 100px;} */
