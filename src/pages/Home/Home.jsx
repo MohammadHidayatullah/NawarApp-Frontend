@@ -43,7 +43,15 @@ function Home() {
       <CategoryFilter handleData={handleData} />
       <div className='container mt-4'>
         <div className='produk row'>
-          <CardProduk loading={loadingProduct} data={productData} />
+          {productData.length < 1? (
+            <div className='col-12'>
+              <div className='text-center'>
+                <h5>Belum ada produk yang dijual</h5>
+              </div>
+            </div>
+          ) : (
+            <CardProduk loading={loadingProduct} data={productData} />
+          )}
         </div>
         <div
           style={{

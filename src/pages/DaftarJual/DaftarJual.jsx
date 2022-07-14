@@ -20,7 +20,7 @@ import {
 } from "../../redux/action/productAction";
 
 function DaftarJual() {
-  const [button, setButton] = useState("");
+  const [button, setButton] = useState(1);
   const dispatch = useDispatch();
 
   const { isLoading: loadingProduct, data: productData } = useSelector(
@@ -37,10 +37,10 @@ function DaftarJual() {
 
   const handleData = (button) => {
     setButton(button);
-    if (button === "1") {
+    if (button === 1) {
       dispatch(getProductByUser());
     }
-    if (button === "2") {
+    if (button === 2) {
       dispatch(getProductByUserWishlist());
     } else {
       dispatch(getProductByUserSold());
@@ -56,9 +56,9 @@ function DaftarJual() {
         <div className='row'>
           <SidebarDaftarJual handleData={handleData} />
           <div className='col-lg-9'>
-            {button === "1" ? (
+            {button === 1 ? (
               <SemuaProduk loading={loadingProduct} data={productData} />
-            ) : button === "2" ? (
+            ) : button === 2 ? (
               <>
                 {productData.length === 0 ? (
                   <DiminatiNotFound />

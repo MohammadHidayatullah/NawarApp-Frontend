@@ -1,8 +1,12 @@
 /** @format */
 
-.sidebar-button li > :hover {
-  color: tomato;
+.sidebar-button li:hover {
+  color: purple;
 }
-.sidebar-button li > :focus {
-  color: tomato;
+
+.sidebar-button li .icon-category:hover {
+  color: purple;
+}
+.sidebar-button li:active {
+  color: purple;
 }

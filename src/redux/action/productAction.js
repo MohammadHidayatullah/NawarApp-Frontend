@@ -68,10 +68,10 @@ export const getProductByCategory = (data) => {
 };
 
 // get product by user wishlist
-export const getProductByUserWishlist = (data) => {
+export const getProductByUserWishlist = () => {
   return (dispatch) => {
     dispatch({ type: `${GET_PRODUCT_BY_USER_WISHLIST}_LOADING` });
-     axios({
+    axios({
       method: "GET",
       url: "https://nawar-api.herokuapp.com/api/v1/wishlist",
       headers: {
@@ -81,9 +81,9 @@ export const getProductByUserWishlist = (data) => {
       .then((response) => {
         dispatch({
           type: `${GET_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
-          payload: response.data.list.data,
+          payload: response.data.data,
         });
-        console.log(response.data.list.data);
+        console.log(response.data.data);
       })
       .catch((error) => {
         dispatch({
@@ -92,13 +92,13 @@ export const getProductByUserWishlist = (data) => {
         });
       });
   };
-}
+};
 
 // get product filter by user from database
 export const getProductByUser = () => {
   return (dispatch) => {
     dispatch({ type: `${GET_PRODUCT_BY_USER_SOLD}_LOADING` });
-     axios({
+    axios({
       method: "GET",
       url: "https://nawar-api.herokuapp.com/api/v1/products/user",
       headers: {
@@ -119,15 +119,15 @@ export const getProductByUser = () => {
         });
       });
   };
-}
+};
 
 // get product filter by user filter by sold from database
 export const getProductByUserSold = () => {
   return (dispatch) => {
     dispatch({ type: `${GET_PRODUCT_BY_USER}_LOADING` });
-      axios({
+    axios({
       method: "GET",
-      url: "https://nawar-api.herokuapp.com/api/v1/products/user",
+      url: "https://nawar-api.herokuapp.com/api/v1/products/user/sold",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -135,9 +135,9 @@ export const getProductByUserSold = () => {
       .then((response) => {
         dispatch({
           type: `${GET_PRODUCT_BY_USER}_FULFILLED`,
-          payload: response.data.list.data.filter((item) => item.sold === true),
+          payload: response.data.list.data,
         });
-        console.log(response.data.list.data.filter((item) => item.sold === true));
+        console.log(response.data.list.data);
       })
       .catch((error) => {
         dispatch({
@@ -146,7 +146,7 @@ export const getProductByUserSold = () => {
         });
       });
   };
-}
+};
 
 // create product to database
 export const createProduct = (data) => {

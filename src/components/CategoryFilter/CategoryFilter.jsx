@@ -84,7 +84,7 @@ function CategoryFilter({ handleData }) {
           <button
             className='btn btn-category-filter d-flex align-items-center'
             onClick={() => handleData(2)}>
-            Flat-Shoes
+            Boots
           </button>
           <button
             className='btn btn-category-filter d-flex align-items-center'
@@ -94,7 +94,7 @@ function CategoryFilter({ handleData }) {
           <button
             className='btn btn-category-filter d-flex align-items-center'
             onClick={() => handleData(4)}>
-            Boots
+            Flat-Shoes
           </button>
           <button
             className='btn btn-category-filter d-flex align-items-center'

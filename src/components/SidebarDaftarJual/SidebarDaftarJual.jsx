@@ -35,32 +35,35 @@ function SidebarDaftarJual({ handleData }) {
             padding: "2.2rem 2.0rem",
           }}>
           <p className='pb-1'>Kategori</p>
-          <ul className="sidebar-button"
-          style={{ listStyleType: "none", padding: 0 }}>
+          <ul
+            className='sidebar-button'
+            style={{ listStyleType: "none", padding: 0 }}>
             <li
               className='d-flex justify-content-between'
               style={{ cursor: "pointer" }}
-              onClick={() => handleData("1")}>
+              onClick={() => handleData(1)}>
               <div className='kategori'>
                 <FiBox
-                  className='me-2'
+                  className='me-2 icon-kategori'
                   size={20}
                   style={{ color: "#8A8A8A" }}
                 />{" "}
                 Semua Produk
               </div>
               <div className='chevron-right'>
-                <FiChevronRight size={20} style={{ color: "#8A8A8A" }} />
+                <IconContext.Provider value={{ color: "#D0D0D0" }}>
+                  <FiChevronRight size={20} />
+                </IconContext.Provider>
               </div>
             </li>
             <hr />
             <li
               className='d-flex justify-content-between'
               style={{ cursor: "pointer" }}
-              onClick={() => handleData("2")}>
+              onClick={() => handleData(2)}>
               <div className='kategori'>
                 <FiHeart
-                  className='me-2'
+                  className='me-2 icon-kategori'
                   size={20}
                   style={{ color: "#8A8A8A" }}
                 />{" "}
@@ -76,10 +79,10 @@ function SidebarDaftarJual({ handleData }) {
             <li
               className='d-flex justify-content-between'
               style={{ cursor: "pointer" }}
-              onClick={() => handleData("3")}>
+              onClick={() => handleData(3)}>
               <div className='kategori'>
                 <FiDollarSign
-                  className='me-2'
+                  className='me-2 icon-kategori'
                   size={20}
                   style={{ color: "#8A8A8A" }}
                 />

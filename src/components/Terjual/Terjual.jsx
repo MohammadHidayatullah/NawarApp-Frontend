@@ -1,18 +1,31 @@
 /** @format */
 
 import React from "react";
+import { useEffect } from "react";
 import NumberFormat from "react-number-format";
 import produk from "../../assets/img/produk.jpg";
 import TerjualNotFound from "../TerjualNotFound/TerjualNotFound";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Terjual({ loading3, data3 }) {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
-    <div className='row'>
+    <div className='row' data-aos='fade-up'>
       {loading3
         ? "Loading"
         : data3?.map((item) => (
             <section className='card-daftar-jual col-lg-4 col-md-6 col-sm-6 mt-2'>
-              <div className='card'>
+              <div
+                className='card'
+                style={{
+                  padding: "8px",
+                  width: "100%",
+                  boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.15)",
+                }}>
                 {item.productImages.length > 0 ? (
                   <div
                     className='img-product'
