@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 import { FiBox, FiHeart, FiDollarSign, FiChevronRight } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import SwipeToSlide from "../../components/SwipeToSlide/SwipeToSlide";
+import "./SidebarDaftarJual.css";
 
-function SidebarDaftarJual() {
+function SidebarDaftarJual({ handleData }) {
   const [width, setWidth] = useState(window.innerWidth);
 
   const detectSize = () => {
@@ -34,20 +35,35 @@ function SidebarDaftarJual() {
             padding: "2.2rem 2.0rem",
           }}>
           <p className='pb-1'>Kategori</p>
-          <ul style={{ listStyleType: "none", padding: 0 }}>
-            <li className='d-flex justify-content-between'>
-              <div className='kategori' style={{ color: "purple" }}>
-                <FiBox className='me-2' size={20} /> Semua Produk
+          <ul
+            className='sidebar-button'
+            style={{ listStyleType: "none", padding: 0 }}>
+            <li
+              className='d-flex justify-content-between'
+              style={{ cursor: "pointer" }}
+              onClick={() => handleData(1)}>
+              <div className='kategori'>
+                <FiBox
+                  className='me-2 icon-kategori'
+                  size={20}
+                  style={{ color: "#8A8A8A" }}
+                />{" "}
+                Semua Produk
               </div>
-              <div className='chevron-right' style={{ color: "purple" }}>
-                <FiChevronRight size={20} />
+              <div className='chevron-right'>
+                <IconContext.Provider value={{ color: "#D0D0D0" }}>
+                  <FiChevronRight size={20} />
+                </IconContext.Provider>
               </div>
             </li>
             <hr />
-            <li className='d-flex justify-content-between'>
+            <li
+              className='d-flex justify-content-between'
+              style={{ cursor: "pointer" }}
+              onClick={() => handleData(2)}>
               <div className='kategori'>
                 <FiHeart
-                  className='me-2'
+                  className='me-2 icon-kategori'
                   size={20}
                   style={{ color: "#8A8A8A" }}
                 />{" "}
@@ -60,10 +76,13 @@ function SidebarDaftarJual() {
               </div>
             </li>
             <hr />
-            <li className='d-flex justify-content-between'>
+            <li
+              className='d-flex justify-content-between'
+              style={{ cursor: "pointer" }}
+              onClick={() => handleData(3)}>
               <div className='kategori'>
                 <FiDollarSign
-                  className='me-2'
+                  className='me-2 icon-kategori'
                   size={20}
                   style={{ color: "#8A8A8A" }}
                 />
