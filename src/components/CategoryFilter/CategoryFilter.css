@@ -5,9 +5,9 @@
 }
 
 .btn-category-filter {
-  background-color: #fafafa;
+  background-color: #f2f4f5;
   color: #181818;
-  border: #181818 1px solid;
+  /* border: #181818 1px solid; */
   border-radius: 12px !important;
   margin-right: 16px;
 }

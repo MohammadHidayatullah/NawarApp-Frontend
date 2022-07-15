@@ -41,59 +41,65 @@ function CategoryFilter({ handleData }) {
           <button
             className='btn btn-category-filter-slider d-flex align-items-center'
             onClick={() => handleData("all")}>
-            <BsSearch className='basearch-icon me-2' /> Semua
+            Semua
           </button>
           <button
             className='btn btn-category-filter-slider d-flex align-items-center'
             onClick={() => handleData(1)}>
-            <BsSearch className='basearch-icon me-2' /> Sneaker
+            Sneaker
           </button>
           <button
             className='btn btn-category-filter-slider d-flex align-items-center'
             onClick={() => handleData(2)}>
-            <BsSearch className='basearch-icon me-2' /> Boots
+            Boots
           </button>
           <button
             className='btn btn-category-filter-slider d-flex align-items-center'
             onClick={() => handleData(3)}>
-            <BsSearch className='basearch-icon me-2' /> Flip-Flops
+            Flip-Flops
           </button>
           <button
             className='btn btn-category-filter-slider d-flex align-items-center'
             onClick={() => handleData(4)}>
-            <BsSearch className='basearch-icon me-2' /> Flat-Shoes
+            Flat-Shoes
           </button>
           <button
             className='btn btn-category-filter-slider d-flex align-items-center'
             onClick={() => handleData(5)}>
-            <BsSearch className='basearch-icon me-2' /> High-Heel
+            High-Heel
           </button>
         </Slider>
       ) : (
         <div className='category-filter d-flex'>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData("all")}>
-            <BsSearch className='basearch-icon me-2'/> Semua
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData("all")}>
+            Semua
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(1)}>
-            <BsSearch className='basearch-icon me-2' /> Sneaker
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(1)}>
+            Sneaker
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(2)}>
-            <BsSearch className='basearch-icon me-2' /> Flat-Shoes
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(2)}>
+            Boots
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(3)}>
-            <BsSearch className='basearch-icon me-2' /> Flip-Flops
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(3)}>
+            Flip-Flops
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(4)}>
-            <BsSearch className='basearch-icon me-2' /> Boots
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(4)}>
+            Flat-Shoes
           </button>
-          <button className='btn btn-category-filter d-flex align-items-center'
-          onClick={() => handleData(5)}>
-            <BsSearch className='basearch-icon me-2' /> High-Heel
+          <button
+            className='btn btn-category-filter d-flex align-items-center'
+            onClick={() => handleData(5)}>
+            High-Heel
           </button>
         </div>
       )}
