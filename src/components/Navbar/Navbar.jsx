@@ -54,52 +54,137 @@ function Navbar() {
             <form className='menu-navbar'>
               {access_token !== null ? (
                 <ul className='d-flex align-items-center'>
-                  <li className='mt-1'>
-                    {/* <FiBell
-                      style={{
-                        size: "24px",
-                      }}
-                    /> */}
-                    <img src={bell} alt='' />
-                  </li>
                   <li>
                     <div class='btn-group'>
-                      <button
-                        class='btn btn-lg dropdown-toggle'
-                        type='button'
-                        data-bs-toggle='dropdown'
-                        aria-expanded='false'
-                        style={{
-                          decoration: "none",
-                        }}>
-                        <li>
-                          {/* <FiUser
+                      <div class='btn-group dropstart' role='group'>
+                        <button
+                          class='btn btn-none-style btn-lg '
+                          type='button'
+                          data-bs-toggle='dropdown'
+                          aria-expanded='false'>
+                          <li>
+                            {/* <FiUser
                           style={{
                             size: "24px",
                           }}
                         /> */}
-                          <img src={user} alt='' />
-                        </li>
-                      </button>
-                      <ul class='dropdown-menu'>
-                        <li>
-                          <a className='dropdown-item' href='/info-profil'>
-                            Info Profile
-                          </a>
-                        </li>
-                        <li>
-                          <a className='dropdown-item' href='/daftar-jual'>
-                            Daftar Jual
-                          </a>
-                        </li>
-                        <li>
-                          <span
-                            className='dropdown-item'
-                            onClick={handleLogout}>
-                            Logout
-                          </span>
-                        </li>
-                      </ul>
+                            <img src={bell} alt='' />
+                            <span class='unread-notification'></span>
+                          </li>
+                        </button>
+                        <ul
+                          class='dropdown-menu'
+                          style={{
+                            padding: "24px",
+                            borderRadius: "16px",
+                            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
+                          }}>
+                          <li className='dropdown-item'>
+                            <div className='row'>
+                              <div className='d-flex justify-content-between'>
+                                <div className='d-flex flex-row'>
+                                  <img
+                                    className='me-3'
+                                    src={logo}
+                                    alt=''
+                                    style={{
+                                      maxWidth: "48px",
+                                      maxHeight: "48px",
+                                      borderRadius: "12px",
+                                    }}
+                                  />
+                                  <div className='text d-flex flex-column me-5'>
+                                    <p
+                                      className='mb-0 p-0'
+                                      style={{
+                                        fontSize: "10px",
+                                        color: "#8A8A8A",
+                                      }}>
+                                      Penawaran produk
+                                    </p>
+                                    <p
+                                      className='m-0 p-0'
+                                      style={{
+                                        fontSize: "14px",
+                                      }}>
+                                      Nike Jordan
+                                    </p>
+                                    <p
+                                      className='m-0 p-0'
+                                      style={{
+                                        fontSize: "14px",
+                                      }}>
+                                      Rp. 200000
+                                    </p>
+                                    <p
+                                      className='m-0 p-0'
+                                      style={{
+                                        fontSize: "14px",
+                                      }}>
+                                      Ditawar Rp. 200000
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <p
+                                      style={{
+                                        fontSize: "10px",
+                                        color: "#8A8A8A",
+                                      }}>
+                                      20 Apr, 14:04
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class='btn-group'>
+                      <div class='btn-group dropstart' role='group'>
+                        <button
+                          class='btn btn-none-style btn-lg'
+                          type='button'
+                          data-bs-toggle='dropdown'
+                          aria-expanded='false'>
+                          <li>
+                            {/* <FiUser
+                          style={{
+                            size: "24px",
+                          }}
+                        /> */}
+                            <img src={user} alt='' />
+                          </li>
+                        </button>
+                        <ul
+                          class='dropdown-menu'
+                          style={{
+                            padding: "24px",
+                            borderRadius: "16px",
+                            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
+                          }}>
+                          <li>
+                            <a className='dropdown-item' href='/info-profil'>
+                              Info Profile
+                            </a>
+                          </li>
+                          <li>
+                            <a className='dropdown-item' href='/daftar-jual'>
+                              Daftar Jual
+                            </a>
+                          </li>
+                          <li>
+                            <span
+                              className='dropdown-item'
+                              onClick={handleLogout}>
+                              Logout
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </li>
                 </ul>
