@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Redirect } from "react-router";
 import {
   GET_PRODUCT,
   GET_PRODUCT_BY_CATEGORY,
@@ -9,6 +10,10 @@ import {
   DRAFT_PRODUCT,
   EDIT_PRODUCT,
   DELETE_PRODUCT,
+  GET_PRODUCT_BY_USER,
+  GET_PRODUCT_BY_USER_SOLD,
+  GET_PRODUCT_BY_USER_WISHLIST,
+  GET_PRODUCT_ID,
 } from "../types";
 
 let token = localStorage.getItem("token");
@@ -64,8 +69,89 @@ export const getProductByCategory = (data) => {
   };
 };
 
+// get product by user wishlist
+export const getProductByUserWishlist = () => {
+  return (dispatch) => {
+    dispatch({ type: `${GET_PRODUCT_BY_USER_WISHLIST}_LOADING` });
+    axios({
+      method: "GET",
+      url: "https://nawar-api.herokuapp.com/api/v1/wishlist",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
+          payload: response.data.data,
+        });
+        console.log(response.data.data);
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER_WISHLIST}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+};
+
+// get product filter by user from database
+export const getProductByUser = () => {
+  return (dispatch) => {
+    dispatch({ type: `${GET_PRODUCT_BY_USER_SOLD}_LOADING` });
+    axios({
+      method: "GET",
+      url: "https://nawar-api.herokuapp.com/api/v1/products/user",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER_SOLD}_FULFILLED`,
+          payload: response.data.list.data,
+        });
+        console.log(response.data.list.data);
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER_SOLD}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+};
+
+// get product filter by user filter by sold from database
+export const getProductByUserSold = () => {
+  return (dispatch) => {
+    dispatch({ type: `${GET_PRODUCT_BY_USER}_LOADING` });
+    axios({
+      method: "GET",
+      url: "https://nawar-api.herokuapp.com/api/v1/products/user/sold",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER}_FULFILLED`,
+          payload: response.data.list.data,
+        });
+        console.log(response.data.list.data);
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${GET_PRODUCT_BY_USER}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+};
+
 // create product to database
-export const createProduct = (data) => {
+export const createProduct = (data, navigate) => {
   return (dispatch) => {
     dispatch({ type: `${CREATE_PRODUCT}_LOADING` });
 
@@ -77,12 +163,15 @@ export const createProduct = (data) => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(() => {
+      .then((res) => {
         dispatch({
           type: `${CREATE_PRODUCT}_FULFILLED`,
           // // payload: response.data,
         });
         // dispatch(navigate("/daftar-jual"));
+        if (res.status === 200) {
+          navigate("/daftar-jual");
+        }
       })
       .catch((error) => {
         dispatch({
@@ -94,7 +183,7 @@ export const createProduct = (data) => {
 };
 
 // DRAFT product
-export const draftProduct = (data) => {
+export const draftProduct = (data, navigate) => {
   return (dispatch) => {
     dispatch({ type: `${DRAFT_PRODUCT}_LOADING` });
 
@@ -106,12 +195,15 @@ export const draftProduct = (data) => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(() => {
+      .then((res) => {
         dispatch({
           type: `${DRAFT_PRODUCT}_FULFILLED`,
           // // payload: response.data,
         });
         // dispatch(navigate("/daftar-jual"));
+        if (res.status === 200) {
+          navigate("/daftar-jual");
+        }
       })
       .catch((error) => {
         dispatch({
@@ -122,21 +214,28 @@ export const draftProduct = (data) => {
   };
 };
 
-export const editProduct = (id, data) => {
+export const editProduct = (id, datas, navigate) => {
   return (dispatch) => {
     dispatch({ type: `${EDIT_PRODUCT}_LOADING` });
 
     axios({
       method: "PUT",
       url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
-      data,
+      data: datas,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     })
-      .then(() => {
+      .then((res) => {
         dispatch({
           type: `${EDIT_PRODUCT}_FULFILLED`,
           // payload: response.data,
         });
-        dispatch(getProduct());
+        // dispatch(getProduct());
+        if (res.status === 200) {
+          navigate("/daftar-jual");
+        }
       })
       .catch((error) => {
         dispatch({
@@ -149,7 +248,7 @@ export const editProduct = (id, data) => {
 
 export const getProductDetail = (id) => {
   return (dispatch) => {
-    dispatch({ type: `${GET_PRODUCT}_LOADING` });
+    dispatch({ type: `${GET_PRODUCT_ID}_LOADING` });
 
     axios({
       method: "GET",
@@ -157,14 +256,14 @@ export const getProductDetail = (id) => {
     })
       .then((response) => {
         dispatch({
-          type: `${GET_PRODUCT}_FULFILLED`,
+          type: `${GET_PRODUCT_ID}_FULFILLED`,
           payload: response.data.data.data,
         });
-        console.log(response.data.data.data);
+        // console.log(response.data.data.data);
       })
       .catch((error) => {
         dispatch({
-          type: `${GET_PRODUCT}_ERROR`,
+          type: `${GET_PRODUCT_ID}_ERROR`,
           error: error.message,
         });
       });

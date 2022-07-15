@@ -7,6 +7,9 @@ import {
   DRAFT_PRODUCT,
   EDIT_PRODUCT,
   DELETE_PRODUCT,
+  GET_PRODUCT_BY_USER,
+  GET_PRODUCT_BY_USER_SOLD,
+  GET_PRODUCT_BY_USER_WISHLIST,
   GET_PRODUCT_ID,
 } from "../types";
 
@@ -19,6 +22,8 @@ const initialState = {
 const productReducer = (state = initialState, action) => {
   const { type, payload, error } = action;
   switch (type) {
+
+    // get all product hoemPage
     case `${GET_PRODUCT}_LOADING`:
       return {
         ...state,
@@ -36,6 +41,7 @@ const productReducer = (state = initialState, action) => {
         error: error,
       };
 
+    // get product by category homePage
     case `${GET_PRODUCT_BY_CATEGORY}_LOADING`:
       return {
         ...state,
@@ -52,6 +58,64 @@ const productReducer = (state = initialState, action) => {
         isLoading: false,
         error: error,
       };
+
+      // get product by user wishlist
+    case `${GET_PRODUCT_BY_USER_WISHLIST}_LOADING`:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case `${GET_PRODUCT_BY_USER_WISHLIST}_FULFILLED`:
+      return {
+        ...state,
+        data: payload,
+        isLoading: false,
+      };
+    case `${GET_PRODUCT_BY_USER_WISHLIST}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
+
+
+    //get product by user daftarJual
+    case `${GET_PRODUCT_BY_USER}_LOADING`:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case `${GET_PRODUCT_BY_USER}_FULFILLED`:
+      return {
+        ...state,
+        data: payload,
+        isLoading: false,
+      };
+    case `${GET_PRODUCT_BY_USER}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
+
+      //get product by user daftarJual sold
+      case `${GET_PRODUCT_BY_USER_SOLD}_LOADING`:
+        return {
+          ...state,
+          isLoading: true,
+        };
+      case `${GET_PRODUCT_BY_USER_SOLD}_FULFILLED`:
+        return {
+          ...state,
+          data: payload,
+          isLoading: false,
+        };
+      case `${GET_PRODUCT_BY_USER_SOLD}_ERROR`:
+        return {
+          ...state,
+          isLoading: false,
+          error: error,
+        };
 
     case `${CREATE_PRODUCT}_LOADING`:
       return {

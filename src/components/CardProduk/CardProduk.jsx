@@ -4,16 +4,31 @@ import React from "react";
 import NumberFormat from "react-number-format";
 import notFound from "../../assets/img/not-found.svg";
 import "./CardProduk.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function CardProduk({ data, loading }) {
   console.log("data", data);
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <>
       {loading
         ? "Loading"
         : data?.map((item) => (
-            <div className='card-produk col-lg-2 col-md-3 col-sm-4 mt-3'>
-              <div className='card' style={{ padding: "8px", width: "100%" }}>
+            <div
+              data-aos='zoom-in'
+              className='card-produk col-lg-2 col-md-3 col-sm-4 mt-3'>
+              <div
+                className='card'
+                style={{
+                  padding: "8px",
+                  width: "100%",
+                  boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.1)",
+                }}>
                 {item.productImages.length > 0 ? (
                   <div
                     className='img-product'
