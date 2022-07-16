@@ -2,16 +2,21 @@
 
 import React from "react";
 import NumberFormat from "react-number-format";
+import { useDispatch } from 'react-redux';
 import produk from "../../assets/img/produk.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { deleteProductByUserWishlist } from "../../redux/action/productAction";
 
 function Diminati({ loading, data }) {
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+
   return (
     <div className='row' data-aos='fade-up'>
       {loading
@@ -85,6 +90,21 @@ function Diminati({ loading, data }) {
                       prefix={"Rp "}
                     />
                   </p>
+                  <div className='button-aksi d-flex justify-content-end'>
+                    {/* <Link to={`/dashboard/edit-produk/${item.id}`}> */}
+                      <button className='btn btn-danger'
+                        type="button"
+                        onClick={() => dispatch(deleteProductByUserWishlist(item.id))}
+                        style={{ 
+                          backgroundColor: "#000000", 
+                          borderColor: "#000000", 
+                          color: "#ffffff",
+                          width: "100%",
+                        }}>
+                        Hapus
+                      </button>
+                    {/* </Link> */}
+                  </div>
                 </div>
               </div>
             </section>
