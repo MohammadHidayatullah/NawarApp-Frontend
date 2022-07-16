@@ -4,7 +4,7 @@ import React from "react";
 // import { useDropzone } from "react-dropzone";
 import "./InfoPenawaran.css";
 // import { AiOutlineCamera } from "react-icons/ai";
-import { FaArrowLeft, FaPlus, FaTimes } from "react-icons/fa";
+import { FaArrowLeft, FaPlus, FaTimes, FaWhatsapp } from "react-icons/fa";
 import Navbar2 from "../../components/NavbarInfo/NavbarInfo";
 import ModalSeller from "../../components/ModalSeller/ModalSeller";
 import ModalSellerStatus from "../../components/ModalSellerStatus/ModalSellerStatus";
@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 // import ImageUploadPreviewComponent from "../../components/ImageUpload/ImageUploadPreviewComponent";
 // import { useState } from "react";
 import Foto from "../../assets/img/img_photo(2).jpg";
+import Produk from "../../assets/img/produk.jpg";
 import WA from "../../assets/icon/fi_whatsapp.svg";
 import { useState } from "react";
 
@@ -50,150 +51,142 @@ function InfoPenawaran() {
       <Navbar2 />
       <div style={{ padding: "3%" }}>
         <div className='container' style={{ maxWidth: "568px" }}>
-          <button
-            className='arrow-left'
-            onClick={navHome}
-            // style={{ color: "#181818" }}
-          >
-            <FaArrowLeft size={22} />
-          </button>
-
-          <div className='container mt-4'>
-            <div className='row mb-4'>
-              <div className='col-lg-12'>
-                <div
-                  className='card w-100 p-3'
-                  style={{
-                    borderRadius: "16px",
-                    boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.15)",
-                  }}>
-                  <div className='row'>
-                    <div className='col-lg-12 d-flex justify-content-between'>
-                      <div className='d-flex align-items-center mx-3'>
-                        <img
-                          className='me-3'
-                          src={Foto}
-                          alt=''
-                          style={{
-                            maxWidth: "48px",
-                            maxHeight: "48px",
-                            borderRadius: "12px",
-                          }}
-                        />
-                        <div className='text d-flex flex-column'>
-                          <h6 className='mb-2 p-0' id='pembeli'>
-                            <b>Nama Pembeli</b>
-                          </h6>
-                          <p className='card-text col-2 m-0 p-0' id='kota'>
-                            <small class='text-muted'>Kota</small>
-                          </p>
-                        </div>
-                      </div>
+           <button className="arrow-left" onClick={navHome}>
+              <FaArrowLeft size={22} />
+            </button>
+          <div className='containt-transaction mt-4'>
+            <div
+              className='card w-100 p-3'
+              style={{
+                borderRadius: "16px",
+                boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.15)",
+              }}>
+              <div className='row'>
+                <div className='col-lg-12 d-flex justify-content-between'>
+                  <div className='d-flex align-items-center'>
+                    <img
+                      className='me-3'
+                      src={Produk}
+                      alt=''
+                      style={{
+                        maxWidth: "48px",
+                        maxHeight: "48px",
+                        borderRadius: "12px",
+                      }}
+                    />
+                    <div className='text d-flex flex-column'>
+                      <h6 className='mb-2 p-0' id='pembeli'>
+                        <b>Nama Pembeli</b>
+                      </h6>
+                      <p className='card-text m-0 p-0' id='kota'>
+                        <small class='text-muted'>Kota</small>
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className='row'>
-            <div className='col-lg-12 col-md-12'>
-              <form>
-                <div className='kotak2 mx-4'>
-                  <p class=''>
-                    <b>Daftar Produkmu yang Ditawar</b>
-                  </p>
-                  <div className='row'>
-                    <div className='card'>
-                      <div className='card-body col-2'>
-                        <img
-                          className='card-img-top'
-                          src={Foto}
-                          alt='Card image cap'
-                        />
-                      </div>
-
-                      <div className='card-body col-10'>
-                        <div className='row'>
-                          <p className='card-text col-9'>
-                            <small class='text-muted'>Penawaran Produk</small>
-                          </p>
-                          <p className='card-text col-3'>
-                            <small class='text-muted'>24 Juni,07.30</small>
-                          </p>
-                        </div>
-
-                        <div className='row'>
-                          <h6 className='card-title'>
-                            <h6>Sepatu Nike</h6>
-                            <h6>Rp. 1.500.000 ribu</h6>
-                            <h6> Ditawar Rp.1.200.000</h6>
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
+            <div className='row'>
+              <div className='col-lg-12 col-md-12'>
+                <p className="trnsaction-title my-3">
+                  <b>Daftar Produkmu yang Ditawar</b>
+                </p>
+                <div className='d-flex justify-content-between mb-3'>
+                  <img
+                    className=''
+                    src={Produk}
+                    alt=''
+                    style={{
+                      maxWidth: "48px",
+                      maxHeight: "48px",
+                      borderRadius: "12px",
+                      margin: "16px, 16px, 16px, 0",
+                    }}
+                  />
+                  <div
+                    className='text d-flex flex-column'
+                    style={{
+                      marginRight: "40%",
+                    }}>
+                    <p
+                      className='mb-0 p-0'
+                      style={{
+                        fontSize: "10px",
+                        color: "#8A8A8A",
+                      }}>
+                      Penawaran produk
+                    </p>
+                    <p
+                      className='m-0 p-0'
+                      style={{
+                        fontSize: "14px",
+                      }}>
+                      Sepatu Nike
+                    </p>
+                    <p
+                      className='m-0 p-0'
+                      style={{
+                        fontSize: "14px",
+                      }}>
+                      Sepatu Nike
+                    </p>
+                    <p
+                      className='m-0 p-0'
+                      style={{
+                        fontSize: "14px",
+                      }}>
+                      Ditawar Rp.1.200.000
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      style={{
+                        fontSize: "10px",
+                        color: "#8A8A8A",
+                      }}>
+                      24 Juni,07.30
+                    </p>
                   </div>
                 </div>
-
-                {/* awal button */}
-
-                {/* <div className="row">
-                  <div className="col-lg-9 d-flex justify-content-end">
-                    <button
-                      type="submit"
-                      className="btn btn-outline mx-4" id="tolak"
-                      
-                    >
-                      Tolak
-                    </button>
-                  </div>
-                  <div className="col-lg-3 d-flex justify-content-end">
-                    <button
-                      type="submit"
-                      className="btn mb-4" id="hubungi"
-                      
-                    >
-                      Terima
-                      
-                    </button>
-                  </div>
-                  
-                </div> */}
-                {/* akhir button */}
-
-                {/* awal button */}
-
                 {step.status === "keranjang" && (
                   <>
-                    <div className='row'>
-                      <div className='col-lg-9 d-flex justify-content-end'>
-                        <button
-                          type='submit'
-                          className='btn btn-outline mx-4'
-                          id='tolak'
-                          onClick={() =>
-                            setStep({
-                              status: "",
-                            })
-                          }>
-                          Tolak
-                        </button>
-                      </div>
-                      <div className='col-lg-3 d-flex justify-content-end'>
-                        <button
-                          type='button'
-                          className='btn mb-4'
-                          id='hubungi'
-                          data-bs-toggle='modal'
-                          data-bs-target='#modalSeller'
-                          onClick={() =>
-                            setStep({
-                              status: "proses",
-                            })
-                          }>
-                          Terima
-                        </button>
-                      </div>
+                    <div className='btn-transaction d-flex justify-content-end'>
+                      <button
+                        type='button'
+                        className='btn me-3 px-5'
+                        style={{
+                          backgroundColor: "white",
+                          border: "1px solid #7126B5",
+                          paddingRight: "10%",
+                          paddingLeft: "10%",
+                          color: "black",
+                        }}
+                        data-bs-toggle='modal'
+                        data-bs-target='#modalSeller'
+                        onClick={() => setStep({ status: "" })}>
+                        Tolak
+                      </button>
+                      <button
+                        type='button'
+                        className='btn'
+                        style={{
+                          backgroundColor: "#7126B5",
+                          border: "1px solid #7126B5",
+                          padding: "auto",
+                          color: "#ffffff",
+                          paddingRight: "10%",
+                          paddingLeft: "10%",
+                        }}
+                        data-bs-toggle='modal'
+                        data-bs-target='#modalSeller'
+                        onClick={() =>
+                          setStep({
+                            status: "proses",
+                          })
+                        }>
+                        Terima
+                      </button>
                     </div>
                   </>
                 )}
@@ -204,51 +197,55 @@ function InfoPenawaran() {
 
                 {step.status === "proses" && (
                   <>
-                    <div className='row'>
-                      <div className='col-lg-9 d-flex justify-content-end'>
-                        <button
-                          type='button'
-                          className='btn btn-outline mx-4'
-                          id='tolak'
-                          data-bs-toggle='modal'
-                          data-bs-target='#modalSellerStatus'
-                          // onClick={()=> setStep({
-                          //   status: "approve"
-                          // })}
-                        >
-                          Status
-                        </button>
-                      </div>
-                      <div className='col-lg-3 d-flex justify-content-end'>
-                        <button
-                          type='submit'
-                          className='btn mb-4'
-                          id='hubungi'
-                          onClick={() =>
-                            setStep({
-                              status: "appove",
-                            })
-                          }>
-                          Hubungi di
-                          <i className=''>
-                            <img src={WA} alt='' className='wa' />
-                          </i>
-                        </button>
-                      </div>
+                    <div className='btn-transaction d-flex justify-content-end'>
+                      <button
+                        type='button'
+                        className='btn me-3'
+                        style={{
+                          backgroundColor: "white",
+                          border: "1px solid #7126B5",
+                          padding: "auto",
+                          color: "black",
+                          paddingRight: "10%",
+                          paddingLeft: "10%",
+                        }}
+                        data-bs-toggle='modal'
+                        data-bs-target='#modalSellerStatus'
+                        // onClick={()=> setStep({
+                        //   status: "approve"
+                        // })}
+                      >
+                        Status
+                      </button>
+                      <button
+                        type='submit'
+                        className='btn d-flex align-items-center'
+                        style={{
+                          backgroundColor: "#7126B5",
+                          border: "1px solid #7126B5",
+                          padding: "auto",
+                          color: "#ffffff",
+                          paddingRight: "10%",
+                          paddingLeft: "10%",
+                        }}
+                        onClick={() =>
+                          setStep({
+                            status: "appove",
+                          })
+                        }>
+                        Hubungi di &nbsp;
+                        <FaWhatsapp size={14} />
+                      </button>
                     </div>
                   </>
                 )}
 
                 {/* akhir button */}
-
-                {/* awal Alert */}
                 {step.status === "approve" && <p>tidak ada barang</p>}
 
-                {/* akhir alert */}
-              </form>
-
-              <ModalSeller />
-              <ModalSellerStatus />
+                <ModalSeller />
+                <ModalSellerStatus />
+              </div>
             </div>
           </div>
         </div>

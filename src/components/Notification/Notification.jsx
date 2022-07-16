@@ -5,6 +5,9 @@ import bell from "../../assets/icon/fi_bell.svg";
 import logo from "../../assets/img/logo-NawarApp.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getNotificationSeller } from "../../redux/action/notificationAction";
+import NumberFormat from "react-number-format";
+import Moment from "react-moment";
+// import "moment-timezone";
 
 function Notification() {
   const { isLoading: loadingNotification, data: notificationData } =
@@ -47,8 +50,7 @@ function Notification() {
                 </li>
               ) : (
                 notificationData.map((item) => (
-                <li className='dropdown-item'>
-                  <div className='row'>
+                  <li className='dropdown-item'>
                     <div className='d-flex justify-content-between'>
                       <div className='d-flex flex-row'>
                         <img
@@ -82,15 +84,27 @@ function Notification() {
                             style={{
                               fontSize: "14px",
                             }}>
-                            {item.transaction.productTransactions.price}
+                            <NumberFormat
+                              value={item.transaction.productTransactions.price}
+                              displayType={"text"}
+                              thousandSeparator={"."}
+                              decimalSeparator={","}
+                              prefix={"Rp "}
+                            />
                           </p>
                           <p
                             className='m-0 p-0'
                             style={{
                               fontSize: "14px",
                             }}>
-    
-                            Ditawar {item.transaction.bidPrice}
+                            Ditawar{" "}
+                            <NumberFormat
+                              value={item.transaction.bidPrice}
+                              displayType={"text"}
+                              thousandSeparator={"."}
+                              decimalSeparator={","}
+                              prefix={"Rp "}
+                            />
                           </p>
                         </div>
                         <div>
@@ -99,13 +113,16 @@ function Notification() {
                               fontSize: "10px",
                               color: "#8A8A8A",
                             }}>
-                            {item.notifDate}
+                            {
+                              <Moment format='DD MMMM, H:mm'>
+                                {item.notifDate}
+                              </Moment>
+                            }
                           </p>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </li>
+                  </li>
                 ))
               )}
             </ul>
