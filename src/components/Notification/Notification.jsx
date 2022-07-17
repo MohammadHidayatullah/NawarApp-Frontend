@@ -55,11 +55,11 @@ function Notification() {
                       <div className='d-flex flex-row'>
                         <img
                           className='me-3'
-                          src={logo}
+                          src={item.transaction.productTransactions.productImages[0].url}
                           alt=''
                           style={{
-                            maxWidth: "48px",
-                            maxHeight: "48px",
+                            width: "48px",
+                            height: "48px",
                             borderRadius: "12px",
                           }}
                         />
