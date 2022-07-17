@@ -42,7 +42,8 @@ function DaftarJual() {
     }
     if (button === 2) {
       dispatch(getProductByUserWishlist());
-    } else {
+    }
+    if (button === 3) {
       dispatch(getProductByUserSold());
     }
   };
