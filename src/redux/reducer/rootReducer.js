@@ -9,6 +9,7 @@ import cityReducer from "./cityReducer";
 import registernReducer from "./registerReducer";
 import categoryReducer from "./categoryReducer";
 import notificationReducer from "./notificationReducer";
+import notificationIdReducer from "./notificationReducerId";
 
 export default combineReducers({
   auth: authReducer,
@@ -19,4 +20,5 @@ export default combineReducers({
   city: cityReducer,
   category: categoryReducer,
   notification: notificationReducer,
+  notificationId: notificationIdReducer,
 });

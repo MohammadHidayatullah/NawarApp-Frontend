@@ -1,6 +1,6 @@
 /** @format */
 
-import { GET_NOTIFICATION_SELLER } from "../types";
+import { GET_NOTIFICATION_SELLER, GET_NOTIFICATION_SELLER_BY_ID } from "../types";
 
 const initialState = {
   data: [],
@@ -23,6 +23,24 @@ const notificationReducer = (state = initialState, action) => {
         isLoading: false,
       };
     case `${GET_NOTIFICATION_SELLER}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
+
+      case `${GET_NOTIFICATION_SELLER_BY_ID}_LOADING`:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case `${GET_NOTIFICATION_SELLER_BY_ID}_FULFILLED`:
+      return {
+        ...state,
+        data: payload,
+        isLoading: false,
+      };
+    case `${GET_NOTIFICATION_SELLER_BY_ID}_ERROR`:
       return {
         ...state,
         isLoading: false,

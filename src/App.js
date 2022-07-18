@@ -35,7 +35,7 @@ function App() {
         <Route
           path='/info-produk-seller'
           element={<InfoProdukSeller />}></Route>
-        <Route path='/info-penawaran' element={<InfoPenawaran />}></Route>
+        <Route path='/info-penawaran/:id' element={<InfoPenawaran />}></Route>
         <Route path='/modal-buyer' element={<ModalBuyer />}></Route>
         <Route path='/modal-seller' element={<ModalSeller />}></Route>
         <Route path='/modal-seller-status' element={<ModalSellerStatus />}></Route>
