@@ -39,13 +39,17 @@ function DaftarJual() {
     setButton(button);
     if (button === 1) {
       dispatch(getProductByUser());
-    }
-    if (button === 2) {
+    } else if (button === 2) {
       dispatch(getProductByUserWishlist());
-    } else {
+    } else if (button === 3) {
       dispatch(getProductByUserSold());
     }
   };
+
+  useEffect(() => {
+    dispatch(getProductByUserSold());
+  }
+  , [dispatch]);
 
   console.log("data", button);
   return (
@@ -66,7 +70,7 @@ function DaftarJual() {
                   <Diminati loading={loadingProduct} data={productData} />
                 )}
               </>
-            ) : (
+            ) : button === 3 ? (
               <>
                 {productData.length === 0 ? (
                   <TerjualNotFound />
@@ -74,7 +78,7 @@ function DaftarJual() {
                   <Terjual loading3={loadingProduct} data3={productData} />
                 )}
               </>
-            )}
+            ) : null}
             {/* <DiminatiNotFound /> */}
             {/* <TerjualNotFound /> */}
           </div>
