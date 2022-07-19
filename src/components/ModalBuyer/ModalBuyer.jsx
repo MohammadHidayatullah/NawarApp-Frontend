@@ -6,14 +6,14 @@ import { FiX } from "react-icons/fi";
 function ModalBuyer() {
   return (
     <>
-      {/* <button
+      <button
         type="button"
         class="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#modalBuyer"
       >
         Open modal
-      </button> */}
+      </button>
       <div className="modal" id="modalBuyer">
         <div
           className="modal-dialog modal-dialog-centered"

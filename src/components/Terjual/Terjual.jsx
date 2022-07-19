@@ -9,6 +9,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function Terjual({ loading3, data3 }) {
+  console.log("data3", data3);
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -16,7 +17,7 @@ function Terjual({ loading3, data3 }) {
   return (
     <div className='row' data-aos='fade-up'>
       {loading3
-        ? "Loading"
+        ? "Loading ... ..."
         : data3?.map((item) => (
             <section className='card-daftar-jual col-lg-4 col-md-6 col-sm-6 mt-2'>
               <div
