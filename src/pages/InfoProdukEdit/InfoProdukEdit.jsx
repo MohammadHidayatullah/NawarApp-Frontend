@@ -70,15 +70,17 @@ function InfoProdukEdit() {
       dispatch(getProductDetail(id));
       return;
     }
-    setName(productData[0].name);
-    setHarga(productData[0].price);
-    setDescription(productData[0].description);
-    productData[0].productCategories.forEach((item) => {
+    setName(productData.name);
+    setHarga(productData.price);
+    setDescription(productData.description);
+    productData.productCategories.forEach((item) => {
       setIdCategory((indexAwal) => [...indexAwal, item.categoryId]);
     });
-    dataAwal.current = productData[0].productCategories;
-    setSize(productData[0].size);
+    dataAwal.current = productData.productCategories;
+    setSize(productData.size);
   }, [productData]);
+
+  console.log(productData.productCategories, "INI KATEGORI");
 
   const resetForm = () => {
     setName("");
@@ -137,6 +139,8 @@ function InfoProdukEdit() {
   const navHome = () => {
     navigate("/");
   };
+
+  console.log(productData, "Ini product DATA WOY");
 
   // Fungsi redux
   return (

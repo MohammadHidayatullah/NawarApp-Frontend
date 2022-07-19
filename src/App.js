@@ -21,20 +21,25 @@ function App() {
   return (
     <Provider store={store}>
       <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/dashboard/profil' element={<InfoProfil />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/register' element={<Register />}></Route>
-        <Route path='/dashboard/tambah-produk' element={<InfoProduk />}></Route>
-        <Route path='/dashboard' element={<DaftarJual />}></Route>
-        <Route path='/info-produk-page' element={<InfoProdukPage />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/dashboard/profil" element={<InfoProfil />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/dashboard/tambah-produk" element={<InfoProduk />}></Route>
+        <Route path="/dashboard" element={<DaftarJual />}></Route>
         <Route
-          path='/info-produk-seller'
-          element={<InfoProdukSeller />}></Route>
-        <Route path='/info-penawaran' element={<InfoPenawaran />}></Route>
+          path="/info-produk-page/:id"
+          element={<InfoProdukPage />}
+        ></Route>
         <Route
-          path='/info-produk/edit/:id'
-          element={<InfoProdukEdit />}></Route>
+          path="/info-produk-seller"
+          element={<InfoProdukSeller />}
+        ></Route>
+        <Route path="/info-penawaran" element={<InfoPenawaran />}></Route>
+        <Route
+          path="/info-produk/edit/:id"
+          element={<InfoProdukEdit />}
+        ></Route>
       </Routes>
     </Provider>
   );
