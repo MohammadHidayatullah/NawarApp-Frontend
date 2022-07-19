@@ -14,7 +14,9 @@ import { getNotificationSellerById } from "../../redux/action/notificationIdActi
 function Notification() {
   const { isLoading: loadingNotification, data: notificationData } =
     useSelector((state) => state.notification);
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getNotificationSeller());
   }, [dispatch]);
@@ -54,14 +56,14 @@ function Notification() {
                 borderRadius: "16px",
                 boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
               }}>
-              {notificationData.status === "bid" ? (
-                <>
-                  {notificationData.length < 1 ? (
-                    <li className='dropdown-item'>
-                      <span>Tidak ada notifikasi</span>
-                    </li>
-                  ) : (
-                    notificationData.map((item) => (
+              {notificationData.length < 1 ? (
+                <li className='dropdown-item'>
+                  <span>Tidak ada notifikasi</span>
+                </li>
+              ) : (
+                notificationData.map((item) => (
+                  <>
+                    {item.status === "Bid" ? (
                       <li
                         className='dropdown-item'
                         onClick={() => {
@@ -158,13 +160,14 @@ function Notification() {
                           </div>
                         </div>
                       </li>
-                    ))
-                  )}
-                </>
-              ) : (
-                <li className='dropdown-item'>
-                  <span>Tidak ada notifikasi</span>
-                </li>
+                    ) : (
+                      <span
+                        style={{
+                          display: "none",
+                        }}></span>
+                    )}
+                  </>
+                ))
               )}
             </ul>
           </div>

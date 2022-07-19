@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import { getNotificationSellerById } from "../../redux/action/notificationIdAction";
 import NumberFormat from "react-number-format";
 import Moment from "react-moment";
+import { acceptOffer } from "../../redux/action/transactionAction";
 // import { getNotificationSellerById } from "../../redux/action/notificationIdAction";
 
 function InfoPenawaran() {
@@ -39,6 +40,12 @@ function InfoPenawaran() {
   );
 
   console.log("detailnotificationData", item, "data");
+
+  const handleAccept = () => {
+    dispatch(acceptOffer(item.id));
+    navigate(`/info-penawaran/${item.id}`);
+  };
+
   return (
     <>
       <Navbar2 />
