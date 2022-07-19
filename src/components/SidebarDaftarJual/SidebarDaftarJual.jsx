@@ -23,7 +23,7 @@ function SidebarDaftarJual({ handleData }) {
   return (
     <div className='col-lg-3'>
       {width <= 576 ? (
-        <SwipeToSlide />
+        <SwipeToSlide handleData={handleData}/>
       ) : (
         <div
           className='card sidebar-kategori d-flex flex-column justify-content-center mt-2'
