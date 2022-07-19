@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import person from "../../assets/img/person.svg";
+import person from "../../assets/img/logo-NawarApp.png";
 import produk from "../../assets/img/produk.jpg";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
