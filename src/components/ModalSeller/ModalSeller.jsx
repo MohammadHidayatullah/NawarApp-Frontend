@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import person from "../../assets/img/person.svg";
+import person from "../../assets/img/logo-NawarApp.png";
 import produk from "../../assets/img/produk.jpg";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
@@ -10,6 +10,14 @@ import NumberFormat from "react-number-format";
 function ModalSeller() {
   return (
     <>
+      {/* <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#modalSeller"
+      >
+        Open modal
+      </button> */}
       <div className='modal' id='modalSeller'>
         <div
           className='modal-dialog modal-dialog-centered'

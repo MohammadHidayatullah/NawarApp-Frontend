@@ -10,10 +10,14 @@ import InfoProduk from "./pages/InfoProduk/InfoProduk";
 import DaftarJual from "./pages/DaftarJual/DaftarJual";
 import InfoProdukPage from "./pages/InfoProdukPage/InfoProdukPage";
 import InfoProdukSeller from "./pages/InfoProdukSeller/InfoProdukSeller";
+import InfoPenawaran from "./pages/InfoPenawaran/InfoPenawaran";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import InfoPenawaran from "./pages/InfoPenawaran/InfoPenawaran";
+import ModalBuyer from "./components/ModalBuyer/ModalBuyer";
 import { Provider } from "react-redux";
+import AlertInfoPenawaran from "./components/AlertInfoPenawaran/AlertInfoPenawaran";
+import ModalSeller from "./components/ModalSeller/ModalSeller";
+import ModalSellerStatus from "./components/ModalSellerStatus/ModalSellerStatus";
 import store from "./redux/store";
 import InfoProdukEdit from "./pages/InfoProdukEdit/InfoProdukEdit";
 
@@ -27,7 +31,19 @@ function App() {
         <Route path='/register' element={<Register />}></Route>
         <Route path='/dashboard/tambah-produk' element={<InfoProduk />}></Route>
         <Route path='/dashboard' element={<DaftarJual />}></Route>
-        <Route path='/info-produk-page' element={<InfoProdukPage />}></Route>
+        <Route
+          path='/info-produk-seller'
+          element={<InfoProdukSeller />}></Route>
+        <Route path='/info-penawaran/:id' element={<InfoPenawaran />}></Route>
+        <Route path='/modal-buyer' element={<ModalBuyer />}></Route>
+        <Route path='/modal-seller' element={<ModalSeller />}></Route>
+        <Route
+          path='/modal-seller-status'
+          element={<ModalSellerStatus />}></Route>
+        <Route path='/alert' element={<AlertInfoPenawaran />}></Route>
+        <Route
+          path='/info-produk-page/:id'
+          element={<InfoProdukPage />}></Route>
         <Route
           path='/info-produk-seller'
           element={<InfoProdukSeller />}></Route>
