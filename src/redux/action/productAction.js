@@ -1,6 +1,7 @@
 /** @format */
 
 import axios from "axios";
+// import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Redirect } from "react-router";
 import {
@@ -13,6 +14,7 @@ import {
   GET_PRODUCT_BY_USER,
   GET_PRODUCT_BY_USER_SOLD,
   GET_PRODUCT_BY_USER_WISHLIST,
+  DELETE_PRODUCT_BY_USER_WISHLIST,
   GET_PRODUCT_ID,
 } from "../types";
 
@@ -96,6 +98,36 @@ export const getProductByUserWishlist = () => {
   };
 };
 
+// delete product by user wishlist
+export const deleteProductByUserWishlist = (id, navigate) => {
+  return(dispatch) => {
+    dispatch ({ type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_LOADING` });
+    
+    axios({
+      method: 'DELETE',
+      url: `https://nawar-api.herokuapp.com/api/v1/wishlist/delete/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(() => {
+      dispatch({
+        type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
+      });
+      dispatch(getProduct());
+      // if (res.status === 200) {
+      //   navigate("/dashboard");
+      // }
+    })
+    .catch((error) => {
+      dispatch({
+        type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_ERROR`,
+        error: error.message,
+      });
+    })
+  };
+};
+
 // get product filter by user from database
 export const getProductByUser = () => {
   return (dispatch) => {
@@ -170,7 +202,7 @@ export const createProduct = (data, navigate) => {
         });
         // dispatch(navigate("/daftar-jual"));
         if (res.status === 200) {
-          navigate("/daftar-jual");
+          navigate("/dashboard");
         }
       })
       .catch((error) => {
@@ -202,7 +234,7 @@ export const draftProduct = (data, navigate) => {
         });
         // dispatch(navigate("/daftar-jual"));
         if (res.status === 200) {
-          navigate("/daftar-jual");
+          navigate("/dashboard");
         }
       })
       .catch((error) => {
@@ -234,7 +266,7 @@ export const editProduct = (id, datas, navigate) => {
         });
         // dispatch(getProduct());
         if (res.status === 200) {
-          navigate("/daftar-jual");
+          navigate("/dashboard");
         }
       })
       .catch((error) => {
@@ -255,11 +287,11 @@ export const getProductDetail = (id) => {
       url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
     })
       .then((response) => {
+        console.log(response.data.data, "ini produk ACTION");
         dispatch({
           type: `${GET_PRODUCT_ID}_FULFILLED`,
-          payload: response.data.data.data,
+          payload: response.data.data,
         });
-        // console.log(response.data.data.data);
       })
       .catch((error) => {
         dispatch({

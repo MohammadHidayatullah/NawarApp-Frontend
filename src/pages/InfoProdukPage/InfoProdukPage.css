@@ -1,49 +1,25 @@
-.carousel .carousel-item {
-    height: 400px;
-  }
-  
-  .carousel .carousel-item img{
-    object : fit-cover;
-    /* height : 400px ;
-    width : auto ;
-    top : -10 ;  */
-    position: absolute;
-    width: 600px;
-    height: 436px;
-    left: auto;
-    top: auto;
-    border-radius: 5%;
-  }
-
-  #desc{
-    margin-top : 30px;
-    border-radius: 20px; 
-  }
+#desc {
+  margin-top: 30px;
+  border-radius: 20px;
+}
 
 #desc .card-body {
-  margin:20px;
+  margin: 20px;
 }
 
 .card-body .judul {
-  margin-bottom:25px;
+  margin-bottom: 25px;
 }
 
-/* .btn button {
-  background-color: #181818 ;
-  te
-  border:none;
-  hover: #fafafa;
-  background-hover: #fafafa; 
+.carousel .slide img {
+  max-height: 600px; /* change this to whatever you want */
+  width: auto;
 }
 
-.card-body-2 {
-  font-family: "Poppins";
-  margin-bottom: 20px;
-} */
-
-/* .profil {
-  margin-bottom:20px;
-} */
+.carousel {
+  width: 600px !important;
+  border-radius: 16px !important;
+}
 
 @media only screen and (max-width: 567px) {
   #desc {
@@ -51,5 +27,16 @@
   }
   #produk-card {
     margin-top: -16px !important;
+  }
+}
+
+@media only screen and (max-width: 972px) {
+  .carousel {
+    width: 100% !important;
+    margin-bottom: 10% !important;
+  }
+
+  #desc {
+    width: 100% !important;
   }
 }

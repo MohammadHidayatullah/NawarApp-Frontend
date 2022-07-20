@@ -80,7 +80,7 @@ export const editProfile = (data, navigate) => {
         });
         // dispatch(getProfile());
         if (res.status === 200) {
-          navigate("/daftar-jual");
+          navigate("/dashboard");
         }
       })
       .catch((error) => {

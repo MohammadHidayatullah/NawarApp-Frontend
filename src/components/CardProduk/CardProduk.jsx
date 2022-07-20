@@ -14,6 +14,11 @@ function CardProduk({ data, loading }) {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  const handleToDetail = (id) => {
+    window.location.href = `/info-produk-page/${id}`;
+  };
+
   return (
     <>
       {loading
@@ -28,7 +33,8 @@ function CardProduk({ data, loading }) {
                   padding: "8px",
                   width: "100%",
                   boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.1)",
-                }}>
+                }}
+                onClick={() => handleToDetail(item.id)}>
                 {item.productImages.length > 0 ? (
                   <div
                     className='img-product'

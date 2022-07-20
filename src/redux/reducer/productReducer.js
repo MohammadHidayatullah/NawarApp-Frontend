@@ -10,6 +10,7 @@ import {
   GET_PRODUCT_BY_USER,
   GET_PRODUCT_BY_USER_SOLD,
   GET_PRODUCT_BY_USER_WISHLIST,
+  DELETE_PRODUCT_BY_USER_WISHLIST,
   GET_PRODUCT_ID,
 } from "../types";
 
@@ -77,7 +78,22 @@ const productReducer = (state = initialState, action) => {
         isLoading: false,
         error: error,
       };
-
+    case `${DELETE_PRODUCT_BY_USER_WISHLIST}_LOADING`:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case `${DELETE_PRODUCT_BY_USER_WISHLIST}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
 
     //get product by user daftarJual
     case `${GET_PRODUCT_BY_USER}_LOADING`:

@@ -32,10 +32,10 @@ function Notification() {
   return (
     <>
       <li>
-        <div class='btn-group'>
-          <div class='btn-group dropstart' role='group'>
+        <div className='btn-group'>
+          <div className='btn-group dropstart' role='group'>
             <button
-              class='btn btn-none-style btn-lg '
+              className='btn btn-none-style btn-lg '
               type='button'
               data-bs-toggle='dropdown'
               aria-expanded='false'>
@@ -46,11 +46,11 @@ function Notification() {
                           }}
                         /> */}
                 <img src={bell} alt='' />
-                <span class='unread-notification'></span>
+                <span className='unread-notification'></span>
               </li>
             </button>
             <ul
-              class='dropdown-menu'
+              className='dropdown-menu'
               style={{
                 padding: "24px",
                 borderRadius: "16px",
@@ -63,7 +63,9 @@ function Notification() {
               ) : (
                 notificationData.map((item) => (
                   <>
-                    {item.status === "Bid" ? (
+                    {/* {item.status === "Bid" &&
+                    item.transaction.status === "Pending" ? ( */}
+                    {item.status === "Bid" && item.transaction !== null ? (
                       <li
                         className='dropdown-item'
                         onClick={() => {

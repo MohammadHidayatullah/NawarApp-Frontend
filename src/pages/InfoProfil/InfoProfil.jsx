@@ -109,9 +109,9 @@ function InfoProfil(props) {
       // append each item to the formData (converted to JSON strings)
       formData.append(key, val);
     }
-    console.log(data, "INI SUBMITTED");
-    // dispatch(editProfile(formData, navigate));
-    // resetForm();
+    // console.log(data, "INI SUBMITTED");
+    dispatch(editProfile(formData, navigate));
+    resetForm();
   };
 
   // Fungsi untuk menangani ukuran responsive mobile

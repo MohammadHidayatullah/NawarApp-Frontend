@@ -31,15 +31,23 @@ function App() {
         <Route path='/register' element={<Register />}></Route>
         <Route path='/dashboard/tambah-produk' element={<InfoProduk />}></Route>
         <Route path='/dashboard' element={<DaftarJual />}></Route>
-        <Route path='/info-produk-page' element={<InfoProdukPage />}></Route>
         <Route
           path='/info-produk-seller'
           element={<InfoProdukSeller />}></Route>
         <Route path='/info-penawaran/:id' element={<InfoPenawaran />}></Route>
         <Route path='/modal-buyer' element={<ModalBuyer />}></Route>
         <Route path='/modal-seller' element={<ModalSeller />}></Route>
-        <Route path='/modal-seller-status' element={<ModalSellerStatus />}></Route>
+        <Route
+          path='/modal-seller-status'
+          element={<ModalSellerStatus />}></Route>
         <Route path='/alert' element={<AlertInfoPenawaran />}></Route>
+        <Route
+          path='/info-produk-page/:id'
+          element={<InfoProdukPage />}></Route>
+        <Route
+          path='/info-produk-seller'
+          element={<InfoProdukSeller />}></Route>
+        <Route path='/info-penawaran' element={<InfoPenawaran />}></Route>
         <Route
           path='/info-produk/edit/:id'
           element={<InfoProdukEdit />}></Route>
