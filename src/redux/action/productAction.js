@@ -255,26 +255,26 @@ export const getProductDetail = (id) => {
   };
 };
 
-// export const deleteProduct = (id) => {
-//   return (dispatch) => {
-//     dispatch({ type: `${DELETE_PRODUCT}_LOADING` });
+export const deleteProduct = (id) => {
+  return (dispatch) => {
+    dispatch({ type: `${DELETE_PRODUCT}_LOADING` });
 
-//     axios({
-//       method: "DELETE",
-//       url: `http://localhost:3000/article/${id}`,
-//     })
-//       .then(() => {
-//         dispatch({
-//           type: `${DELETE_PRODUCT}_FULFILLED`,
-//           // payload: response.data,
-//         });
-//         dispatch(getProduct());
-//       })
-//       .catch((error) => {
-//         dispatch({
-//           type: `${DELETE_PRODUCT}_ERROR`,
-//           error: error.message,
-//         });
-//       });
-//   };
-// };
+    axios({
+      method: "DELETE",
+      url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
+    })
+      .then(() => {
+        dispatch({
+          type: `${DELETE_PRODUCT}_FULFILLED`,
+          // payload: response.data,
+        });
+        dispatch(getProduct());
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${DELETE_PRODUCT}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+};

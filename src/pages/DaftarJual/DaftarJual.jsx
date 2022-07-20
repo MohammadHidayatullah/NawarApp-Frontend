@@ -23,6 +23,8 @@ function DaftarJual() {
   const [button, setButton] = useState(1);
   const dispatch = useDispatch();
 
+  console.log(DaftarJual);
+
   const { isLoading: loadingProduct, data: productData } = useSelector(
     (state) => state.product
   );

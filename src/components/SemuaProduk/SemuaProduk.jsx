@@ -1,21 +1,31 @@
 /** @format */
 
 import React from "react";
-import { useEffect } from "react";
+import { useEffect} from "react";
 import { FiPlus } from "react-icons/fi";
 import NumberFormat from "react-number-format";
 import produk from "../../assets/img/produk.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import { deleteProduct } from "../../redux/action/productAction";
+import {useDispatch } from "react-redux"
 
 function SemuaProduk({ loading, data }) {
+  const dispatch = useDispatch();
   // console.log("data", data);
   // console.log("token", localStorage.getItem("token"));
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  const navigate = useNavigate();
+
+  const navProduk = () => {
+    navigate("/info-produk/edit/:id");
+  };
+
   return (
     <>
       <div className='row' data-aos='fade-up'>
@@ -129,6 +139,22 @@ function SemuaProduk({ loading, data }) {
                         prefix={"Rp "}
                       />
                     </p>
+                  </div>
+                  <div className='button-response'>
+                  <Link to={`/info-produk/edit/${item.id}`}>
+                      <button className='w-50' type="button"
+                        // onClick={navProduk}
+                        style={{ backgroundColor: "#F1F0F0", color: "#181818" , borderRadius: "16px" , padding : "5px 10px" , fontSize:"14px"  }}>
+                        Edit
+                      </button>
+                  </Link>
+                      {/* <Link to > */}
+                      <button className='w-50' type="button"
+                          onClick={() => dispatch(deleteProduct(item.id))}
+                        style={{ backgroundColor: "#181818", color: "#FFFF" , borderRadius: "16px" , padding : "5px 10px" , fontSize:"14px",  }}>
+                        Hapus
+                      </button>
+                      {/* </Link> */}
                   </div>
                 </div>
               </section>

@@ -27,5 +27,6 @@ export const CREATE_PRODUCT = "CREATE_PRODUCT";
 export const EDIT_PRODUCT = "CREATE_PRODUCT";
 export const DRAFT_PRODUCT = "DRAFT_PRODUCT";
 export const GET_CATEGORY = "GET_CATEGORY";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 // export const EDIT_PROFILE = "EDIT_PROFILE";
 // export const DELETE_PROFILE = "DELETE_PROFILE";

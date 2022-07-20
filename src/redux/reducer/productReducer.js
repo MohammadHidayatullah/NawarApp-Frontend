@@ -185,22 +185,23 @@ const productReducer = (state = initialState, action) => {
         error: error,
       };
 
-    // case `${DELETE_PRODUCT}_LOADING`:
-    //   return {
-    //     ...state,
-    //     isLoading: true,
-    //   };
-    // case `${DELETE_PRODUCT}_FULFILLED`:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //   };
-    // case `${DELETE_PRODUCT}_ERROR`:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     error: error,
-    //   };
+    //Delete Product Reducer
+    case `${DELETE_PRODUCT}_LOADING`:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case `${DELETE_PRODUCT}_FULFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case `${DELETE_PRODUCT}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
     default:
       return {
         ...state,
