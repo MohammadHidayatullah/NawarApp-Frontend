@@ -32,10 +32,10 @@ function Notification() {
   return (
     <>
       <li>
-        <div class='btn-group'>
-          <div class='btn-group dropstart' role='group'>
+        <div className='btn-group'>
+          <div className='btn-group dropstart' role='group'>
             <button
-              class='btn btn-none-style btn-lg '
+              className='btn btn-none-style btn-lg '
               type='button'
               data-bs-toggle='dropdown'
               aria-expanded='false'>
@@ -46,11 +46,11 @@ function Notification() {
                           }}
                         /> */}
                 <img src={bell} alt='' />
-                <span class='unread-notification'></span>
+                <span className='unread-notification'></span>
               </li>
             </button>
             <ul
-              class='dropdown-menu'
+              className='dropdown-menu'
               style={{
                 padding: "24px",
                 borderRadius: "16px",
@@ -61,7 +61,7 @@ function Notification() {
                   <span>Tidak ada notifikasi</span>
                 </li>
               ) : (
-                notificationData.map((item) => (
+                notificationData?.map((item) => (
                   <>
                     {item.status === "Bid" ? (
                       <li
@@ -71,13 +71,12 @@ function Notification() {
                         }}>
                         <div className='d-flex justify-content-between'>
                           <div className='d-flex flex-row'>
-                            {item.transaction.productTransactions.productImages
+                            {item?.transaction?.productTransactions?.productImages
                               .length > 0 ? (
                               <img
                                 className='me-3'
                                 src={
-                                  item.transaction.productTransactions
-                                    .productImages[0].url
+                                  item?.transaction?.productTransactions?.productImages?.[0]?.url
                                 }
                                 alt=''
                                 style={{
@@ -112,7 +111,7 @@ function Notification() {
                                 style={{
                                   fontSize: "14px",
                                 }}>
-                                {item.transaction.productTransactions.name}
+                                {item?.transaction?.productTransactions?.name}
                               </p>
                               <p
                                 className='m-0 p-0'
@@ -121,7 +120,7 @@ function Notification() {
                                 }}>
                                 <NumberFormat
                                   value={
-                                    item.transaction.productTransactions.price
+                                    item?.transaction?.productTransactions?.price
                                   }
                                   displayType={"text"}
                                   thousandSeparator={"."}
@@ -136,7 +135,7 @@ function Notification() {
                                 }}>
                                 Ditawar{" "}
                                 <NumberFormat
-                                  value={item.transaction.bidPrice}
+                                  value={item?.transaction?.bidPrice}
                                   displayType={"text"}
                                   thousandSeparator={"."}
                                   decimalSeparator={","}
@@ -152,7 +151,7 @@ function Notification() {
                                 }}>
                                 {
                                   <Moment format='DD MMMM, H:mm'>
-                                    {item.notifDate}
+                                    {item?.notifDate}
                                   </Moment>
                                 }
                               </p>

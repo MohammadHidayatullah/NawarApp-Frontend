@@ -55,10 +55,10 @@ function Navbar() {
                 <ul className='d-flex align-items-center'>
                   <Notification />
                   <li>
-                    <div class='btn-group'>
-                      <div class='btn-group dropstart' role='group'>
+                    <div className='btn-group'>
+                      <div className='btn-group dropstart' role='group'>
                         <button
-                          class='btn btn-none-style btn-lg'
+                          className='btn btn-none-style btn-lg'
                           type='button'
                           data-bs-toggle='dropdown'
                           aria-expanded='false'>
@@ -72,7 +72,7 @@ function Navbar() {
                           </li>
                         </button>
                         <ul
-                          class='dropdown-menu'
+                          className='dropdown-menu'
                           style={{
                             padding: "24px",
                             borderRadius: "16px",
