@@ -3,18 +3,22 @@
 import React, { useState } from "react";
 import "./ModalSellerStatus.css";
 import { FiX } from "react-icons/fi";
+import { completeOffer, rejectOffer } from "../../redux/action/transactionAction";
 
-function ModalSellerStatus({ handleCompleteOffer, handleRejectOffer, item }) {
-  const [isOpen, setIsOpen] = useState("");
+
+function ModalSellerStatus({ item }) {
+  const [isOpen, setIsOpen] = useState(null);
+
+  console.log('item_id', item.transactions.id)
 
   console.log("open", isOpen);
   console.log("item modal", item);
 
-  const handleSend = () => {
+  const handleSend = (item) => {
     if (isOpen === "complete") {
-      handleCompleteOffer();
+      completeOffer(item.transactions.id);
     } else if (isOpen === "reject") {
-      handleRejectOffer();
+      rejectOffer(item.transactions.id);
     }
   };
 
@@ -56,8 +60,7 @@ function ModalSellerStatus({ handleCompleteOffer, handleRejectOffer, item }) {
                   type='radio'
                   name='flexRadioDefault'
                   id='flexRadioDefault1'
-                  value='complete'
-                  onClick={() => setIsOpen("complete")}
+                  onChange={() => setIsOpen("complete")}
                 />
                 <label className='form-check-label' htmlFor='flexRadioDefault1'>
                   Berhasil terjual
@@ -72,8 +75,7 @@ function ModalSellerStatus({ handleCompleteOffer, handleRejectOffer, item }) {
                   type='radio'
                   name='flexRadioDefault'
                   id='flexRadioDefault2'
-                  value='reject'
-                  onClick={() => setIsOpen("reject")}
+                  onChange={() => setIsOpen("reject")}
                 />
                 <label className='form-check-label' htmlFor='flexRadioDefault2'>
                   Batalkan transaksi

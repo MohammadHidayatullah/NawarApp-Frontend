@@ -65,7 +65,7 @@ function Notification() {
                   <>
                     {/* {item.status === "Bid" &&
                     item.transaction.status === "Pending" ? ( */}
-                    {item.status === "Bid" ? (
+                    {item.status === "Bid" && item.transaction !== null ? (
                       <li
                         className='dropdown-item'
                         onClick={() => {
