@@ -2,16 +2,37 @@
 
 import React from "react";
 import NumberFormat from "react-number-format";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import produk from "../../assets/img/produk.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { deleteProductByUserWishlist, getProduct } from "../../redux/action/productAction";
 
 function Diminati({ loading, data }) {
+  
+  const dispatch = useDispatch();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+    
+  //   console.log(data, "INI SUBMITTED");
+  //   dispatch(deleteProductByUserWishlist(navigate));
+    
+  // };
+  
   useEffect(() => {
     AOS.init();
     AOS.refresh();
+    // dispatch(getProduct());
   }, []);
+
+  // const navigate = useNavigate();
+
+  // const navHome = () => {
+  //   navigate("/");
+  // };
+
   return (
     <div className='row' data-aos='fade-up'>
       {loading
@@ -85,6 +106,22 @@ function Diminati({ loading, data }) {
                       prefix={"Rp "}
                     />
                   </p>
+                  <div className='button-aksi d-flex justify-content-end'>
+                    {/* <Link to={`/dashboard/edit-produk/${item.id}`}> */}
+                      <button className='btn btn-danger'
+                        type="button"
+                        onClick={() => dispatch(deleteProductByUserWishlist(item.id))}
+                        style={{ 
+                          backgroundColor: "#000000", 
+                          borderColor: "#000000", 
+                          color: "#ffffff",
+                          width: "100%",
+                        }}>
+                        Hapus
+                      </button>
+                    {/* </Link> */}
+                  </div>
+                  
                 </div>
               </div>
             </section>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 import {
   GET_PROFILE,
   CREATE_PROFILE,
@@ -60,7 +61,7 @@ export const getProfile = () => {
 //   };
 // };
 
-export const editProfile = (data) => {
+export const editProfile = (data, navigate) => {
   return (dispatch) => {
     dispatch({ type: `${EDIT_PROFILE}_LOADING` });
     // console.log(data, "<= Data edit profile");
@@ -72,12 +73,15 @@ export const editProfile = (data) => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(() => {
+      .then((res) => {
         dispatch({
           type: `${EDIT_PROFILE}_FULFILLED`,
           // payload: response.data,
         });
-        dispatch(getProfile());
+        // dispatch(getProfile());
+        if (res.status === 200) {
+          navigate("/dashboard");
+        }
       })
       .catch((error) => {
         dispatch({

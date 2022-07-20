@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 
-const registernReducer = (state = initialState, action) => {
+const registerReducer = (state = initialState, action) => {
   const { type, payload, error, input } = action;
   switch (type) {
     case `LOADING`:
@@ -35,4 +35,4 @@ const registernReducer = (state = initialState, action) => {
   }
 };
 
-export default registernReducer;
+export default registerReducer;

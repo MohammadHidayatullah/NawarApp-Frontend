@@ -141,7 +141,7 @@ export default function Register() {
                     onClick={handleRegister}
                     loading={isLoading}
                     >
-                    Register
+                    Daftar
                     </button>
                 </Link>
                 

@@ -28,6 +28,14 @@ function DaftarJual() {
   const { isLoading: loadingProduct, data: productData } = useSelector(
     (state) => state.product
   );
+
+  const { isLoading: loadingWishlist, data: productWishlist } = useSelector(
+    (state) => state.wishlist
+  );
+
+  const { isLoading: loadingSold, data: productSold } = useSelector(
+    (state) => state.sold
+  );
   // const testData = useSelector((state) => state);
 
   // useEffect(() => {
@@ -41,13 +49,17 @@ function DaftarJual() {
     setButton(button);
     if (button === 1) {
       dispatch(getProductByUser());
-    }
-    if (button === 2) {
+    } else if (button === 2) {
       dispatch(getProductByUserWishlist());
-    } else {
+    } else if (button === 3) {
       dispatch(getProductByUserSold());
     }
   };
+
+  useEffect(() => {
+    dispatch(getProductByUserSold());
+  }
+  , [dispatch]);
 
   console.log("data", button);
   return (
@@ -62,21 +74,21 @@ function DaftarJual() {
               <SemuaProduk loading={loadingProduct} data={productData} />
             ) : button === 2 ? (
               <>
-                {productData.length === 0 ? (
+                {productWishlist.length === 0 ? (
                   <DiminatiNotFound />
                 ) : (
-                  <Diminati loading={loadingProduct} data={productData} />
+                  <Diminati loading={loadingWishlist} data={productWishlist} />
                 )}
               </>
-            ) : (
+            ) : button === 3 ? (
               <>
-                {productData.length === 0 ? (
+                {productSold.length === 0 ? (
                   <TerjualNotFound />
                 ) : (
-                  <Terjual loading3={loadingProduct} data3={productData} />
+                  <Terjual loading3={loadingSold} data3={productSold} />
                 )}
               </>
-            )}
+            ) : null}
             {/* <DiminatiNotFound /> */}
             {/* <TerjualNotFound /> */}
           </div>
