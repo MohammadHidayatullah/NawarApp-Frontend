@@ -20,7 +20,11 @@ import { useEffect } from "react";
 import { getNotificationSellerById } from "../../redux/action/notificationIdAction";
 import NumberFormat from "react-number-format";
 import Moment from "react-moment";
-import { acceptOffer } from "../../redux/action/transactionAction";
+import {
+  acceptOffer,
+  completeOffer,
+  rejectOffer,
+} from "../../redux/action/transactionAction";
 // import { getNotificationSellerById } from "../../redux/action/notificationIdAction";
 
 function InfoPenawaran() {
@@ -55,7 +59,22 @@ function InfoPenawaran() {
     );
   };
 
-  
+  const handleCompleteOffer = (data) => {
+    dispatch(completeOffer(data.transactions.id));
+    //refresh page
+    window.location.reload(
+      (window.location.href = "/info-penawaran/" + data.id)
+    );
+  };
+
+  const handleRejectOffer = (data) => {
+    dispatch(rejectOffer(data.transactions.id));
+    //refresh page
+    window.location.reload(
+      (window.location.href = "/info-penawaran/" + data.id)
+    );
+  };
+
   return (
     <>
       <Navbar2 />
@@ -268,7 +287,11 @@ function InfoPenawaran() {
                   {step.status === "approve" && <p>tidak ada barang</p>}
 
                   <ModalSeller />
-                  <ModalSellerStatus />
+                  <ModalSellerStatus
+                    handleCompleteOffer={handleCompleteOffer}
+                    handleRejectOffer={handleRejectOffer}
+                    item={item}
+                  />
                 </div>
               </div>
             </div>

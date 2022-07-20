@@ -1,10 +1,14 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import "./ModalSellerStatus.css";
 import { FiX } from "react-icons/fi";
 
-function ModalSellerStatus() {
+function ModalSellerStatus({ handleCompleteOffer, handleRejectOffer, item }) {
+  const [isOpen, setIsOpen] = useState("");
+
+  console.log("open", isOpen);
+
   return (
     <>
       {/* <button
@@ -43,6 +47,8 @@ function ModalSellerStatus() {
                   type='radio'
                   name='flexRadioDefault'
                   id='flexRadioDefault1'
+                  value='complete'
+                  onClick={() => setIsOpen("complete")}
                 />
                 <label className='form-check-label' for='flexRadioDefault1'>
                   Berhasil terjual
@@ -57,7 +63,9 @@ function ModalSellerStatus() {
                   type='radio'
                   name='flexRadioDefault'
                   id='flexRadioDefault2'
+                  value='reject'
                   checked
+                  onClick={() => setIsOpen("reject")}
                 />
                 <label className='form-check-label' for='flexRadioDefault2'>
                   Batalkan transaksi
@@ -70,11 +78,18 @@ function ModalSellerStatus() {
             <button
               type='button'
               className='btn tawar'
-              data-bs-dismiss='modal'
               style={{
                 background: "#181818",
                 color: "white",
                 borderRadius: "16px",
+              }}
+              data-bs-dismiss='modal'
+              onClick={() => {
+                if (isOpen === "complete") {
+                  handleCompleteOffer(item);
+                } else if (isOpen === "reject") {
+                  handleRejectOffer(item);
+                }
               }}>
               Kirim
             </button>
