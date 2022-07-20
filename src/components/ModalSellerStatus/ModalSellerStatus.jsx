@@ -8,6 +8,15 @@ function ModalSellerStatus({ handleCompleteOffer, handleRejectOffer, item }) {
   const [isOpen, setIsOpen] = useState("");
 
   console.log("open", isOpen);
+  console.log("item modal", item);
+
+  const handleSend = () => {
+    if (isOpen === "complete") {
+      handleCompleteOffer();
+    } else if (isOpen === "reject") {
+      handleRejectOffer();
+    }
+  };
 
   return (
     <>
@@ -50,7 +59,7 @@ function ModalSellerStatus({ handleCompleteOffer, handleRejectOffer, item }) {
                   value='complete'
                   onClick={() => setIsOpen("complete")}
                 />
-                <label className='form-check-label' for='flexRadioDefault1'>
+                <label className='form-check-label' htmlFor='flexRadioDefault1'>
                   Berhasil terjual
                   <span>
                     Kamu telah sepakat menjual produk ini kepada pembeli
@@ -64,10 +73,9 @@ function ModalSellerStatus({ handleCompleteOffer, handleRejectOffer, item }) {
                   name='flexRadioDefault'
                   id='flexRadioDefault2'
                   value='reject'
-                  checked
                   onClick={() => setIsOpen("reject")}
                 />
-                <label className='form-check-label' for='flexRadioDefault2'>
+                <label className='form-check-label' htmlFor='flexRadioDefault2'>
                   Batalkan transaksi
                   <span>
                     Kamu membatalkan transaksi produk ini dengan pembeli
@@ -83,14 +91,8 @@ function ModalSellerStatus({ handleCompleteOffer, handleRejectOffer, item }) {
                 color: "white",
                 borderRadius: "16px",
               }}
-              data-bs-dismiss='modal'
-              onClick={() => {
-                if (isOpen === "complete") {
-                  handleCompleteOffer(item);
-                } else if (isOpen === "reject") {
-                  handleRejectOffer(item);
-                }
-              }}>
+              // data-bs-dismiss='modal'
+              onClick={handleSend}>
               Kirim
             </button>
           </div>

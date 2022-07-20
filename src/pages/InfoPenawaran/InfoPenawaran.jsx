@@ -43,6 +43,7 @@ function InfoPenawaran() {
   const { isLoading: loadingNotification, data: item } = useSelector(
     (state) => state.notificationId
   );
+
   useEffect(() => {
     if (item.length === 0) {
       dispatch(getNotificationSellerById(id));
@@ -60,7 +61,7 @@ function InfoPenawaran() {
   };
 
   const handleCompleteOffer = (data) => {
-    dispatch(completeOffer(data.transactions.id));
+    dispatch(completeOffer());
     //refresh page
     window.location.reload(
       (window.location.href = "/info-penawaran/" + data.id)
@@ -68,7 +69,7 @@ function InfoPenawaran() {
   };
 
   const handleRejectOffer = (data) => {
-    dispatch(rejectOffer(data.transactions.id));
+    dispatch(rejectOffer());
     //refresh page
     window.location.reload(
       (window.location.href = "/info-penawaran/" + data.id)
@@ -111,7 +112,7 @@ function InfoPenawaran() {
                           <b>{item.transactions.buyer.name}</b>
                         </h6>
                         <p className='card-text m-0 p-0' id='kota'>
-                          <small class='text-muted'>
+                          <small className='text-muted'>
                             {item.transactions.buyer.address}
                           </small>
                         </p>
@@ -261,7 +262,7 @@ function InfoPenawaran() {
                           Status
                         </button>
                         <button
-                          type='submit'
+                          type='button'
                           className='btn d-flex align-items-center'
                           style={{
                             backgroundColor: "#7126B5",
@@ -271,11 +272,9 @@ function InfoPenawaran() {
                             paddingRight: "10%",
                             paddingLeft: "10%",
                           }}
-                          onClick={() =>
-                            setStep({
-                              status: "appove",
-                            })
-                          }>
+                          data-bs-toggle='modal'
+                          data-bs-target='#modalSeller'
+                          >
                           Hubungi di &nbsp;
                           <FaWhatsapp size={14} />
                         </button>
@@ -284,9 +283,8 @@ function InfoPenawaran() {
                   )}
 
                   {/* akhir button */}
-                  {step.status === "approve" && <p>tidak ada barang</p>}
 
-                  <ModalSeller />
+                  <ModalSeller item={item} />
                   <ModalSellerStatus
                     handleCompleteOffer={handleCompleteOffer}
                     handleRejectOffer={handleRejectOffer}
