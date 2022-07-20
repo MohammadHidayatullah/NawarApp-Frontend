@@ -3,19 +3,35 @@
 import React from "react";
 import NumberFormat from "react-number-format";
 import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import produk from "../../assets/img/produk.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { deleteProductByUserWishlist } from "../../redux/action/productAction";
+import { deleteProductByUserWishlist, getProduct } from "../../redux/action/productAction";
 
 function Diminati({ loading, data }) {
+  
   const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // console.log(data, "INI SUBMITTED");
+    dispatch(deleteProductByUserWishlist(navigate));
+    
+  };
   
   useEffect(() => {
     AOS.init();
     AOS.refresh();
+    // dispatch(getProduct());
   }, []);
+
+  const navigate = useNavigate();
+
+  const navHome = () => {
+    navigate("/");
+  };
 
   return (
     <div className='row' data-aos='fade-up'>
@@ -94,7 +110,8 @@ function Diminati({ loading, data }) {
                     {/* <Link to={`/dashboard/edit-produk/${item.id}`}> */}
                       <button className='btn btn-danger'
                         type="button"
-                        onClick={() => dispatch(deleteProductByUserWishlist(item.id))}
+                        // onClick={() => dispatch(deleteProductByUserWishlist(item.id))}
+                        onClick={handleSubmit}
                         style={{ 
                           backgroundColor: "#000000", 
                           borderColor: "#000000", 
@@ -105,6 +122,7 @@ function Diminati({ loading, data }) {
                       </button>
                     {/* </Link> */}
                   </div>
+                  
                 </div>
               </div>
             </section>

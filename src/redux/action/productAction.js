@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import {
   GET_PRODUCT,
   GET_PRODUCT_BY_CATEGORY,
@@ -96,19 +96,25 @@ export const getProductByUserWishlist = () => {
 };
 
 // delete product by user wishlist
-export const deleteProductByUserWishlist = (id) => {
+export const deleteProductByUserWishlist = (id, navigate) => {
   return(dispatch) => {
     dispatch ({ type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_LOADING` });
     
     axios({
       method: 'DELETE',
-      url: "nawar-api.herokuapp.com/api/v1/wishlist/delete/1",
+      url: 'https://nawar-api.herokuapp.com/api/v1/wishlist/delete/1',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
-    .then(() => {
+    .then((res) => {
       dispatch({
         type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
       });
-      dispatch(getProduct());
+      // dispatch(getProduct());
+      if (res.status === 200) {
+        navigate("/dashboard");
+      }
     })
     .catch((error) => {
       dispatch({
