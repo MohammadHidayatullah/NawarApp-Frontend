@@ -170,7 +170,7 @@ export const createProduct = (data, navigate) => {
         });
         // dispatch(navigate("/daftar-jual"));
         if (res.status === 200) {
-          navigate("/daftar-jual");
+          navigate("/dashboard");
         }
       })
       .catch((error) => {
@@ -202,7 +202,7 @@ export const draftProduct = (data, navigate) => {
         });
         // dispatch(navigate("/daftar-jual"));
         if (res.status === 200) {
-          navigate("/daftar-jual");
+          navigate("/dashboard");
         }
       })
       .catch((error) => {
@@ -234,7 +234,7 @@ export const editProduct = (id, datas, navigate) => {
         });
         // dispatch(getProduct());
         if (res.status === 200) {
-          navigate("/daftar-jual");
+          navigate("/dashboard");
         }
       })
       .catch((error) => {
@@ -255,11 +255,11 @@ export const getProductDetail = (id) => {
       url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
     })
       .then((response) => {
+        console.log(response.data.data, "ini produk ACTION");
         dispatch({
           type: `${GET_PRODUCT_ID}_FULFILLED`,
-          payload: response.data.data.data,
+          payload: response.data.data,
         });
-        // console.log(response.data.data.data);
       })
       .catch((error) => {
         dispatch({
