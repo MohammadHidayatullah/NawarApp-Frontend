@@ -51,14 +51,14 @@ function InfoProdukPage() {
   const [idTransaksi, setIdTransaksi] = useState();
   const [transaksi, setTransaksi] = useState();
 
-  useEffect(() => {
-    if (productData.length === 0) {
-      dispatch(getProductDetail(id));
-      return;
-    }
-    setProvince(productData.seller.province);
-    setCity(productData.seller.city);
-  }, [productData]);
+  // useEffect(() => {
+  //   if (productData.length === 0) {
+  //     dispatch(getProductDetail(id));
+  //     return;
+  //   }
+  //   setProvince(productData.seller.province);
+  //   setCity(productData.seller.city);
+  // }, [productData]);
 
   useEffect(() => {
     if (productData.length === 0) {

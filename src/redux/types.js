@@ -29,9 +29,10 @@ export const DRAFT_PRODUCT = "DRAFT_PRODUCT";
 export const GET_CATEGORY = "GET_CATEGORY";
 
 export const CREATE_TRANSACTION = "CREATE_TRANSACTION";
+
+export const PUBLISH_PRODUCT = "PUBLISH_PRODUCT";
 // export const EDIT_PROFILE = "EDIT_PROFILE";
 // export const DELETE_PROFILE = "DELETE_PROFILE";
-
 
 // =================== TRANSACTION ====================
 export const GET_NOTIFICATION_SELLER = "GET_NOTIFICATION_SELLER";
