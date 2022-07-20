@@ -6,8 +6,15 @@ import produk from "../../assets/img/produk.jpg";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import NumberFormat from "react-number-format";
+import { useNavigate } from "react-router";
 
-function ModalSeller() {
+function ModalSeller({ item }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    window.location.href = `https://api.whatsapp.com/send?phone=${item.transactions.buyer.phone}`;
+  };
+
   return (
     <>
       {/* <button
@@ -100,12 +107,13 @@ function ModalSeller() {
             <button
               type='button'
               className='btn tawar'
-              data-bs-dismiss='modal'
+              // data-bs-dismiss='modal'
               style={{
                 background: "#181818",
                 color: "white",
                 borderRadius: "16px",
-              }}>
+              }}
+              onClick={handleClick}>
               Hubungi via Whatsapp <FaWhatsapp />
             </button>
           </div>

@@ -7,16 +7,21 @@ import list from "../../assets/icon/fi_list.svg";
 import user from "../../assets/icon/fi_user.svg";
 import search from "../../assets/icon/fi_search.svg";
 import Notification from "../../components/Notification/Notification";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const navigate = useNavigate();
   const access_token = localStorage.getItem("token");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.reload();
   };
+
+  const handleNavHome = () => {
+    navigate("/");
+  };
+
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-light py-3'>
@@ -31,7 +36,7 @@ function Navbar() {
             aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'></span>
           </button>
-          <a className='navbar-brand' href='/'>
+          <a className='navbar-brand' onClick={handleNavHome}>
             <img src={logo} alt='logo-nawarApp' className='logo-nawar me-2' />
             <span>NawarApp</span>
           </a>

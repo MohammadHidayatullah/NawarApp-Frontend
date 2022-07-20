@@ -1,10 +1,27 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import "./ModalSellerStatus.css";
 import { FiX } from "react-icons/fi";
+import { completeOffer, rejectOffer } from "../../redux/action/transactionAction";
 
-function ModalSellerStatus() {
+
+function ModalSellerStatus({ item }) {
+  const [isOpen, setIsOpen] = useState(null);
+
+  console.log('item_id', item.transactions.id)
+
+  console.log("open", isOpen);
+  console.log("item modal", item);
+
+  const handleSend = (item) => {
+    if (isOpen === "complete") {
+      completeOffer(item.transactions.id);
+    } else if (isOpen === "reject") {
+      rejectOffer(item.transactions.id);
+    }
+  };
+
   return (
     <>
       {/* <button
@@ -43,8 +60,9 @@ function ModalSellerStatus() {
                   type='radio'
                   name='flexRadioDefault'
                   id='flexRadioDefault1'
+                  onChange={() => setIsOpen("complete")}
                 />
-                <label className='form-check-label' for='flexRadioDefault1'>
+                <label className='form-check-label' htmlFor='flexRadioDefault1'>
                   Berhasil terjual
                   <span>
                     Kamu telah sepakat menjual produk ini kepada pembeli
@@ -57,9 +75,9 @@ function ModalSellerStatus() {
                   type='radio'
                   name='flexRadioDefault'
                   id='flexRadioDefault2'
-                  checked
+                  onChange={() => setIsOpen("reject")}
                 />
-                <label className='form-check-label' for='flexRadioDefault2'>
+                <label className='form-check-label' htmlFor='flexRadioDefault2'>
                   Batalkan transaksi
                   <span>
                     Kamu membatalkan transaksi produk ini dengan pembeli
@@ -70,12 +88,13 @@ function ModalSellerStatus() {
             <button
               type='button'
               className='btn tawar'
-              data-bs-dismiss='modal'
               style={{
                 background: "#181818",
                 color: "white",
                 borderRadius: "16px",
-              }}>
+              }}
+              // data-bs-dismiss='modal'
+              onClick={handleSend}>
               Kirim
             </button>
           </div>
