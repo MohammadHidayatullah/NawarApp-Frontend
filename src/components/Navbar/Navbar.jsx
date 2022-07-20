@@ -5,9 +5,8 @@ import logo from "../../assets/img/logo-NawarApp.png";
 import login from "../../assets/icon/fi_log-in.svg";
 import list from "../../assets/icon/fi_list.svg";
 import user from "../../assets/icon/fi_user.svg";
-import { FiBell, FiUser } from "react-icons/fi";
-import bell from "../../assets/icon/fi_bell.svg";
 import search from "../../assets/icon/fi_search.svg";
+import Notification from "../../components/Notification/Notification";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -54,54 +53,48 @@ function Navbar() {
             <form className='menu-navbar'>
               {access_token !== null ? (
                 <ul className='d-flex align-items-center'>
-                  <li className='mt-1'>
-                    {/* <FiBell
-                      style={{
-                        size: "24px",
-                      }}
-                    /> */}
-                    <img src={bell} alt='' />
-                  </li>
+                  <Notification />
                   <li>
                     <div class='btn-group'>
-                      <button
-                        class='btn btn-lg dropdown-toggle'
-                        type='button'
-                        data-bs-toggle='dropdown'
-                        aria-expanded='false'
-                        style={{
-                          decoration: "none",
-                        }}>
-                        <li>
-                          {/* <FiUser
+                      <div class='btn-group dropstart' role='group'>
+                        <button
+                          class='btn btn-none-style btn-lg'
+                          type='button'
+                          data-bs-toggle='dropdown'
+                          aria-expanded='false'>
+                          <li>
+                            {/* <FiUser
                           style={{
                             size: "24px",
                           }}
                         /> */}
-                          <img src={user} alt='' />
-                        </li>
-                      </button>
-                      <ul class='dropdown-menu'>
-                        {/* <li>
-                          <a className='dropdown-item' href='/info-profil'>
-                            Info Profile
-                          </a>
-                        </li> */}
-                        <li>
-                          <a className='dropdown-item' href='/dashboard'>
-                            Dashboard
-                          </a>
-                        </li>
-                        <br />
-                        <li>
-                          <span
-                            className='dropdown-item'
-                            style={{ color: "red" }}
-                            onClick={handleLogout}>
-                            Logout
-                          </span>
-                        </li>
-                      </ul>
+                            <img src={user} alt='' />
+                          </li>
+                        </button>
+                        <ul
+                          class='dropdown-menu'
+                          style={{
+                            padding: "24px",
+                            borderRadius: "16px",
+                            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
+                          }}>
+                          <li>
+                            <a className='dropdown-item' href='/dashboard'>
+                              Dashboard
+                            </a>
+                          </li>
+                          <li>
+                            <span
+                              className='dropdown-item'
+                              style={{
+                                color: "red",
+                              }}
+                              onClick={handleLogout}>
+                              Logout
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </li>
                 </ul>

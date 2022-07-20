@@ -8,7 +8,11 @@ import provinceReducer from "./provinceReducer";
 import cityReducer from "./cityReducer";
 import registernReducer from "./registerReducer";
 import categoryReducer from "./categoryReducer";
+import notificationReducer from "./notificationReducer";
+import notificationIdReducer from "./notificationReducerId";
 import transactionReducer from "./transactionReducer";
+import productWishlistReducer from "./productWishlistReducer";
+import productSoldReducer from "./productSoldReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -18,5 +22,9 @@ export default combineReducers({
   province: provinceReducer,
   city: cityReducer,
   category: categoryReducer,
+  notification: notificationReducer,
+  notificationId: notificationIdReducer,
   transaction: transactionReducer,
+  wishlist: productWishlistReducer,
+  sold: productSoldReducer,
 });

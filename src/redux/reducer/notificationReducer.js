@@ -1,7 +1,6 @@
 /** @format */
 
-import { ACCEPT_OFFER } from "../types";
-import { CREATE_TRANSACTION } from "../types";
+import { GET_NOTIFICATION_SELLER, GET_NOTIFICATION_SELLER_BY_ID } from "../types";
 
 const initialState = {
   data: [],
@@ -9,50 +8,47 @@ const initialState = {
   error: null,
 };
 
-const transactionReducer = (state = initialState, action) => {
+const notificationReducer = (state = initialState, action) => {
   const { type, payload, error } = action;
   switch (type) {
-    // accept offer from transaction
-    case `${ACCEPT_OFFER}_LOADING`:
+    case `${GET_NOTIFICATION_SELLER}_LOADING`:
       return {
         ...state,
+        isLoading: true,
       };
-    case `${ACCEPT_OFFER}_FULFILLED`:
+    case `${GET_NOTIFICATION_SELLER}_FULFILLED`:
       return {
         ...state,
         data: payload,
         isLoading: false,
       };
-    case `${ACCEPT_OFFER}_ERROR`:
+    case `${GET_NOTIFICATION_SELLER}_ERROR`:
       return {
         ...state,
-        error: error,
         isLoading: false,
+        error: error,
       };
 
-    // create transaction from transaction
-    case `${CREATE_TRANSACTION}_LOADING`:
+      case `${GET_NOTIFICATION_SELLER_BY_ID}_LOADING`:
       return {
         ...state,
         isLoading: true,
       };
-    case `${CREATE_TRANSACTION}_FULFILLED`:
+    case `${GET_NOTIFICATION_SELLER_BY_ID}_FULFILLED`:
       return {
         ...state,
+        data: payload,
         isLoading: false,
       };
-    case `${CREATE_TRANSACTION}_ERROR`:
+    case `${GET_NOTIFICATION_SELLER_BY_ID}_ERROR`:
       return {
         ...state,
         isLoading: false,
         error: error,
       };
-
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
 
-export default transactionReducer;
+export default notificationReducer;
