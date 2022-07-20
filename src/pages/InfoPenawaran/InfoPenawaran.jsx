@@ -8,7 +8,7 @@ import { FaArrowLeft, FaPlus, FaTimes, FaWhatsapp } from "react-icons/fa";
 import Navbar2 from "../../components/NavbarInfo/NavbarInfo";
 import ModalSeller from "../../components/ModalSeller/ModalSeller";
 import ModalSellerStatus from "../../components/ModalSellerStatus/ModalSellerStatus";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import ImageUploadPreviewComponent from "../../components/ImageUpload/ImageUploadPreviewComponent";
 // import { useState } from "react";
 import Foto from "../../assets/img/img_photo(2).jpg";
@@ -25,6 +25,7 @@ import { acceptOffer } from "../../redux/action/transactionAction";
 
 function InfoPenawaran() {
   const dispatch = useDispatch();
+  const { id } = useParams();
   const [step, setStep] = useState({
     status: "keranjang",
   });
@@ -38,14 +39,23 @@ function InfoPenawaran() {
   const { isLoading: loadingNotification, data: item } = useSelector(
     (state) => state.notificationId
   );
+  useEffect(() => {
+    if (item.length === 0) {
+      dispatch(getNotificationSellerById(id));
+    }
+  }, [dispatch]);
 
   console.log("detailnotificationData", item, "data");
 
-  const handleAccept = () => {
-    dispatch(acceptOffer(item.id));
-    navigate(`/info-penawaran/${item.id}`);
+  const handleAcceptOffer = (data) => {
+    dispatch(acceptOffer(data.transactions.id));
+    //refresh page
+    window.location.reload(
+      (window.location.href = "/info-penawaran/" + data.id)
+    );
   };
 
+  
   return (
     <>
       <Navbar2 />
@@ -162,6 +172,7 @@ function InfoPenawaran() {
                         style={{
                           fontSize: "10px",
                           color: "#8A8A8A",
+                          marginBottom: "0",
                         }}>
                         {
                           <Moment format='DD MMMM, H:mm'>
@@ -169,9 +180,10 @@ function InfoPenawaran() {
                           </Moment>
                         }
                       </p>
+                      <p>{item.transactions.status}</p>
                     </div>
                   </div>
-                  {step.status === "keranjang" && (
+                  {item.transactions.status === "Pending" ? (
                     <>
                       <div className='btn-transaction d-flex justify-content-end'>
                         <button
@@ -200,24 +212,14 @@ function InfoPenawaran() {
                             paddingRight: "10%",
                             paddingLeft: "10%",
                           }}
-                          data-bs-toggle='modal'
-                          data-bs-target='#modalSeller'
-                          onClick={() =>
-                            setStep({
-                              status: "proses",
-                            })
-                          }>
+                          // data-bs-toggle='modal'
+                          // data-bs-target='#modalSeller'
+                          onClick={() => handleAcceptOffer(item)}>
                           Terima
                         </button>
                       </div>
                     </>
-                  )}
-
-                  {/* akhir button */}
-
-                  {/* awal button */}
-
-                  {step.status === "proses" && (
+                  ) : (
                     <>
                       <div className='btn-transaction d-flex justify-content-end'>
                         <button

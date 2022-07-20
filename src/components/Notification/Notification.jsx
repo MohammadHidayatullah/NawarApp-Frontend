@@ -63,6 +63,8 @@ function Notification() {
               ) : (
                 notificationData.map((item) => (
                   <>
+                    {/* {item.status === "Bid" &&
+                    item.transaction.status === "Pending" ? ( */}
                     {item.status === "Bid" ? (
                       <li
                         className='dropdown-item'
