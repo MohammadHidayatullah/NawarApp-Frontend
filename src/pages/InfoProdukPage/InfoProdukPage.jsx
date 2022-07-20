@@ -291,7 +291,7 @@ function InfoProdukPage() {
                       <img
                         className="mx-3"
                         style={{ width: "48px", borderRadius: "12px" }}
-                        src={productData.productImages[0].url}
+                        src={productData?.productImages[0]?.url}
                         alt="produk"
                       />
 
