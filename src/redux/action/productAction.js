@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Redirect } from "react-router";
 import {
@@ -105,19 +105,19 @@ export const deleteProductByUserWishlist = (id, navigate) => {
     
     axios({
       method: 'DELETE',
-      url: 'https://nawar-api.herokuapp.com/api/v1/wishlist/delete/1',
+      url: `https://nawar-api.herokuapp.com/api/v1/wishlist/delete/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then((res) => {
+    .then(() => {
       dispatch({
         type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
       });
-      // dispatch(getProduct());
-      if (res.status === 200) {
-        navigate("/dashboard");
-      }
+      dispatch(getProduct());
+      // if (res.status === 200) {
+      //   navigate("/dashboard");
+      // }
     })
     .catch((error) => {
       dispatch({

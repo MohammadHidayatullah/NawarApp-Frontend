@@ -13,13 +13,13 @@ import { deleteProductByUserWishlist, getProduct } from "../../redux/action/prod
 function Diminati({ loading, data }) {
   
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
     
-    // console.log(data, "INI SUBMITTED");
-    dispatch(deleteProductByUserWishlist(navigate));
+  //   console.log(data, "INI SUBMITTED");
+  //   dispatch(deleteProductByUserWishlist(navigate));
     
-  };
+  // };
   
   useEffect(() => {
     AOS.init();
@@ -27,11 +27,11 @@ function Diminati({ loading, data }) {
     // dispatch(getProduct());
   }, []);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const navHome = () => {
-    navigate("/");
-  };
+  // const navHome = () => {
+  //   navigate("/");
+  // };
 
   return (
     <div className='row' data-aos='fade-up'>
@@ -110,8 +110,7 @@ function Diminati({ loading, data }) {
                     {/* <Link to={`/dashboard/edit-produk/${item.id}`}> */}
                       <button className='btn btn-danger'
                         type="button"
-                        // onClick={() => dispatch(deleteProductByUserWishlist(item.id))}
-                        onClick={handleSubmit}
+                        onClick={() => dispatch(deleteProductByUserWishlist(item.id))}
                         style={{ 
                           backgroundColor: "#000000", 
                           borderColor: "#000000", 
