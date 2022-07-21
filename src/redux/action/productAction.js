@@ -16,6 +16,7 @@ import {
   GET_PRODUCT_BY_USER_WISHLIST,
   DELETE_PRODUCT_BY_USER_WISHLIST,
   GET_PRODUCT_ID,
+  PUBLISH_PRODUCT,
 } from "../types";
 
 let token = localStorage.getItem("token");
@@ -100,31 +101,31 @@ export const getProductByUserWishlist = () => {
 
 // delete product by user wishlist
 export const deleteProductByUserWishlist = (id, navigate) => {
-  return(dispatch) => {
-    dispatch ({ type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_LOADING` });
-    
+  return (dispatch) => {
+    dispatch({ type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_LOADING` });
+
     axios({
-      method: 'DELETE',
+      method: "DELETE",
       url: `https://nawar-api.herokuapp.com/api/v1/wishlist/delete/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then(() => {
-      dispatch({
-        type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
+      .then(() => {
+        dispatch({
+          type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
+        });
+        dispatch(getProduct());
+        // if (res.status === 200) {
+        //   navigate("/dashboard");
+        // }
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_ERROR`,
+          error: error.message,
+        });
       });
-      dispatch(getProduct());
-      // if (res.status === 200) {
-      //   navigate("/dashboard");
-      // }
-    })
-    .catch((error) => {
-      dispatch({
-        type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_ERROR`,
-        error: error.message,
-      });
-    })
   };
 };
 
@@ -311,7 +312,7 @@ export const deleteProduct = (id) => {
       url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
-      }
+      },
     })
       .then(() => {
         dispatch({
@@ -323,6 +324,38 @@ export const deleteProduct = (id) => {
       .catch((error) => {
         dispatch({
           type: `${DELETE_PRODUCT}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+};
+
+export const publishProduct = (id, navigate) => {
+  return (dispatch) => {
+    dispatch({ type: `${PUBLISH_PRODUCT}_LOADING` });
+
+    axios({
+      method: "PUT",
+      url: `https://nawar-api.herokuapp.com/api/v1/products/publish/${id}`,
+      // data: datas,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        dispatch({
+          type: `${PUBLISH_PRODUCT}_FULFILLED`,
+          // payload: response.data,
+        });
+        // dispatch(getProduct());
+        if (res.status === 200) {
+          navigate("/dashboard");
+        }
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${PUBLISH_PRODUCT}_ERROR`,
           error: error.message,
         });
       });

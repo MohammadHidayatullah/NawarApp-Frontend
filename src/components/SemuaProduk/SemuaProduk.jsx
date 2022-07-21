@@ -1,15 +1,15 @@
 /** @format */
 
 import React from "react";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { FiPlus } from "react-icons/fi";
 import NumberFormat from "react-number-format";
 import produk from "../../assets/img/produk.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteProduct } from "../../redux/action/productAction";
-import {useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 
 function SemuaProduk({ loading, data }) {
   const dispatch = useDispatch();
@@ -20,12 +20,6 @@ function SemuaProduk({ loading, data }) {
     AOS.refresh();
   }, []);
 
-  const navigate = useNavigate();
-
-  const navProduk = () => {
-    navigate("/info-produk/edit/:id");
-  };
-
   const handleToEdit = (id) => {
     window.location.href = `/info-produk/edit/${id}`;
   };
@@ -35,20 +29,20 @@ function SemuaProduk({ loading, data }) {
       <div className='row' data-aos='fade-up'>
         <div className='card-tambah-produk col-lg-4 col-md-6 col-sm-6 mt-2'>
           <Link to='/dashboard/tambah-produk'>
-          <div
-            className='card d-flex justify-content-center align-items-center'
-            style={{ padding: "8px", width: "100%", height: "100%" }}>
-            <div className='content d-flex '>
-              <FiPlus
-                className='plus text-center mb-2'
-                size={20}
-                style={{ color: "#8A8A8A" }}
-              />
-              <p className='text-center' style={{ color: "#8A8A8A" }}>
-                Tambah Produk
-              </p>
+            <div
+              className='card d-flex justify-content-center align-items-center'
+              style={{ padding: "8px", width: "100%", height: "100%" }}>
+              <div className='content d-flex '>
+                <FiPlus
+                  className='plus text-center mb-2'
+                  size={20}
+                  style={{ color: "#8A8A8A" }}
+                />
+                <p className='text-center' style={{ color: "#8A8A8A" }}>
+                  Tambah Produk
+                </p>
+              </div>
             </div>
-          </div>
           </Link>
         </div>
         {loading
@@ -145,16 +139,32 @@ function SemuaProduk({ loading, data }) {
                     </p>
                   </div>
                   <div className='button-response'>
-                      <button className='w-50' type="button"
-                      onClick={() => handleToEdit(item.id)}                 
-                        style={{ backgroundColor: "#F1F0F0", color: "#181818" , borderRadius: "16px" , padding : "5px 10px" , fontSize:"14px"  }}>
-                        Edit
-                      </button>
-                      <button className='w-50' type="button"
+                    <button
+                      className='w-50'
+                      type='button'
+                      onClick={() => handleToEdit(item.id)}
+                      style={{
+                        backgroundColor: "#F1F0F0",
+                        color: "#181818",
+                        borderRadius: "16px",
+                        padding: "5px 10px",
+                        fontSize: "14px",
+                      }}>
+                      Edit
+                    </button>
+                    <button
+                      className='w-50'
+                      type='button'
                       onClick={() => dispatch(deleteProduct(item.id))}
-                        style={{ backgroundColor: "#181818", color: "#FFFF" , borderRadius: "16px" , padding : "5px 10px" , fontSize:"14px",  }}>
-                        Hapus
-                      </button>
+                      style={{
+                        backgroundColor: "#181818",
+                        color: "#FFFF",
+                        borderRadius: "16px",
+                        padding: "5px 10px",
+                        fontSize: "14px",
+                      }}>
+                      Hapus
+                    </button>
                   </div>
                 </div>
               </section>

@@ -5,6 +5,7 @@ import {
   GET_PRODUCT_BY_CATEGORY,
   CREATE_PRODUCT,
   DRAFT_PRODUCT,
+  PUBLISH_PRODUCT,
   EDIT_PRODUCT,
   DELETE_PRODUCT,
   GET_PRODUCT_BY_USER,
@@ -22,7 +23,6 @@ const initialState = {
 const productReducer = (state = initialState, action) => {
   const { type, payload, error } = action;
   switch (type) {
-
     // get all product hoemPage
     case `${GET_PRODUCT}_LOADING`:
       return {
@@ -59,7 +59,7 @@ const productReducer = (state = initialState, action) => {
         error: error,
       };
 
-      // get product by user wishlist
+    // get product by user wishlist
     case `${GET_PRODUCT_BY_USER_WISHLIST}_LOADING`:
       return {
         ...state,
@@ -98,24 +98,24 @@ const productReducer = (state = initialState, action) => {
         error: error,
       };
 
-      //get product by user daftarJual sold
-      case `${GET_PRODUCT_BY_USER_SOLD}_LOADING`:
-        return {
-          ...state,
-          isLoading: true,
-        };
-      case `${GET_PRODUCT_BY_USER_SOLD}_FULFILLED`:
-        return {
-          ...state,
-          data: payload,
-          isLoading: false,
-        };
-      case `${GET_PRODUCT_BY_USER_SOLD}_ERROR`:
-        return {
-          ...state,
-          isLoading: false,
-          error: error,
-        };
+    //get product by user daftarJual sold
+    case `${GET_PRODUCT_BY_USER_SOLD}_LOADING`:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case `${GET_PRODUCT_BY_USER_SOLD}_FULFILLED`:
+      return {
+        ...state,
+        data: payload,
+        isLoading: false,
+      };
+    case `${GET_PRODUCT_BY_USER_SOLD}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
 
     case `${CREATE_PRODUCT}_LOADING`:
       return {
@@ -134,6 +134,7 @@ const productReducer = (state = initialState, action) => {
         error: error,
       };
 
+    //Draft Product
     case `${DRAFT_PRODUCT}_LOADING`:
       return {
         ...state,
@@ -145,6 +146,23 @@ const productReducer = (state = initialState, action) => {
         isLoading: false,
       };
     case `${DRAFT_PRODUCT}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
+
+    case `${PUBLISH_PRODUCT}_LOADING`:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case `${PUBLISH_PRODUCT}_FULFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case `${PUBLISH_PRODUCT}_ERROR`:
       return {
         ...state,
         isLoading: false,
