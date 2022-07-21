@@ -309,6 +309,9 @@ export const deleteProduct = (id) => {
     axios({
       method: "DELETE",
       url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
     })
       .then(() => {
         dispatch({

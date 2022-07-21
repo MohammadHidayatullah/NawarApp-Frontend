@@ -26,6 +26,10 @@ function SemuaProduk({ loading, data }) {
     navigate("/info-produk/edit/:id");
   };
 
+  const handleToEdit = (id) => {
+    window.location.href = `/info-produk/edit/${id}`;
+  };
+
   return (
     <>
       <div className='row' data-aos='fade-up'>
@@ -141,20 +145,16 @@ function SemuaProduk({ loading, data }) {
                     </p>
                   </div>
                   <div className='button-response'>
-                  <Link to={`/info-produk/edit/${item.id}`}>
                       <button className='w-50' type="button"
-                        // onClick={navProduk}
+                      onClick={() => handleToEdit(item.id)}                 
                         style={{ backgroundColor: "#F1F0F0", color: "#181818" , borderRadius: "16px" , padding : "5px 10px" , fontSize:"14px"  }}>
                         Edit
                       </button>
-                  </Link>
-                      {/* <Link to > */}
                       <button className='w-50' type="button"
-                          onClick={() => dispatch(deleteProduct(item.id))}
+                      onClick={() => dispatch(deleteProduct(item.id))}
                         style={{ backgroundColor: "#181818", color: "#FFFF" , borderRadius: "16px" , padding : "5px 10px" , fontSize:"14px",  }}>
                         Hapus
                       </button>
-                      {/* </Link> */}
                   </div>
                 </div>
               </section>

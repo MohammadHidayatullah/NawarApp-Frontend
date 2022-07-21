@@ -82,7 +82,7 @@ function InfoPenawaran() {
                           <b>{item.transactions.buyer.name}</b>
                         </h6>
                         <p className='card-text m-0 p-0' id='kota'>
-                          <small class='text-muted'>
+                          <small className='text-muted'>
                             {item.transactions.buyer.address}
                           </small>
                         </p>
