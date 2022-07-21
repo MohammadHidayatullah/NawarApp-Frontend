@@ -1,6 +1,7 @@
 /** @format */
 
 import axios from "axios";
+// import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Redirect } from "react-router";
 import {
@@ -13,6 +14,7 @@ import {
   GET_PRODUCT_BY_USER,
   GET_PRODUCT_BY_USER_SOLD,
   GET_PRODUCT_BY_USER_WISHLIST,
+  DELETE_PRODUCT_BY_USER_WISHLIST,
   GET_PRODUCT_ID,
   PUBLISH_PRODUCT,
 } from "../types";
@@ -94,6 +96,36 @@ export const getProductByUserWishlist = () => {
           error: error.message,
         });
       });
+  };
+};
+
+// delete product by user wishlist
+export const deleteProductByUserWishlist = (id, navigate) => {
+  return(dispatch) => {
+    dispatch ({ type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_LOADING` });
+    
+    axios({
+      method: 'DELETE',
+      url: `https://nawar-api.herokuapp.com/api/v1/wishlist/delete/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(() => {
+      dispatch({
+        type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
+      });
+      dispatch(getProduct());
+      // if (res.status === 200) {
+      //   navigate("/dashboard");
+      // }
+    })
+    .catch((error) => {
+      dispatch({
+        type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_ERROR`,
+        error: error.message,
+      });
+    })
   };
 };
 

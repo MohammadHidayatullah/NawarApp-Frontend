@@ -232,40 +232,9 @@ function InfoProdukPage() {
                     </button>
                   </div>
                 </div>
-                <div
-                  className="card mt-3"
-                  style={{
-                    borderRadius: "16px",
-                    padding: "16px 24px",
-                    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
-                  }}
-                >
-                  <div className="row">
-                    <div className="d-flex ps-0 pe-0">
-                      <img
-                        className="mx-3"
-                        style={{
-                          width: "48px",
-                          borderRadius: "12px",
-                          boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.05)",
-                          borderRadius: "12px",
-                        }}
-                        src={productData.seller.avatar}
-                        alt="produk"
-                      />
-                      <div className="text d-flex flex-column">
-                        <p className="mb-2" style={{ margin: "0" }}>
-                          {productData.seller.name}
-                        </p>
-                        <p className="p-0 m-0">
-                          {findCity === undefined
-                            ? "Loading"
-                            : findCity[0].name}
-                        </p>
-                      </div>
-                    </div>
-                    <div className=" ps-0"></div>
-                  </div>
+                <div className='p-0 m-0'>
+                <button className=" w-100 mb-3" style={{ backgroundColor: "#181818", color: "#FFFF" , borderRadius: "16px" , padding : "10px 20px" , fontSize:"14px" }} type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Terbitkan</button>
+                    <button className=" w-100" style={{ backgroundColor: "#FFFF", color: "#181818" , borderRadius: "16px" , padding : "10px 20px" , fontSize:"14px" }} type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>
                 </div>
               </div>
             </div>

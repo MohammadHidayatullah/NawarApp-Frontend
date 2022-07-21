@@ -36,6 +36,7 @@ function Home() {
     dispatch(getProduct());
   }, [dispatch]);
   console.log("productData", productData, "data");
+
   return (
     <>
       <Navbar />
@@ -43,7 +44,7 @@ function Home() {
       <CategoryFilter handleData={handleData} />
       <div className='container mt-4'>
         <div className='produk row'>
-          {productData.length < 1? (
+          {productData.length < 1 ? (
             <div className='col-12'>
               <div className='text-center'>
                 <h5>Belum ada produk yang dijual</h5>
@@ -69,7 +70,7 @@ function Home() {
               style={{
                 background: "#181818",
                 color: "#fafafa",
-                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15);",
+                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
                 borderRadius: "12px",
               }}>
               <FiPlus />
