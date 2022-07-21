@@ -61,7 +61,7 @@ function Notification() {
                   <span>Tidak ada notifikasi</span>
                 </li>
               ) : (
-                notificationData.map((item) => (
+                notificationData?.map((item) => (
                   <>
                     {/* {item.status === "Bid" &&
                     item.transaction.status === "Pending" ? ( */}
@@ -73,13 +73,12 @@ function Notification() {
                         }}>
                         <div className='d-flex justify-content-between'>
                           <div className='d-flex flex-row'>
-                            {item.transaction.productTransactions.productImages
+                            {item?.transaction?.productTransactions?.productImages
                               .length > 0 ? (
                               <img
                                 className='me-3'
                                 src={
-                                  item.transaction.productTransactions
-                                    .productImages[0].url
+                                  item?.transaction?.productTransactions?.productImages?.[0]?.url
                                 }
                                 alt=''
                                 style={{
@@ -114,7 +113,7 @@ function Notification() {
                                 style={{
                                   fontSize: "14px",
                                 }}>
-                                {item.transaction.productTransactions.name}
+                                {item?.transaction?.productTransactions?.name}
                               </p>
                               <p
                                 className='m-0 p-0'
@@ -123,7 +122,7 @@ function Notification() {
                                 }}>
                                 <NumberFormat
                                   value={
-                                    item.transaction.productTransactions.price
+                                    item?.transaction?.productTransactions?.price
                                   }
                                   displayType={"text"}
                                   thousandSeparator={"."}
@@ -138,7 +137,7 @@ function Notification() {
                                 }}>
                                 Ditawar{" "}
                                 <NumberFormat
-                                  value={item.transaction.bidPrice}
+                                  value={item?.transaction?.bidPrice}
                                   displayType={"text"}
                                   thousandSeparator={"."}
                                   decimalSeparator={","}
@@ -154,7 +153,7 @@ function Notification() {
                                 }}>
                                 {
                                   <Moment format='DD MMMM, H:mm'>
-                                    {item.notifDate}
+                                    {item?.notifDate}
                                   </Moment>
                                 }
                               </p>
