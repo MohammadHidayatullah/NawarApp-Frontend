@@ -150,12 +150,20 @@ function Notification() {
                                 style={{
                                   fontSize: "10px",
                                   color: "#8A8A8A",
+                                  marginBottom: "0px",
                                 }}>
                                 {
                                   <Moment format='DD MMMM, H:mm'>
                                     {item?.notifDate}
                                   </Moment>
                                 }
+                              </p>
+                              <p
+                                style={{
+                                  fontSize: "10px",
+                                  color: "#8A8A8A",
+                                }}>
+                                {item?.transaction?.status}
                               </p>
                             </div>
                           </div>

@@ -61,7 +61,7 @@ function InfoPenawaran() {
   };
 
   const handleCompleteOffer = (data) => {
-    dispatch(completeOffer());
+    dispatch(completeOffer(data.transactions.id));
     //refresh page
     window.location.reload(
       (window.location.href = "/info-penawaran/" + data.id)
@@ -69,11 +69,15 @@ function InfoPenawaran() {
   };
 
   const handleRejectOffer = (data) => {
-    dispatch(rejectOffer());
+    dispatch(rejectOffer(data.transactions.id));
     //refresh page
     window.location.reload(
       (window.location.href = "/info-penawaran/" + data.id)
     );
+  };
+
+  const handleHome = () => {
+    window.location.reload(navigate("/"));
   };
 
   return (
@@ -81,7 +85,7 @@ function InfoPenawaran() {
       <Navbar2 />
       <div style={{ padding: "3%" }}>
         <div className='container' style={{ maxWidth: "568px" }}>
-          <button className='arrow-left' onClick={navHome}>
+          <button className='arrow-left' onClick={handleHome}>
             <FaArrowLeft size={22} />
           </button>
           {loadingNotification ? (
@@ -216,9 +220,7 @@ function InfoPenawaran() {
                             paddingLeft: "10%",
                             color: "black",
                           }}
-                          data-bs-toggle='modal'
-                          data-bs-target='#modalSeller'
-                          onClick={() => setStep({ status: "" })}>
+                          onClick={() => handleRejectOffer(item)}>
                           Tolak
                         </button>
                         <button
@@ -239,7 +241,7 @@ function InfoPenawaran() {
                         </button>
                       </div>
                     </>
-                  ) : (
+                  ) : item.transactions.status === "Accepted" ? (
                     <>
                       <div className='btn-transaction d-flex justify-content-end'>
                         <button
@@ -273,13 +275,14 @@ function InfoPenawaran() {
                             paddingLeft: "10%",
                           }}
                           data-bs-toggle='modal'
-                          data-bs-target='#modalSeller'
-                          >
+                          data-bs-target='#modalSeller'>
                           Hubungi di &nbsp;
                           <FaWhatsapp size={14} />
                         </button>
                       </div>
                     </>
+                  ) : (
+                    <></>
                   )}
 
                   {/* akhir button */}
