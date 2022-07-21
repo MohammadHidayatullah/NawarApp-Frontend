@@ -260,7 +260,7 @@ function InfoProduk() {
                   <div className="mb-3">
                     <label className="form-label">Deskripsi</label>
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlTextarea1"
                       rows="3"
                       placeholder="Contoh: Jalan Ikan Hiu 33"

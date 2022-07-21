@@ -70,7 +70,7 @@ function Home() {
               style={{
                 background: "#181818",
                 color: "#fafafa",
-                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15);",
+                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.15)",
                 borderRadius: "12px",
               }}>
               <FiPlus />
