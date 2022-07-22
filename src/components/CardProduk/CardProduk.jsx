@@ -96,7 +96,7 @@ function CardProduk({ data, loading }) {
                   </p>
                   <p className="card-price">
                     <NumberFormat
-                      value={2456981}
+                      value={item?.price}
                       displayType={"text"}
                       thousandSeparator={"."}
                       decimalSeparator={","}
