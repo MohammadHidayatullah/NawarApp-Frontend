@@ -138,13 +138,6 @@ function InfoProfil(props) {
     navigate("/");
   };
 
-  // console.log(province, "<= Ini Data City");
-  // console.log(city, "<= Ini Data City");
-  // console.log(provinceData, "DATA PROVINCE PROFILL COOKKK");
-  console.log(profileData, "<= Ini profile data");
-  // console.log(cityData, "<= Ini data city");
-  // console.log(name);
-  // console.log(profileData.name);
   return (
     <>
       {width >= 576 && <Navbar />}
