@@ -232,10 +232,38 @@ function InfoProdukPage() {
                     </button>
                   </div>
                 </div>
-                <div className='p-0 m-0'>
-                <button className=" w-100 mb-3" style={{ backgroundColor: "#181818", color: "#FFFF" , borderRadius: "16px" , padding : "10px 20px" , fontSize:"14px" }} type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Terbitkan</button>
-                    <button className=" w-100" style={{ backgroundColor: "#FFFF", color: "#181818" , borderRadius: "16px" , padding : "10px 20px" , fontSize:"14px" }} type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Edit</button>
-                </div>
+                {/* <div className="p-0 m-0">
+                  <button
+                    className=" w-100 mb-3"
+                    style={{
+                      backgroundColor: "#181818",
+                      color: "#FFFF",
+                      borderRadius: "16px",
+                      padding: "10px 20px",
+                      fontSize: "14px",
+                    }}
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    Terbitkan
+                  </button>
+                  <button
+                    className=" w-100"
+                    style={{
+                      backgroundColor: "#FFFF",
+                      color: "#181818",
+                      borderRadius: "16px",
+                      padding: "10px 20px",
+                      fontSize: "14px",
+                    }}
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    Edit
+                  </button>
+                </div> */}
               </div>
             </div>
             <div className="row mb-5">
