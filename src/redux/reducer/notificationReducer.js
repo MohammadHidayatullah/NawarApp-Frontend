@@ -1,6 +1,10 @@
 /** @format */
 
-import { GET_NOTIFICATION_SELLER, GET_NOTIFICATION_SELLER_BY_ID } from "../types";
+import {
+  GET_NOTIFICATION_BUYER,
+  GET_NOTIFICATION_SELLER,
+  GET_NOTIFICATION_SELLER_BY_ID,
+} from "../types";
 
 const initialState = {
   data: [],
@@ -29,7 +33,7 @@ const notificationReducer = (state = initialState, action) => {
         error: error,
       };
 
-      case `${GET_NOTIFICATION_SELLER_BY_ID}_LOADING`:
+    case `${GET_NOTIFICATION_SELLER_BY_ID}_LOADING`:
       return {
         ...state,
         isLoading: true,

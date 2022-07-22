@@ -3,35 +3,25 @@
 import React, { useState } from "react";
 import "./ModalSellerStatus.css";
 import { FiX } from "react-icons/fi";
-import { completeOffer, rejectOffer } from "../../redux/action/transactionAction";
 
-
-function ModalSellerStatus({ item }) {
+function ModalSellerStatus({ item, handleRejectOffer, handleCompleteOffer }) {
   const [isOpen, setIsOpen] = useState(null);
 
-  console.log('item_id', item.transactions.id)
+  console.log("item_id", item.transactions.id);
 
   console.log("open", isOpen);
   console.log("item modal", item);
 
-  const handleSend = (item) => {
+  const handleSend = (isOpen) => {
     if (isOpen === "complete") {
-      completeOffer(item.transactions.id);
+      handleCompleteOffer(item);
     } else if (isOpen === "reject") {
-      rejectOffer(item.transactions.id);
+      handleRejectOffer(item);
     }
   };
 
   return (
     <>
-      {/* <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#modalSellerStatus"
-      >
-        Open modal
-      </button> */}
       <div className='modal' id='modalSellerStatus'>
         <div
           className='modal-dialog modal-dialog-centered'
@@ -94,7 +84,8 @@ function ModalSellerStatus({ item }) {
                 borderRadius: "16px",
               }}
               // data-bs-dismiss='modal'
-              onClick={handleSend}>
+              onClick={() => handleSend(isOpen)}
+              >
               Kirim
             </button>
           </div>
