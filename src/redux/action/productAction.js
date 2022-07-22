@@ -18,9 +18,60 @@ import {
   GET_PRODUCT_ID,
   PUBLISH_PRODUCT,
 } from "../types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 let token = localStorage.getItem("token");
-// const navigate = useNavigate;
+
+//====================== React Toastify =====================
+const notify = () =>
+  toast.success("Produk berhasil di terbitkan", {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const notifyDraft = () =>
+  toast.success("Produk berhasil dimasukkan ke draft", {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const notifyEdit = () =>
+  toast.success("Perubahan Produk berhasil disimpan", {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const notifyDeleteWishlist = () =>
+  toast.success("Wishlist berhasil dihapus", {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
 
 // get all product from database
 export const getProduct = () => {
@@ -115,7 +166,10 @@ export const deleteProductByUserWishlist = (id, navigate) => {
         dispatch({
           type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
         });
-        dispatch(getProduct());
+        // dispatch(getProduct());
+        notifyDeleteWishlist();
+        
+
         // if (res.status === 200) {
         //   navigate("/dashboard");
         // }
@@ -204,12 +258,19 @@ export const createProduct = (data, navigate) => {
         // dispatch(navigate("/daftar-jual"));
         if (res.status === 201) {
           navigate("/dashboard");
+          notify();
         }
       })
       .catch((error) => {
         dispatch({
           type: `${CREATE_PRODUCT}_ERROR`,
           error: error.message,
+        });
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+          footer: '<a href="">Why do I have this issue?</a>',
         });
       });
   };
@@ -236,12 +297,19 @@ export const draftProduct = (data, navigate) => {
         // dispatch(navigate("/daftar-jual"));
         if (res.status === 201) {
           navigate("/dashboard");
+          notifyDraft();
         }
       })
       .catch((error) => {
         dispatch({
           type: `${DRAFT_PRODUCT}_ERROR`,
           error: error.message,
+        });
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+          footer: '<a href="">Why do I have this issue?</a>',
         });
       });
   };
@@ -268,12 +336,19 @@ export const editProduct = (id, datas, navigate) => {
         // dispatch(getProduct());
         if (res.status === 200) {
           navigate("/dashboard");
+          notifyEdit();
         }
       })
       .catch((error) => {
         dispatch({
           type: `${EDIT_PRODUCT}_ERROR`,
           error: error.message,
+        });
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+          footer: '<a href="">Why do I have this issue?</a>',
         });
       });
   };
@@ -326,6 +401,12 @@ export const deleteProduct = (id) => {
           type: `${DELETE_PRODUCT}_ERROR`,
           error: error.message,
         });
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
       });
   };
 };
@@ -351,12 +432,19 @@ export const publishProduct = (id, navigate) => {
         // dispatch(getProduct());
         if (res.status === 200) {
           navigate("/dashboard");
+          notify();
         }
       })
       .catch((error) => {
         dispatch({
           type: `${PUBLISH_PRODUCT}_ERROR`,
           error: error.message,
+        });
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+          footer: '<a href="">Why do I have this issue?</a>',
         });
       });
   };

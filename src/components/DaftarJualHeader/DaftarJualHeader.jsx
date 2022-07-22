@@ -38,7 +38,7 @@ function DaftarJualHeader() {
                   <div className='d-flex align-items-center'>
                     <img
                       className='me-3'
-                      src={tes}
+                      src={profileData.avatar}
                       alt=''
                       style={{
                         maxWidth: "48px",
