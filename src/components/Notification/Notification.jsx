@@ -92,7 +92,7 @@ function Notification() {
                           <p
                             style={{
                               fontSize: "10px",
-                              color: "#8A8A8A",
+                              color: "orange",
                               marginBottom: "0px",
                             }}>
                             pembelian baru
@@ -246,7 +246,7 @@ function Notification() {
                             <p
                               style={{
                                 fontSize: "10px",
-                                color: "#8A8A8A",
+                                color: "orange",
                               }}>
                               penawaran belum diterima oleh penjual
                             </p>
@@ -254,7 +254,7 @@ function Notification() {
                             <p
                               style={{
                                 fontSize: "10px",
-                                color: "#8A8A8A",
+                                color: "green",
                               }}>
                               menunggu WhatsApp dari penjual
                             </p>
@@ -262,7 +262,7 @@ function Notification() {
                             <p
                               style={{
                                 fontSize: "10px",
-                                color: "#8A8A8A",
+                                color: "tomato",
                               }}>
                               penawaran ditolak
                             </p>

@@ -215,7 +215,7 @@ function InfoPenawaran() {
                           className='btn me-3 px-5'
                           style={{
                             backgroundColor: "white",
-                            border: "1px solid #7126B5",
+                            border: "1px solid #181818",
                             paddingRight: "10%",
                             paddingLeft: "10%",
                             color: "black",
@@ -227,8 +227,8 @@ function InfoPenawaran() {
                           type='button'
                           className='btn'
                           style={{
-                            backgroundColor: "#7126B5",
-                            border: "1px solid #7126B5",
+                            backgroundColor: "#181818",
+                            border: "1px solid #181818",
                             padding: "auto",
                             color: "#ffffff",
                             paddingRight: "10%",
@@ -249,7 +249,7 @@ function InfoPenawaran() {
                           className='btn me-3'
                           style={{
                             backgroundColor: "white",
-                            border: "1px solid #7126B5",
+                            border: "1px solid #181818",
                             padding: "auto",
                             color: "black",
                             paddingRight: "10%",
@@ -267,8 +267,8 @@ function InfoPenawaran() {
                           type='button'
                           className='btn d-flex align-items-center'
                           style={{
-                            backgroundColor: "#7126B5",
-                            border: "1px solid #7126B5",
+                            backgroundColor: "#181818",
+                            border: "1px solid #181818",
                             padding: "auto",
                             color: "#ffffff",
                             paddingRight: "10%",
