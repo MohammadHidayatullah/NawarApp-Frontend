@@ -202,7 +202,7 @@ export const createProduct = (data, navigate) => {
           // // payload: response.data,
         });
         // dispatch(navigate("/daftar-jual"));
-        if (res.status === 200) {
+        if (res.status === 201) {
           navigate("/dashboard");
         }
       })
@@ -234,7 +234,7 @@ export const draftProduct = (data, navigate) => {
           // // payload: response.data,
         });
         // dispatch(navigate("/daftar-jual"));
-        if (res.status === 200) {
+        if (res.status === 201) {
           navigate("/dashboard");
         }
       })

@@ -1,6 +1,6 @@
 /** @format */
 
-import { GET_PRODUCT_BY_USER_WISHLIST } from "../types";
+import { ADD_WISHLIST, GET_PRODUCT_BY_USER_WISHLIST } from "../types";
 
 const initialState = {
   data: [],
@@ -24,6 +24,22 @@ const productWishlistReducer = (state = initialState, action) => {
         isLoading: false,
       };
     case `${GET_PRODUCT_BY_USER_WISHLIST}_ERROR`:
+      return {
+        ...state,
+        isLoading: false,
+        error: error,
+      };
+    case `${ADD_WISHLIST}_LOADING`:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case `${ADD_WISHLIST}_FULFILLED`:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case `${ADD_WISHLIST}_ERROR`:
       return {
         ...state,
         isLoading: false,
