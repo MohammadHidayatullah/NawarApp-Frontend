@@ -7,6 +7,7 @@ import "./CardProduk.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import productImagesNotFOund from "../../assets/img/produk.jpg";
 
 function CardProduk({ data, loading }) {
   console.log("data", data);
@@ -52,22 +53,23 @@ function CardProduk({ data, loading }) {
                   <div
                     className='img-product d-flex justify-content-center align-items-center'
                     style={{ height: "100px" }}>
-                    <span
-                      style={{
-                        fontSize: "10px",
-                        fontWeight: "bold",
-                        color: "red",
-                      }}>
-                      Gambar tidak tersedia
-                    </span>
+                    <img
+                      src={productImagesNotFOund}
+                      style={{ objectFit: "contain", height: "100px" }}
+                      className='card-img-top'
+                      alt='...'
+                    />
                   </div>
                 )}
                 <div className='card-body p-0'>
                   <p
-                    className='card-title m-0'
+                    className='card-title-product m-0'
                     style={{
                       fontWeight: "400",
                       padding: "8px 0 4px 0",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "clip",
                     }}>
                     {item.name}
                   </p>
