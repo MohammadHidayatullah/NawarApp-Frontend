@@ -26,60 +26,66 @@ function CardProduk({ data, loading }) {
         ? "Loading"
         : data?.map((item) => (
             <div
-              data-aos='zoom-in'
-              className='card-produk col-lg-2 col-md-3 col-sm-4 mt-3'>
+              data-aos="zoom-in"
+              className="card-produk col-lg-2 col-md-3 col-sm-4 mt-3"
+            >
               <div
-                className='card'
+                className="card h-100"
                 style={{
                   padding: "8px",
                   width: "100%",
                   boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.1)",
                 }}
-                onClick={() => handleToDetail(item.id)}>
+                onClick={() => handleToDetail(item.id)}
+              >
                 {item.productImages.length > 0 ? (
                   <div
-                    className='img-product'
+                    className="img-product"
                     style={{
                       height: "100px",
-                    }}>
+                    }}
+                  >
                     <img
                       src={item.productImages[0].url}
                       style={{ objectFit: "contain", height: "100px" }}
-                      className='card-img-top'
-                      alt='...'
+                      className="card-img-top"
+                      alt="..."
                     />
                   </div>
                 ) : (
                   <div
-                    className='img-product d-flex justify-content-center align-items-center'
-                    style={{ height: "100px" }}>
+                    className="img-product d-flex justify-content-center align-items-center"
+                    style={{ height: "100px" }}
+                  >
                     <img
                       src={productImagesNotFOund}
                       style={{ objectFit: "contain", height: "100px" }}
-                      className='card-img-top'
-                      alt='...'
+                      className="card-img-top"
+                      alt="..."
                     />
                   </div>
                 )}
-                <div className='card-body p-0'>
+                <div className="card-body p-0">
                   <p
-                    className='card-title-product m-0'
+                    className="card-title-product m-0"
                     style={{
                       fontWeight: "400",
                       padding: "8px 0 4px 0",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "clip",
-                    }}>
+                    }}
+                  >
                     {item.name}
                   </p>
                   <p
-                    className='card-text m-0'
+                    className="card-text m-0"
                     style={{
                       paddingBottom: "8px",
                       fontSize: "10px",
                       color: "#8A8A8A",
-                    }}>
+                    }}
+                  >
                     {item.productCategories.map(
                       (a, index) =>
                         `${a.category.name}` +
@@ -88,7 +94,7 @@ function CardProduk({ data, loading }) {
                           : "")
                     )}
                   </p>
-                  <p className='card-price'>
+                  <p className="card-price">
                     <NumberFormat
                       value={2456981}
                       displayType={"text"}
