@@ -110,11 +110,11 @@ function InfoProdukPage() {
       ) : (
         <div
           className="container mt-5 d-flex justify-content-center"
-          style={{ maxWidth: "968px" }}
+          style={{ maxWidth: "1080px" }}
         >
           <div className="content">
             <div className="row mb-1">
-              <div className="col-lg-8">
+              <div className="col-lg-8 pe-1">
                 <Carousel
                   showArrows={true}
                   autoFocus={true}
@@ -238,7 +238,7 @@ function InfoProdukPage() {
                   className="card"
                   style={{
                     boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.15)",
-                    width: "600px",
+                    width: "550px",
                   }}
                   id="desc"
                 >

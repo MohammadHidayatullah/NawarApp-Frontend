@@ -101,31 +101,31 @@ export const getProductByUserWishlist = () => {
 
 // delete product by user wishlist
 export const deleteProductByUserWishlist = (id, navigate) => {
-  return(dispatch) => {
-    dispatch ({ type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_LOADING` });
-    
+  return (dispatch) => {
+    dispatch({ type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_LOADING` });
+
     axios({
-      method: 'DELETE',
+      method: "DELETE",
       url: `https://nawar-api.herokuapp.com/api/v1/wishlist/delete/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then(() => {
-      dispatch({
-        type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
+      .then(() => {
+        dispatch({
+          type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_FULFILLED`,
+        });
+        dispatch(getProduct());
+        // if (res.status === 200) {
+        //   navigate("/dashboard");
+        // }
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_ERROR`,
+          error: error.message,
+        });
       });
-      dispatch(getProduct());
-      // if (res.status === 200) {
-      //   navigate("/dashboard");
-      // }
-    })
-    .catch((error) => {
-      dispatch({
-        type: `${DELETE_PRODUCT_BY_USER_WISHLIST}_ERROR`,
-        error: error.message,
-      });
-    })
   };
 };
 
@@ -303,6 +303,33 @@ export const getProductDetail = (id) => {
   };
 };
 
+export const deleteProduct = (id) => {
+  return (dispatch) => {
+    dispatch({ type: `${DELETE_PRODUCT}_LOADING` });
+
+    axios({
+      method: "DELETE",
+      url: `https://nawar-api.herokuapp.com/api/v1/products/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(() => {
+        dispatch({
+          type: `${DELETE_PRODUCT}_FULFILLED`,
+          // payload: response.data,
+        });
+        dispatch(getProduct());
+      })
+      .catch((error) => {
+        dispatch({
+          type: `${DELETE_PRODUCT}_ERROR`,
+          error: error.message,
+        });
+      });
+  };
+};
+
 export const publishProduct = (id, navigate) => {
   return (dispatch) => {
     dispatch({ type: `${PUBLISH_PRODUCT}_LOADING` });
@@ -334,27 +361,3 @@ export const publishProduct = (id, navigate) => {
       });
   };
 };
-
-// export const deleteProduct = (id) => {
-//   return (dispatch) => {
-//     dispatch({ type: `${DELETE_PRODUCT}_LOADING` });
-
-//     axios({
-//       method: "DELETE",
-//       url: `http://localhost:3000/article/${id}`,
-//     })
-//       .then(() => {
-//         dispatch({
-//           type: `${DELETE_PRODUCT}_FULFILLED`,
-//           // payload: response.data,
-//         });
-//         dispatch(getProduct());
-//       })
-//       .catch((error) => {
-//         dispatch({
-//           type: `${DELETE_PRODUCT}_ERROR`,
-//           error: error.message,
-//         });
-//       });
-//   };
-// };
