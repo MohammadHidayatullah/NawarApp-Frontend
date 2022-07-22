@@ -92,9 +92,9 @@ export default function Login() {
                 <div className="input-icons mb-3">
                   <label className="form-label">Password</label>
                   <div className="inner-addon right-addon">
-                    <i className="">
+                    {/* <i className="">
                       <img src={Eye} alt="" className="icon" />
-                    </i>
+                    </i> */}
                     <input
                       type="password"
                       className="form-control"
