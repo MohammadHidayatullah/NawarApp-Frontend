@@ -20,6 +20,7 @@ import { FiX } from "react-icons/fi";
 import { createTranscation } from "../../redux/action/buyerAction";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { createWishlist } from "../../redux/action/productWishlistAction";
 
 function InfoProdukPage() {
   const navigate = useNavigate();
@@ -102,6 +103,14 @@ function InfoProdukPage() {
     // console.log(data);
   };
 
+  const handleWishlist = () => {
+    const data = JSON.stringify({
+      productId: idTransaksi,
+    });
+
+    dispatch(createWishlist(data));
+  };
+
   return (
     <>
       <Navbar />
@@ -164,6 +173,12 @@ function InfoProdukPage() {
                             );
                           })}
                     </p>
+                    <p
+                      className="card-text"
+                      style={{ color: "gray", fontSize: "8.5pt" }}
+                    >
+                      Size {productData === "" ? "Loading" : productData.size}
+                    </p>
                     <p className="card-price">
                       <NumberFormat
                         value={
@@ -192,6 +207,21 @@ function InfoProdukPage() {
                       data-bs-target="#modalBuyer"
                     >
                       Saya Tertarik dan Ingin Nego
+                    </button>
+                    <button
+                      className=" w-100 mt-2"
+                      style={{
+                        backgroundColor: "#FFFF",
+                        color: "#181818",
+                        borderRadius: "16px",
+                        padding: "10px 20px",
+                        fontSize: "14px",
+                        border: "solid 1px #181818",
+                      }}
+                      onClick={handleWishlist}
+                      type="button"
+                    >
+                      Wishlist
                     </button>
                   </div>
                 </div>
