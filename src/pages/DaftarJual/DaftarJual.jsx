@@ -18,12 +18,14 @@ import {
   getProductByUserSold,
   getProductByUserWishlist,
 } from "../../redux/action/productAction";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function DaftarJual() {
   const [button, setButton] = useState(1);
   const dispatch = useDispatch();
 
-  console.log(DaftarJual);
+  // console.log(DaftarJual);
 
   const { isLoading: loadingProduct, data: productData } = useSelector(
     (state) => state.product
@@ -36,14 +38,8 @@ function DaftarJual() {
   const { isLoading: loadingSold, data: productSold } = useSelector(
     (state) => state.sold
   );
-  // const testData = useSelector((state) => state);
 
-  // useEffect(() => {
-  //   dispatch(getProductByUser());
-  // }, [dispatch]);
-
-  // console.log("productData", testData, "data");
-  console.log("productData", productData, "data");
+  // console.log("productData", productData, "data");
 
   const handleData = (button) => {
     setButton(button);
@@ -58,18 +54,28 @@ function DaftarJual() {
 
   useEffect(() => {
     dispatch(getProductByUserSold());
-  }
-  , [dispatch]);
+  }, [dispatch]);
 
   console.log("data", button);
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Navbar />
-      <div className='container mt-5'>
+      <div className="container mt-5">
         <DaftarJualHeader />
-        <div className='row'>
+        <div className="row">
           <SidebarDaftarJual handleData={handleData} />
-          <div className='col-lg-9'>
+          <div className="col-lg-9">
             {button === 1 ? (
               <SemuaProduk loading={loadingProduct} data={productData} />
             ) : button === 2 ? (

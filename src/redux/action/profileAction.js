@@ -6,8 +6,24 @@ import {
   EDIT_PROFILE,
   DELETE_PROFILE,
 } from "../types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 let token = localStorage.getItem("token");
+
+//====================== React Toastify =====================
+const notify = () =>
+  toast.success("Data Berhasil Disimpan", {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
 
 export const getProfile = () => {
   return (dispatch) => {
@@ -81,12 +97,19 @@ export const editProfile = (data, navigate) => {
         // dispatch(getProfile());
         if (res.status === 200) {
           navigate("/dashboard");
+          notify();
         }
       })
       .catch((error) => {
         dispatch({
           type: `${EDIT_PROFILE}_ERROR`,
           error: error.message,
+        });
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+          footer: '<a href="">Why do I have this issue?</a>',
         });
       });
   };
