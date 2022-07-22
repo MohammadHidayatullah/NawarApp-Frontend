@@ -13,6 +13,7 @@ import notificationIdReducer from "./notificationReducerId";
 import transactionReducer from "./transactionReducer";
 import productWishlistReducer from "./productWishlistReducer";
 import productSoldReducer from "./productSoldReducer";
+import notifBuyerReducer from "./notifBuyerReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -27,4 +28,5 @@ export default combineReducers({
   transaction: transactionReducer,
   wishlist: productWishlistReducer,
   sold: productSoldReducer,
+  notifBuyer: notifBuyerReducer,
 });

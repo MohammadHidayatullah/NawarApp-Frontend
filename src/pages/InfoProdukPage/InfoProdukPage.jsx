@@ -110,7 +110,7 @@ function InfoProdukPage() {
       ) : (
         <div
           className="container mt-5 d-flex justify-content-center"
-          style={{ maxWidth: "968px" }}
+          style={{ maxWidth: "1080px" }}
         >
           <div className="content">
             <div className="row mb-1">

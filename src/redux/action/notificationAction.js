@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { GET_NOTIFICATION_SELLER } from "../types";
+import { GET_NOTIFICATION_BUYER, GET_NOTIFICATION_SELLER } from "../types";
 
 let token = localStorage.getItem("token");
 
