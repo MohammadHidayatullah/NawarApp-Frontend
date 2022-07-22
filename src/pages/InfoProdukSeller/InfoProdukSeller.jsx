@@ -109,7 +109,7 @@ function InfoProdukPage() {
 
   const handleDelete = (id) => {
     dispatch(deleteProduct(id));
-    window.location.href = "/dashboard";
+    window.location.reload(navigate("/dashboard"));
   };
 
   return (
