@@ -16,6 +16,7 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    navigate("/login");
   };
 
   const handleNavHome = () => {
@@ -94,7 +95,11 @@ function Navbar() {
                               style={{
                                 color: "red",
                               }}
-                              onClick={handleLogout}>
+                              onClick={
+                                () => {
+                                  handleLogout();
+                                }
+                              }>
                               Logout
                             </span>
                           </li>

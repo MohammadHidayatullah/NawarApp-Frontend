@@ -107,9 +107,11 @@ function InfoProdukPage() {
     // console.log("INI HANDLE PUBLISH");
   };
 
-  const handleDelete = (id) => {
-    dispatch(deleteProduct(id));
+  const handleDelete = (data) => {
+    dispatch(deleteProduct(data.id));
     // window.location.href = "/dashboard";
+    // window.location.reload(navigate("/dashboard"));
+    navigate("/dashboard");
   };
 
   return (
@@ -364,7 +366,7 @@ function InfoProdukPage() {
                   type="button"
                   className="btn tawar"
                   data-bs-dismiss="modal"
-                  onClick={() => handleDelete(productData.id)}
+                  onClick={() => handleDelete(productData)}
                   style={{
                     background: "red",
                     color: "white",
