@@ -21,7 +21,7 @@ function SemuaProduk({ loading, data }) {
   }, []);
 
   const handleToEdit = (id) => {
-    window.location.href = `/info-produk/edit/${id}`;
+    window.location.href = `/info-produk-seller/${id}`;
   };
 
   return (
@@ -55,7 +55,9 @@ function SemuaProduk({ loading, data }) {
                     padding: "8px",
                     width: "100%",
                     boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.15)",
-                  }}>
+                  }}
+                  onClick={() => handleToEdit(item.id)}
+                  >
                   {item.productImages.length > 0 ? (
                     <div
                       className='img-product'
@@ -138,7 +140,7 @@ function SemuaProduk({ loading, data }) {
                       />
                     </p>
                   </div>
-                  <div className='button-response'>
+                  {/* <div className='button-response'>
                     <button
                       className='w-50'
                       type='button'
@@ -165,7 +167,7 @@ function SemuaProduk({ loading, data }) {
                       }}>
                       Hapus
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </section>
             ))}
